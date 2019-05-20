@@ -8,7 +8,7 @@
 5. **Pascal**            
 6. **Truing**            
 
-### 一、术语与概念
+### 术语与概念：
 
 **1、流处理器（stream processor ，SP):也称为core，是GPU运算的最基本计算单元**
 
@@ -22,7 +22,7 @@
 
 **6、SMX:Kepler架构中的SM**
 
-7、SMM:Maxwell架构中的SM 
+**7、SMM:Maxwell架构中的SM** 
 
 **8、线程处理器簇（thread processing cluster,TPC):由SM和L1 cache组成，存在于最新的Pasal架构中与最旧的Tesla架构**
 
@@ -36,5 +36,5 @@
 
 
 
-二、
+
 
