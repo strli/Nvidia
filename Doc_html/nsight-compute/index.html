@@ -1,0 +1,124 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="en-us">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+      <meta name="copyright" content="(C) Copyright 2005"></meta>
+      <meta name="DC.rights.owner" content="(C) Copyright 2005"></meta>
+      <meta name="DC.Type" content="concept"></meta>
+      <meta name="DC.Title" content="Nsight Compute"></meta>
+      <meta name="abstract" content="The Nsight Compute User Guide."></meta>
+      <meta name="description" content="The Nsight Compute User Guide."></meta>
+      <meta name="DC.Coverage" content="Tools"></meta>
+      <meta name="DC.subject" content="Nsight Compute"></meta>
+      <meta name="keywords" content="Nsight Compute"></meta>
+      <meta name="DC.Format" content="XHTML"></meta>
+      <meta name="DC.Identifier" content="abstract"></meta>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/commonltr.css"></link>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/site.css"></link>
+      <title>Nsight Compute :: CUDA Toolkit Documentation</title>
+      <!--[if lt IE 9]>
+      <script src="../common/formatting/html5shiv-printshiv.min.js"></script>
+      <![endif]-->
+      <script type="text/javascript" charset="utf-8" src="//assets.adobedtm.com/b92787824f2e0e9b68dc2e993f9bd995339fe417/satelliteLib-7ba51e58dc61bcb0e9311aadd02a0108ab24cc6c.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.min.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.ba-hashchange.min.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.scrollintoview.min.js"></script>
+      <script type="text/javascript" src="../search/htmlFileList.js"></script>
+      <script type="text/javascript" src="../search/htmlFileInfoList.js"></script>
+      <script type="text/javascript" src="../search/nwSearchFnt.min.js"></script>
+      <script type="text/javascript" src="../search/stemmers/en_stemmer.min.js"></script>
+      <script type="text/javascript" src="../search/index-1.js"></script>
+      <script type="text/javascript" src="../search/index-2.js"></script>
+      <script type="text/javascript" src="../search/index-3.js"></script>
+      <link rel="canonical" href="http://docs.nvidia.com/cuda/nsight-compute/index.html"></link>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/qwcode.highlight.css"></link>
+   </head>
+   <body>
+      
+      <header id="header"><span id="company">NVIDIA</span><span id="site-title">CUDA Toolkit Documentation</span><form id="search" method="get" action="search">
+            <input type="text" name="search-text"></input><fieldset id="search-location">
+               <legend>Search In:</legend>
+               <label><input type="radio" name="search-type" value="site"></input>Entire Site</label>
+               <label><input type="radio" name="search-type" value="document"></input>Just This Document</label></fieldset>
+            <button type="reset">clear search</button>
+            <button id="submit" type="submit">search</button></form>
+      </header>
+      <div id="site-content">
+         <nav id="site-nav">
+            <div class="category closed"><a href="../index.html" title="The root of the site.">CUDA Toolkit 
+                  
+                  
+                  v10.1.168</a></div>
+            <div class="category"><a href="index.html" title="Nsight Compute">Nsight Compute</a></div>
+            <ul>
+               <li>
+                  <div class="section-link"><a href="#nsight-compute-overview">Overview</a></div>
+               </li>
+            </ul>
+         </nav>
+         <div id="resize-nav"></div>
+         <nav id="search-results">
+            <h2>Search Results</h2>
+            <ol></ol>
+         </nav>
+         
+         <div id="contents-container">
+            <div id="breadcrumbs-container">
+               <div id="release-info">Nsight Compute
+                  (<a href="../../pdf/Nsight_Compute_Guide.pdf">PDF</a>)
+                  -
+                   
+                  
+                  
+                  v10.1.168
+                  (<a href="https://developer.nvidia.com/cuda-toolkit-archive">older</a>)
+                  -
+                  Last updated April 24, 2019
+                  -
+                  <a href="mailto:CUDAIssues@nvidia.com?subject=CUDA Toolkit Documentation Feedback: Nsight Compute">Send Feedback</a></div>
+            </div>
+            <article id="contents">
+               <div class="topic nested0" id="abstract"><a name="abstract" shape="rect">
+                     <!-- --></a><h2 class="title topictitle1"><a href="#abstract" name="abstract" shape="rect">Nsight Compute</a></h2>
+                  <div class="body conbody">
+                     <p class="shortdesc">The Nsight Compute User Guide.</p>
+                  </div>
+               </div>
+               <div class="topic concept nested0" id="nsight-compute-overview"><a name="nsight-compute-overview" shape="rect">
+                     <!-- --></a><h2 class="title topictitle1"><a href="#nsight-compute-overview" name="nsight-compute-overview" shape="rect">Overview</a></h2>
+                  <div class="body conbody">
+                     <p class="p">This document is a user guide for the next-generation NVIDIA Nsight Compute profiling
+                        			tools. The NVIDIA Nsight Compute is an interactive kernel profiler for CUDA applications.
+                        			It provides detailed performance metrics and API debugging via a user interface and command
+                        			line tool. 
+                     </p>
+                     <p class="p">In addition, the baseline feature of this tool allows users to compare results within the
+                        			tool. NVIDIA Nsight Compute provides a customizable and data-driven user interface, and
+                        			metric collection, and can be extended with analysis scripts for post-processing results. 
+                     </p>
+                     <div class="p"><strong class="ph b">Important Features</strong><a name="nsight-compute-overview__ul_evz_4hf_fhb" shape="rect">
+                           <!-- --></a><ul class="ul" id="nsight-compute-overview__ul_evz_4hf_fhb">
+                           <li class="li">Interactive kernel profiler and API debugger </li>
+                           <li class="li">Graphical profile report </li>
+                           <li class="li">Comparing results across one or multiple reports within the tool </li>
+                           <li class="li">Fast Data Collection </li>
+                           <li class="li">UI and Command Line interface, and </li>
+                           <li class="li">Fully customizable reports and analysis rules </li>
+                        </ul>
+                     </div>
+                     <p class="p">See <a class="xref" href="https://docs.nvidia.com/nsight-compute/docs/index.html" target="_blank" shape="rect">Nsight Compute documentation. </a></p>
+                  </div>
+               </div>
+               
+               <hr id="contents-end"></hr>
+               
+            </article>
+         </div>
+      </div>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/formatting/common.min.js"></script>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/scripts/google-analytics/google-analytics-write.js"></script>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/scripts/google-analytics/google-analytics-tracker.js"></script>
+      <script type="text/javascript">var switchTo5x=true;</script><script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script><script type="text/javascript">stLight.options({publisher: "998dc202-a267-4d8e-bce9-14debadb8d92", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script><script type="text/javascript">_satellite.pageBottom();</script></body>
+</html>

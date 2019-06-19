@@ -1,0 +1,426 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="en-us">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+      <meta name="copyright" content="(C) Copyright 2005"></meta>
+      <meta name="DC.rights.owner" content="(C) Copyright 2005"></meta>
+      <meta name="DC.Type" content="cppGlobalStruct"></meta>
+      <meta name="DC.Title" content="cudaFuncAttributes"></meta>
+      <meta name="abstract" content=""></meta>
+      <meta name="description" content=""></meta>
+      <meta name="DC.Format" content="XHTML"></meta>
+      <meta name="DC.Identifier" content="structcudaFuncAttributes"></meta>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/commonltr.css"></link>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/site.css"></link>
+      <title>CUDA Runtime API :: CUDA Toolkit Documentation</title>
+      <!--[if lt IE 9]>
+      <script src="../common/formatting/html5shiv-printshiv.min.js"></script>
+      <![endif]-->
+      <script type="text/javascript" charset="utf-8" src="//assets.adobedtm.com/b92787824f2e0e9b68dc2e993f9bd995339fe417/satelliteLib-7ba51e58dc61bcb0e9311aadd02a0108ab24cc6c.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.min.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.ba-hashchange.min.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.scrollintoview.min.js"></script>
+      <script type="text/javascript" src="../search/htmlFileList.js"></script>
+      <script type="text/javascript" src="../search/htmlFileInfoList.js"></script>
+      <script type="text/javascript" src="../search/nwSearchFnt.min.js"></script>
+      <script type="text/javascript" src="../search/stemmers/en_stemmer.min.js"></script>
+      <script type="text/javascript" src="../search/index-1.js"></script>
+      <script type="text/javascript" src="../search/index-2.js"></script>
+      <script type="text/javascript" src="../search/index-3.js"></script>
+      <link rel="canonical" href="http://docs.nvidia.com/cuda/cuda-runtime-api/index.html"></link>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/qwcode.highlight.css"></link>
+   </head>
+   <body>
+      
+      <header id="header"><span id="company">NVIDIA</span><span id="site-title">CUDA Toolkit Documentation</span><form id="search" method="get" action="search">
+            <input type="text" name="search-text"></input><fieldset id="search-location">
+               <legend>Search In:</legend>
+               <label><input type="radio" name="search-type" value="site"></input>Entire Site</label>
+               <label><input type="radio" name="search-type" value="document"></input>Just This Document</label></fieldset>
+            <button type="reset">clear search</button>
+            <button id="submit" type="submit">search</button></form>
+      </header>
+      <div id="site-content">
+         <nav id="site-nav">
+            <div class="category closed"><a href="../index.html" title="The root of the site.">CUDA Toolkit 
+                  
+                  
+                  v10.1.168</a></div>
+            <div class="category"><a href="index.html" title="CUDA Runtime API">CUDA Runtime API</a></div>
+            <ul>
+               <li>
+                  <div class="section-link"><a href="driver-vs-runtime-api.html#driver-vs-runtime-api">1.&nbsp;Difference between the driver and runtime APIs </a></div>
+               </li>
+               <li>
+                  <div class="section-link"><a href="api-sync-behavior.html#api-sync-behavior">2.&nbsp;API synchronization behavior </a></div>
+               </li>
+               <li>
+                  <div class="section-link"><a href="stream-sync-behavior.html#stream-sync-behavior">3.&nbsp;Stream synchronization behavior</a></div>
+               </li>
+               <li>
+                  <div class="section-link"><a href="graphs-thread-safety.html#graphs-thread-safety">4.&nbsp;Graph object thread safety</a></div>
+               </li>
+               <li>
+                  <div class="section-link"><a href="modules.html#modules">5.&nbsp;Modules</a></div>
+                  <ul>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__DEVICE.html#group__CUDART__DEVICE">5.1.&nbsp;Device Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__THREAD__DEPRECATED.html#group__CUDART__THREAD__DEPRECATED">5.2.&nbsp;Thread Management [DEPRECATED]</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__ERROR.html#group__CUDART__ERROR">5.3.&nbsp;Error Handling</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__STREAM.html#group__CUDART__STREAM">5.4.&nbsp;Stream Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__EVENT.html#group__CUDART__EVENT">5.5.&nbsp;Event Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__EXTRES__INTEROP.html#group__CUDART__EXTRES__INTEROP">5.6.&nbsp;External Resource Interoperability</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__EXECUTION.html#group__CUDART__EXECUTION">5.7.&nbsp;Execution Control</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__OCCUPANCY.html#group__CUDART__OCCUPANCY">5.8.&nbsp;Occupancy</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__MEMORY.html#group__CUDART__MEMORY">5.9.&nbsp;Memory Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__MEMORY__DEPRECATED.html#group__CUDART__MEMORY__DEPRECATED">5.10.&nbsp;Memory Management [DEPRECATED]</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__UNIFIED.html#group__CUDART__UNIFIED">5.11.&nbsp;Unified Addressing</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__PEER.html#group__CUDART__PEER">5.12.&nbsp;Peer Device Memory Access</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__OPENGL.html#group__CUDART__OPENGL">5.13.&nbsp;OpenGL Interoperability</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__OPENGL__DEPRECATED.html#group__CUDART__OPENGL__DEPRECATED">5.14.&nbsp;OpenGL Interoperability [DEPRECATED]</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__D3D9.html#group__CUDART__D3D9">5.15.&nbsp;Direct3D 9 Interoperability</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__D3D9__DEPRECATED.html#group__CUDART__D3D9__DEPRECATED">5.16.&nbsp;Direct3D 9 Interoperability [DEPRECATED]</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__D3D10.html#group__CUDART__D3D10">5.17.&nbsp;Direct3D 10 Interoperability</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__D3D10__DEPRECATED.html#group__CUDART__D3D10__DEPRECATED">5.18.&nbsp;Direct3D 10 Interoperability [DEPRECATED]</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__D3D11.html#group__CUDART__D3D11">5.19.&nbsp;Direct3D 11 Interoperability</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__D3D11__DEPRECATED.html#group__CUDART__D3D11__DEPRECATED">5.20.&nbsp;Direct3D 11 Interoperability [DEPRECATED]</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__VDPAU.html#group__CUDART__VDPAU">5.21.&nbsp;VDPAU Interoperability</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__EGL.html#group__CUDART__EGL">5.22.&nbsp;EGL Interoperability</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__INTEROP.html#group__CUDART__INTEROP">5.23.&nbsp;Graphics Interoperability</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__TEXTURE.html#group__CUDART__TEXTURE">5.24.&nbsp;Texture Reference Management [DEPRECATED]</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__SURFACE.html#group__CUDART__SURFACE">5.25.&nbsp;Surface Reference Management [DEPRECATED]</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__TEXTURE__OBJECT.html#group__CUDART__TEXTURE__OBJECT">5.26.&nbsp;Texture Object Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__SURFACE__OBJECT.html#group__CUDART__SURFACE__OBJECT">5.27.&nbsp;Surface Object Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART____VERSION.html#group__CUDART____VERSION">5.28.&nbsp;Version Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__GRAPH.html#group__CUDART__GRAPH">5.29.&nbsp;Graph Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__HIGHLEVEL.html#group__CUDART__HIGHLEVEL">5.30.&nbsp;C++ API Routines</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__DRIVER.html#group__CUDART__DRIVER">5.31.&nbsp;Interactions with the CUDA Driver API</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__PROFILER.html#group__CUDART__PROFILER">5.32.&nbsp;Profiler Control</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__TYPES.html#group__CUDART__TYPES">5.33.&nbsp;Data types used by CUDA Runtime</a></div>
+                     </li>
+                  </ul>
+               </li>
+               <li>
+                  <div class="section-link"><a href="annotated.html#annotated">6.&nbsp;Data Structures</a></div>
+                  <ul>
+                     <li>
+                        <div class="section-link"><a href="class____cudaOccupancyB2DHelper.html#class____cudaOccupancyB2DHelper">6.1.&nbsp;__cudaOccupancyB2DHelper</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaChannelFormatDesc.html#structcudaChannelFormatDesc">6.2.&nbsp;cudaChannelFormatDesc</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaDeviceProp.html#structcudaDeviceProp">6.3.&nbsp;cudaDeviceProp</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaEglFrame.html#structcudaEglFrame">6.4.&nbsp;cudaEglFrame</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaEglPlaneDesc.html#structcudaEglPlaneDesc">6.5.&nbsp;cudaEglPlaneDesc</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaExtent.html#structcudaExtent">6.6.&nbsp;cudaExtent</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaExternalMemoryBufferDesc.html#structcudaExternalMemoryBufferDesc">6.7.&nbsp;cudaExternalMemoryBufferDesc</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaExternalMemoryHandleDesc.html#structcudaExternalMemoryHandleDesc">6.8.&nbsp;cudaExternalMemoryHandleDesc</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaExternalMemoryMipmappedArrayDesc.html#structcudaExternalMemoryMipmappedArrayDesc">6.9.&nbsp;cudaExternalMemoryMipmappedArrayDesc</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaExternalSemaphoreHandleDesc.html#structcudaExternalSemaphoreHandleDesc">6.10.&nbsp;cudaExternalSemaphoreHandleDesc</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaExternalSemaphoreSignalParams.html#structcudaExternalSemaphoreSignalParams">6.11.&nbsp;cudaExternalSemaphoreSignalParams</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaExternalSemaphoreWaitParams.html#structcudaExternalSemaphoreWaitParams">6.12.&nbsp;cudaExternalSemaphoreWaitParams</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaFuncAttributes.html#structcudaFuncAttributes">6.13.&nbsp;cudaFuncAttributes</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaHostNodeParams.html#structcudaHostNodeParams">6.14.&nbsp;cudaHostNodeParams</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaIpcEventHandle__t.html#structcudaIpcEventHandle__t">6.15.&nbsp;cudaIpcEventHandle_t</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaIpcMemHandle__t.html#structcudaIpcMemHandle__t">6.16.&nbsp;cudaIpcMemHandle_t</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaKernelNodeParams.html#structcudaKernelNodeParams">6.17.&nbsp;cudaKernelNodeParams</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaLaunchParams.html#structcudaLaunchParams">6.18.&nbsp;cudaLaunchParams</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaMemcpy3DParms.html#structcudaMemcpy3DParms">6.19.&nbsp;cudaMemcpy3DParms</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaMemcpy3DPeerParms.html#structcudaMemcpy3DPeerParms">6.20.&nbsp;cudaMemcpy3DPeerParms</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaMemsetParams.html#structcudaMemsetParams">6.21.&nbsp;cudaMemsetParams</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaPitchedPtr.html#structcudaPitchedPtr">6.22.&nbsp;cudaPitchedPtr</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaPointerAttributes.html#structcudaPointerAttributes">6.23.&nbsp;cudaPointerAttributes</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaPos.html#structcudaPos">6.24.&nbsp;cudaPos</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaResourceDesc.html#structcudaResourceDesc">6.25.&nbsp;cudaResourceDesc</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaResourceViewDesc.html#structcudaResourceViewDesc">6.26.&nbsp;cudaResourceViewDesc</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaTextureDesc.html#structcudaTextureDesc">6.27.&nbsp;cudaTextureDesc</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUuuid__st.html#structCUuuid__st">6.28.&nbsp;CUuuid_st</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structsurfaceReference.html#structsurfaceReference">6.29.&nbsp;surfaceReference</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structtextureReference.html#structtextureReference">6.30.&nbsp;textureReference</a></div>
+                     </li>
+                  </ul>
+               </li>
+               <li>
+                  <div class="section-link"><a href="functions.html#functions">7.&nbsp;Data Fields</a></div>
+               </li>
+               <li>
+                  <div class="section-link"><a href="deprecated.html#deprecated">8.&nbsp;Deprecated List</a></div>
+               </li>
+               <li>
+                  <div class="section-link"><a href="notices-header.html#notices-header">Notices</a></div>
+                  <ul></ul>
+               </li>
+            </ul>
+         </nav>
+         <div id="resize-nav"></div>
+         <nav id="search-results">
+            <h2>Search Results</h2>
+            <ol></ol>
+         </nav>
+         
+         <div id="contents-container">
+            <div id="breadcrumbs-container">
+               <div id="breadcrumbs"><a href="structcudaExternalSemaphoreWaitParams.html" shape="rect">&lt; Previous</a> | <a href="structcudaHostNodeParams.html" shape="rect">Next &gt;</a></div>
+               <div id="release-info">CUDA Runtime API
+                  (<a href="../../pdf/CUDA_Runtime_API.pdf">PDF</a>)
+                  -
+                   
+                  
+                  
+                  v10.1.168
+                  (<a href="https://developer.nvidia.com/cuda-toolkit-archive">older</a>)
+                  -
+                  Last updated April 24, 2019
+                  -
+                  <a href="mailto:CUDAIssues@nvidia.com?subject=CUDA Toolkit Documentation Feedback: CUDA Runtime API">Send Feedback</a></div>
+            </div>
+            <article id="contents">
+               <div class="topic reference apiRef apiClassifier cppClassifier cppStruct cppGlobalStruct" id="structcudaFuncAttributes"><a name="structcudaFuncAttributes" shape="rect">
+                     <!-- --></a><h2 class="&#xA;            topictitle2 cppClass&#xA;          ">6.13.&nbsp;cudaFuncAttributes Struct Reference</h2>
+                  <h2>[<a class="xref xref apiRelation cppClassifierModule" href="group__CUDART__TYPES.html" shape="rect">Data types used by CUDA Runtime</a>]
+                  </h2>
+                  <div class="section">
+                     <p>CUDA function attributes </p>
+                  </div>
+                  <h3 class="fake_sectiontitle member_header">Public Variables</h3>
+                  <dl class="members">
+                     <dt><span class="member_type">int &nbsp;</span><span class="member_name"><a href="#structcudaFuncAttributes_1c4b0a26a83cff2a60183f6fbb8944907" shape="rect">binaryVersion</a></span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc"></span></dd>
+                     <dt><span class="member_type">int &nbsp;</span><span class="member_name"><a href="#structcudaFuncAttributes_1c5b4f9e473bf54747f2035df401577c7" shape="rect">cacheModeCA</a></span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc"></span></dd>
+                     <dt><span class="member_type">size_t &nbsp;</span><span class="member_name"><a href="#structcudaFuncAttributes_1fe17485a8cbe9034eb2b7905d2d82ef8" shape="rect">constSizeBytes</a></span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc"></span></dd>
+                     <dt><span class="member_type">size_t &nbsp;</span><span class="member_name"><a href="#structcudaFuncAttributes_18415fcfcab196c9e01dacb03c8ca8eae" shape="rect">localSizeBytes</a></span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc"></span></dd>
+                     <dt><span class="member_type">int &nbsp;</span><span class="member_name"><a href="#structcudaFuncAttributes_14e4e85e7111f39739d38fb7c6fe26a42" shape="rect">maxDynamicSharedSizeBytes</a></span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc"></span></dd>
+                     <dt><span class="member_type">int &nbsp;</span><span class="member_name"><a href="#structcudaFuncAttributes_1b8350f491105f159ff684f5c59167af0" shape="rect">maxThreadsPerBlock</a></span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc"></span></dd>
+                     <dt><span class="member_type">int &nbsp;</span><span class="member_name"><a href="#structcudaFuncAttributes_13e750723dd84185e838039c82931baf3" shape="rect">numRegs</a></span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc"></span></dd>
+                     <dt><span class="member_type">int &nbsp;</span><span class="member_name"><a href="#structcudaFuncAttributes_1088f144760311325523b66ee90c83c51" shape="rect">preferredShmemCarveout</a></span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc"></span></dd>
+                     <dt><span class="member_type">int &nbsp;</span><span class="member_name"><a href="#structcudaFuncAttributes_108ce97bd1e77d84cbff1cea9d662dcc2" shape="rect">ptxVersion</a></span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc"></span></dd>
+                     <dt><span class="member_type">size_t &nbsp;</span><span class="member_name"><a href="#structcudaFuncAttributes_1c3bc6914df6f65ac08b1f53cd7276113" shape="rect">sharedSizeBytes</a></span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc"></span></dd>
+                  </dl>
+                  <div class="description">
+                     <h3 class="sectiontitle">Variables</h3>
+                     <dl class="description">
+                        <dt class="description"><a name="structcudaFuncAttributes_1c4b0a26a83cff2a60183f6fbb8944907" id="structcudaFuncAttributes_1c4b0a26a83cff2a60183f6fbb8944907" shape="rect">
+                              <!-- --></a><span>int  <a href="structcudaFuncAttributes.html#structcudaFuncAttributes" title="" shape="rect">cudaFuncAttributes</a>::<a href="structcudaFuncAttributes.html#structcudaFuncAttributes_1c4b0a26a83cff2a60183f6fbb8944907" shape="rect">binaryVersion</a> [inherited] </span></dt>
+                        <dd class="description">
+                           <div class="section">
+                              <p> The binary architecture version for which the function was compiled. This value is the major binary version * 10 + the minor
+                                 binary version, so a binary version 1.3 function would return the value 13. 
+                              </p>
+                           </div>
+                        </dd>
+                        <dt class="description"><a name="structcudaFuncAttributes_1c5b4f9e473bf54747f2035df401577c7" id="structcudaFuncAttributes_1c5b4f9e473bf54747f2035df401577c7" shape="rect">
+                              <!-- --></a><span>int  <a href="structcudaFuncAttributes.html#structcudaFuncAttributes" title="" shape="rect">cudaFuncAttributes</a>::<a href="structcudaFuncAttributes.html#structcudaFuncAttributes_1c5b4f9e473bf54747f2035df401577c7" shape="rect">cacheModeCA</a> [inherited] </span></dt>
+                        <dd class="description">
+                           <div class="section">
+                              <p> The attribute to indicate whether the function has been compiled with user specified option "-Xptxas --dlcm=ca" set. </p>
+                           </div>
+                        </dd>
+                        <dt class="description"><a name="structcudaFuncAttributes_1fe17485a8cbe9034eb2b7905d2d82ef8" id="structcudaFuncAttributes_1fe17485a8cbe9034eb2b7905d2d82ef8" shape="rect">
+                              <!-- --></a><span>size_t  <a href="structcudaFuncAttributes.html#structcudaFuncAttributes" title="" shape="rect">cudaFuncAttributes</a>::<a href="structcudaFuncAttributes.html#structcudaFuncAttributes_1fe17485a8cbe9034eb2b7905d2d82ef8" shape="rect">constSizeBytes</a> [inherited] </span></dt>
+                        <dd class="description">
+                           <div class="section">
+                              <p> The size in bytes of user-allocated constant memory required by this function. </p>
+                           </div>
+                        </dd>
+                        <dt class="description"><a name="structcudaFuncAttributes_18415fcfcab196c9e01dacb03c8ca8eae" id="structcudaFuncAttributes_18415fcfcab196c9e01dacb03c8ca8eae" shape="rect">
+                              <!-- --></a><span>size_t  <a href="structcudaFuncAttributes.html#structcudaFuncAttributes" title="" shape="rect">cudaFuncAttributes</a>::<a href="structcudaFuncAttributes.html#structcudaFuncAttributes_18415fcfcab196c9e01dacb03c8ca8eae" shape="rect">localSizeBytes</a> [inherited] </span></dt>
+                        <dd class="description">
+                           <div class="section">
+                              <p> The size in bytes of local memory used by each thread of this function. </p>
+                           </div>
+                        </dd>
+                        <dt class="description"><a name="structcudaFuncAttributes_14e4e85e7111f39739d38fb7c6fe26a42" id="structcudaFuncAttributes_14e4e85e7111f39739d38fb7c6fe26a42" shape="rect">
+                              <!-- --></a><span>int  <a href="structcudaFuncAttributes.html#structcudaFuncAttributes" title="" shape="rect">cudaFuncAttributes</a>::<a href="structcudaFuncAttributes.html#structcudaFuncAttributes_14e4e85e7111f39739d38fb7c6fe26a42" shape="rect">maxDynamicSharedSizeBytes</a> [inherited] </span></dt>
+                        <dd class="description">
+                           <div class="section">
+                              <p> The maximum size in bytes of dynamic shared memory per block for this function. Any launch must have a dynamic shared memory
+                                 size smaller than this value. 
+                              </p>
+                           </div>
+                        </dd>
+                        <dt class="description"><a name="structcudaFuncAttributes_1b8350f491105f159ff684f5c59167af0" id="structcudaFuncAttributes_1b8350f491105f159ff684f5c59167af0" shape="rect">
+                              <!-- --></a><span>int  <a href="structcudaFuncAttributes.html#structcudaFuncAttributes" title="" shape="rect">cudaFuncAttributes</a>::<a href="structcudaFuncAttributes.html#structcudaFuncAttributes_1b8350f491105f159ff684f5c59167af0" shape="rect">maxThreadsPerBlock</a> [inherited] </span></dt>
+                        <dd class="description">
+                           <div class="section">
+                              <p> The maximum number of threads per block, beyond which a launch of the function would fail. This number depends on both the
+                                 function and the device on which the function is currently loaded. 
+                              </p>
+                           </div>
+                        </dd>
+                        <dt class="description"><a name="structcudaFuncAttributes_13e750723dd84185e838039c82931baf3" id="structcudaFuncAttributes_13e750723dd84185e838039c82931baf3" shape="rect">
+                              <!-- --></a><span>int  <a href="structcudaFuncAttributes.html#structcudaFuncAttributes" title="" shape="rect">cudaFuncAttributes</a>::<a href="structcudaFuncAttributes.html#structcudaFuncAttributes_13e750723dd84185e838039c82931baf3" shape="rect">numRegs</a> [inherited] </span></dt>
+                        <dd class="description">
+                           <div class="section">
+                              <p> The number of registers used by each thread of this function. </p>
+                           </div>
+                        </dd>
+                        <dt class="description"><a name="structcudaFuncAttributes_1088f144760311325523b66ee90c83c51" id="structcudaFuncAttributes_1088f144760311325523b66ee90c83c51" shape="rect">
+                              <!-- --></a><span>int  <a href="structcudaFuncAttributes.html#structcudaFuncAttributes" title="" shape="rect">cudaFuncAttributes</a>::<a href="structcudaFuncAttributes.html#structcudaFuncAttributes_1088f144760311325523b66ee90c83c51" shape="rect">preferredShmemCarveout</a> [inherited] </span></dt>
+                        <dd class="description">
+                           <div class="section">
+                              <p> On devices where the L1 cache and shared memory use the same hardware resources, this sets the shared memory carveout preference,
+                                 in percent of the maximum shared memory. Refer to <a class="xref" href="group__CUDART__TYPES.html#group__CUDART__TYPES_1gg49e2f8c2c0bd6fe264f2fc970912e5cdc478150b5ec1689a2944aaf7e25a5685" shape="rect">cudaDevAttrMaxSharedMemoryPerMultiprocessor</a>. This is only a hint, and the driver can choose a different ratio if required to execute the function. See <a class="xref" href="group__CUDART__HIGHLEVEL.html#group__CUDART__HIGHLEVEL_1g422642bfa0c035a590e4c43ff7c11f8d" title="[C++ API] Set attributes for a given function" shape="rect">cudaFuncSetAttribute</a></p>
+                           </div>
+                        </dd>
+                        <dt class="description"><a name="structcudaFuncAttributes_108ce97bd1e77d84cbff1cea9d662dcc2" id="structcudaFuncAttributes_108ce97bd1e77d84cbff1cea9d662dcc2" shape="rect">
+                              <!-- --></a><span>int  <a href="structcudaFuncAttributes.html#structcudaFuncAttributes" title="" shape="rect">cudaFuncAttributes</a>::<a href="structcudaFuncAttributes.html#structcudaFuncAttributes_108ce97bd1e77d84cbff1cea9d662dcc2" shape="rect">ptxVersion</a> [inherited] </span></dt>
+                        <dd class="description">
+                           <div class="section">
+                              <p> The PTX virtual architecture version for which the function was compiled. This value is the major PTX version * 10 + the
+                                 minor PTX version, so a PTX version 1.3 function would return the value 13. 
+                              </p>
+                           </div>
+                        </dd>
+                        <dt class="description"><a name="structcudaFuncAttributes_1c3bc6914df6f65ac08b1f53cd7276113" id="structcudaFuncAttributes_1c3bc6914df6f65ac08b1f53cd7276113" shape="rect">
+                              <!-- --></a><span>size_t  <a href="structcudaFuncAttributes.html#structcudaFuncAttributes" title="" shape="rect">cudaFuncAttributes</a>::<a href="structcudaFuncAttributes.html#structcudaFuncAttributes_1c3bc6914df6f65ac08b1f53cd7276113" shape="rect">sharedSizeBytes</a> [inherited] </span></dt>
+                        <dd class="description">
+                           <div class="section">
+                              <p> The size in bytes of statically-allocated shared memory per block required by this function. This does not include dynamically-allocated
+                                 shared memory requested by the user at runtime. 
+                              </p>
+                           </div>
+                        </dd>
+                     </dl>
+                  </div>
+               </div>
+               
+               <hr id="contents-end"></hr>
+               
+            </article>
+         </div>
+      </div>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/formatting/common.min.js"></script>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/scripts/google-analytics/google-analytics-write.js"></script>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/scripts/google-analytics/google-analytics-tracker.js"></script>
+      <script type="text/javascript">var switchTo5x=true;</script><script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script><script type="text/javascript">stLight.options({publisher: "998dc202-a267-4d8e-bce9-14debadb8d92", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script><script type="text/javascript">_satellite.pageBottom();</script></body>
+</html>

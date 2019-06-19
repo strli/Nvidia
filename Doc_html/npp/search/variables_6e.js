@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['nah',['nAh',['../struct_nppi_jpeg_scan_descr.html#ade8dc49f5997612cac4ee3f16119d81d',1,'NppiJpegScanDescr']]],
+  ['nal',['nAl',['../struct_nppi_jpeg_scan_descr.html#a34f54d4d1c77ca2c4a27a4c9a34df204',1,'NppiJpegScanDescr']]],
+  ['ncomponents',['nComponents',['../struct_nppi_jpeg_frame_descr.html#abb9b3cdb9c885376e23049df3c28ad46',1,'NppiJpegFrameDescr::nComponents()'],['../struct_nppi_jpeg_scan_descr.html#a0791fe1585c05b04d4edee2b55043df0',1,'NppiJpegScanDescr::nComponents()']]],
+  ['ncudadevattrcomputecapabilitymajor',['nCudaDevAttrComputeCapabilityMajor',['../struct_npp_stream_context.html#a492da1c229176cca0911740b931e5c86',1,'NppStreamContext']]],
+  ['ncudadevattrcomputecapabilityminor',['nCudaDevAttrComputeCapabilityMinor',['../struct_npp_stream_context.html#aa48387520cb11e4c6fe8b6be781e3cd6',1,'NppStreamContext']]],
+  ['ncudadeviceid',['nCudaDeviceId',['../struct_npp_stream_context.html#af4f019cd880d5dc5781a949000cb411c',1,'NppStreamContext']]],
+  ['ndststep',['nDstStep',['../struct_nppi_color_twist_batch_c_x_r.html#ac9163b4d55b33a1b762efbb85a8e2f77',1,'NppiColorTwistBatchCXR::nDstStep()'],['../struct_nppi_resize_batch_c_x_r.html#ae5c53839ec45e0c7b052361ec25bbc01',1,'NppiResizeBatchCXR::nDstStep()'],['../struct_nppi_mirror_batch_c_x_r.html#ae43a74c4f098f50295729eba8dc76927',1,'NppiMirrorBatchCXR::nDstStep()'],['../struct_nppi_warp_affine_batch_c_x_r.html#a4bdef46f049eec52a83a8f226bb7aaf6',1,'NppiWarpAffineBatchCXR::nDstStep()'],['../struct_nppi_warp_perspective_batch_c_x_r.html#a2bb9c2a444016598fdf5734804466793',1,'NppiWarpPerspectiveBatchCXR::nDstStep()']]],
+  ['nhistogrambins',['nHistogramBins',['../struct_nppi_h_o_g_config.html#a8504b127be842d1a47c4283761331c5a',1,'NppiHOGConfig']]],
+  ['nmaxthreadsperblock',['nMaxThreadsPerBlock',['../struct_npp_stream_context.html#a608f789a30bd5f5c6c1bf23a3244a0f3',1,'NppStreamContext']]],
+  ['nmaxthreadspermultiprocessor',['nMaxThreadsPerMultiProcessor',['../struct_npp_stream_context.html#af6f9664dbcb0e6f09152c4810ef9dddc',1,'NppStreamContext']]],
+  ['nmultiprocessorcount',['nMultiProcessorCount',['../struct_npp_stream_context.html#afe56d317c19be58483a3cf3fe07b6bb2',1,'NppStreamContext']]],
+  ['npp16sc',['Npp16sc',['../group__npp__basic__types.html#ga8d6c9e2f46d9597f16b7aabf9a65bf3e',1,'nppdefs.h']]],
+  ['npp16uc',['Npp16uc',['../group__npp__basic__types.html#ga7ca46c7343e030dc35788ab82f0c4d76',1,'nppdefs.h']]],
+  ['npp8uc',['Npp8uc',['../group__npp__basic__types.html#gafe8263cb1e73e4c04e9b67dab74fb1e9',1,'nppdefs.h']]],
+  ['nreserved0',['nReserved0',['../struct_npp_stream_context.html#a660cfaf965dd0a09ca784bf7189b81b5',1,'NppStreamContext']]],
+  ['nreserved1',['nReserved1',['../struct_npp_stream_context.html#ac6b6231248cac5bfcf37ec9de37b0a14',1,'NppStreamContext']]],
+  ['nse',['nSe',['../struct_nppi_jpeg_scan_descr.html#a151fdbf525c9e8a76816044378c7063f',1,'NppiJpegScanDescr']]],
+  ['nsharedmemperblock',['nSharedMemPerBlock',['../struct_npp_stream_context.html#a54275bc92229f0003d1268f5bcae0897',1,'NppStreamContext']]],
+  ['nsrcstep',['nSrcStep',['../struct_nppi_color_twist_batch_c_x_r.html#a45b64f8e050117c14aaedb6a4477a1fc',1,'NppiColorTwistBatchCXR::nSrcStep()'],['../struct_nppi_resize_batch_c_x_r.html#a1ae744d7edd8e1f0a472adf773647edb',1,'NppiResizeBatchCXR::nSrcStep()'],['../struct_nppi_mirror_batch_c_x_r.html#a90cd0da7b5001fe2e54b08831c2b5fca',1,'NppiMirrorBatchCXR::nSrcStep()'],['../struct_nppi_warp_affine_batch_c_x_r.html#a871c69b4c89bd6de5e14a94a3a954117',1,'NppiWarpAffineBatchCXR::nSrcStep()'],['../struct_nppi_warp_perspective_batch_c_x_r.html#a816b4764fb335a94c8e6fdf703212f0e',1,'NppiWarpPerspectiveBatchCXR::nSrcStep()']]],
+  ['nss',['nSs',['../struct_nppi_jpeg_scan_descr.html#afb817de62a7dc85f1048c5c2d5b6490f',1,'NppiJpegScanDescr']]],
+  ['nstep',['nStep',['../struct_nppi_image_descriptor.html#a517c54bf39024efc667a1b448e1f34c3',1,'NppiImageDescriptor']]],
+  ['numclassifiers',['numClassifiers',['../struct_nppi_haar_classifier__32f.html#ab4156b26c831119b75d1f4409d22fdfe',1,'NppiHaarClassifier_32f']]]
+];

@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['npp16f',['Npp16f',['../struct_npp16f.html',1,'']]],
+  ['npp16f_5f2',['Npp16f_2',['../struct_npp16f__2.html',1,'']]],
+  ['npp_5falign_5f16',['NPP_ALIGN_16',['../struct_n_p_p___a_l_i_g_n__16.html',1,'']]],
+  ['npp_5falign_5f8',['NPP_ALIGN_8',['../struct_n_p_p___a_l_i_g_n__8.html',1,'']]],
+  ['nppicolortwistbatchcxr',['NppiColorTwistBatchCXR',['../struct_nppi_color_twist_batch_c_x_r.html',1,'']]],
+  ['nppihaarbuffer',['NppiHaarBuffer',['../struct_nppi_haar_buffer.html',1,'']]],
+  ['nppihaarclassifier_5f32f',['NppiHaarClassifier_32f',['../struct_nppi_haar_classifier__32f.html',1,'']]],
+  ['nppihogconfig',['NppiHOGConfig',['../struct_nppi_h_o_g_config.html',1,'']]],
+  ['nppiimagedescriptor',['NppiImageDescriptor',['../struct_nppi_image_descriptor.html',1,'']]],
+  ['nppijpegdecodejob',['NppiJpegDecodeJob',['../struct_nppi_jpeg_decode_job.html',1,'']]],
+  ['nppijpegdecodejobmemory',['NppiJpegDecodeJobMemory',['../struct_nppi_jpeg_decode_job_memory.html',1,'']]],
+  ['nppijpegframedescr',['NppiJpegFrameDescr',['../struct_nppi_jpeg_frame_descr.html',1,'']]],
+  ['nppijpegscandescr',['NppiJpegScanDescr',['../struct_nppi_jpeg_scan_descr.html',1,'']]],
+  ['nppimirrorbatchcxr',['NppiMirrorBatchCXR',['../struct_nppi_mirror_batch_c_x_r.html',1,'']]],
+  ['nppipoint',['NppiPoint',['../struct_nppi_point.html',1,'']]],
+  ['nppirect',['NppiRect',['../struct_nppi_rect.html',1,'']]],
+  ['nppiresizebatchcxr',['NppiResizeBatchCXR',['../struct_nppi_resize_batch_c_x_r.html',1,'']]],
+  ['nppiresizebatchroi_5fadvanced',['NppiResizeBatchROI_Advanced',['../struct_nppi_resize_batch_r_o_i___advanced.html',1,'']]],
+  ['nppisize',['NppiSize',['../struct_nppi_size.html',1,'']]],
+  ['nppiwarpaffinebatchcxr',['NppiWarpAffineBatchCXR',['../struct_nppi_warp_affine_batch_c_x_r.html',1,'']]],
+  ['nppiwarpperspectivebatchcxr',['NppiWarpPerspectiveBatchCXR',['../struct_nppi_warp_perspective_batch_c_x_r.html',1,'']]],
+  ['npplibraryversion',['NppLibraryVersion',['../struct_npp_library_version.html',1,'']]],
+  ['npppointpolar',['NppPointPolar',['../struct_npp_point_polar.html',1,'']]],
+  ['nppstreamcontext',['NppStreamContext',['../struct_npp_stream_context.html',1,'']]]
+];

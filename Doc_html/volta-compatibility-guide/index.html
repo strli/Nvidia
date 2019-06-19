@@ -1,0 +1,461 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="en-us">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+      <meta name="copyright" content="(C) Copyright 2005"></meta>
+      <meta name="DC.rights.owner" content="(C) Copyright 2005"></meta>
+      <meta name="DC.Type" content="concept"></meta>
+      <meta name="DC.Title" content="Volta Compatibility Guide for CUDA Applications"></meta>
+      <meta name="abstract" content="The guide to building CUDA applications for GPUs based on the NVIDIA Volta Architecture."></meta>
+      <meta name="description" content="The guide to building CUDA applications for GPUs based on the NVIDIA Volta Architecture."></meta>
+      <meta name="DC.Coverage" content="Programming Guides"></meta>
+      <meta name="DC.subject" content="CUDA Volta, CUDA Volta compatibility, CUDA Volta cubin, CUDA Volta PTX, CUDA Volta nvcc"></meta>
+      <meta name="keywords" content="CUDA Volta, CUDA Volta compatibility, CUDA Volta cubin, CUDA Volta PTX, CUDA Volta nvcc"></meta>
+      <meta name="DC.Format" content="XHTML"></meta>
+      <meta name="DC.Identifier" content="abstract"></meta>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/commonltr.css"></link>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/site.css"></link>
+      <title>Volta Compatibility Guide :: CUDA Toolkit Documentation</title>
+      <!--[if lt IE 9]>
+      <script src="../common/formatting/html5shiv-printshiv.min.js"></script>
+      <![endif]-->
+      <script type="text/javascript" charset="utf-8" src="//assets.adobedtm.com/b92787824f2e0e9b68dc2e993f9bd995339fe417/satelliteLib-7ba51e58dc61bcb0e9311aadd02a0108ab24cc6c.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.min.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.ba-hashchange.min.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.scrollintoview.min.js"></script>
+      <script type="text/javascript" src="../search/htmlFileList.js"></script>
+      <script type="text/javascript" src="../search/htmlFileInfoList.js"></script>
+      <script type="text/javascript" src="../search/nwSearchFnt.min.js"></script>
+      <script type="text/javascript" src="../search/stemmers/en_stemmer.min.js"></script>
+      <script type="text/javascript" src="../search/index-1.js"></script>
+      <script type="text/javascript" src="../search/index-2.js"></script>
+      <script type="text/javascript" src="../search/index-3.js"></script>
+      <link rel="canonical" href="http://docs.nvidia.com/cuda/volta-compatibility-guide/index.html"></link>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/qwcode.highlight.css"></link>
+   </head>
+   <body>
+      
+      <header id="header"><span id="company">NVIDIA</span><span id="site-title">CUDA Toolkit Documentation</span><form id="search" method="get" action="search">
+            <input type="text" name="search-text"></input><fieldset id="search-location">
+               <legend>Search In:</legend>
+               <label><input type="radio" name="search-type" value="site"></input>Entire Site</label>
+               <label><input type="radio" name="search-type" value="document"></input>Just This Document</label></fieldset>
+            <button type="reset">clear search</button>
+            <button id="submit" type="submit">search</button></form>
+      </header>
+      <div id="site-content">
+         <nav id="site-nav">
+            <div class="category closed"><a href="../index.html" title="The root of the site.">CUDA Toolkit 
+                  
+                  
+                  v10.1.168</a></div>
+            <div class="category"><a href="index.html" title="Volta Compatibility Guide">Volta Compatibility Guide</a></div>
+            <ul>
+               <li>
+                  <div class="section-link"><a href="#volta-compatibility">1.&nbsp;Volta Compatibility</a></div>
+                  <ul>
+                     <li>
+                        <div class="section-link"><a href="#about-this-document">1.1.&nbsp;About this Document</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="#application-compatibility-on-volta">1.2.&nbsp;Application Compatibility on Volta</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="#verifying-volta-compatibility">1.3.&nbsp;Verifying Volta Compatibility for Existing Applications</a></div>
+                        <ul>
+                           <li>
+                              <div class="section-link"><a href="#verifying-volta-compatibility-using-cuda-8-0">1.3.1.&nbsp;Applications Using CUDA Toolkit 8.0 or Earlier</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="#verifying-volta-compatibility-using-cuda-9-0">1.3.2.&nbsp;Applications Using CUDA Toolkit 9.0</a></div>
+                           </li>
+                        </ul>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="#building-applications-with-volta-support">1.4.&nbsp;Building Applications with Volta Support</a></div>
+                        <ul>
+                           <li>
+                              <div class="section-link"><a href="#building-volta-compatible-apps-using-cuda-8-0">1.4.1.&nbsp;Applications Using CUDA Toolkit 8.0 or Earlier</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="#building-volta-compatible-apps-using-cuda-9-0">1.4.2.&nbsp;Applications Using CUDA Toolkit 9.0</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="#independent-thread-scheduling-compatibility">1.4.3.&nbsp;Independent Thread Scheduling Compatibility</a></div>
+                           </li>
+                        </ul>
+                     </li>
+                  </ul>
+               </li>
+               <li>
+                  <div class="section-link"><a href="#revision-history">A.&nbsp;Revision History</a></div>
+               </li>
+            </ul>
+         </nav>
+         <div id="resize-nav"></div>
+         <nav id="search-results">
+            <h2>Search Results</h2>
+            <ol></ol>
+         </nav>
+         
+         <div id="contents-container">
+            <div id="breadcrumbs-container">
+               <div id="release-info">Volta Compatibility Guide
+                  (<a href="../../pdf/Volta_Compatibility_Guide.pdf">PDF</a>)
+                  -
+                   
+                  
+                  
+                  v10.1.168
+                  (<a href="https://developer.nvidia.com/cuda-toolkit-archive">older</a>)
+                  -
+                  Last updated April 24, 2019
+                  -
+                  <a href="mailto:CUDAIssues@nvidia.com?subject=CUDA Toolkit Documentation Feedback: Volta Compatibility Guide">Send Feedback</a></div>
+            </div>
+            <article id="contents">
+               <div class="topic nested0" id="abstract"><a name="abstract" shape="rect">
+                     <!-- --></a><h2 class="title topictitle1"><a href="#abstract" name="abstract" shape="rect">Volta Compatibility Guide for CUDA Applications</a></h2>
+                  <div class="body conbody">
+                     <p class="shortdesc">The guide to building CUDA applications for GPUs based on
+                        the NVIDIA Volta Architecture.
+                     </p>
+                  </div>
+               </div>
+               <div class="topic concept nested0" xml:lang="en-US" id="volta-compatibility"><a name="volta-compatibility" shape="rect">
+                     <!-- --></a><h2 class="title topictitle1"><a href="#volta-compatibility" name="volta-compatibility" shape="rect">1.&nbsp;Volta Compatibility</a></h2>
+                  <div class="topic concept nested1" xml:lang="en-US" id="about-this-document"><a name="about-this-document" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#about-this-document" name="about-this-document" shape="rect">1.1.&nbsp;About this Document</a></h3>
+                     <div class="body conbody">
+                        <p class="p">This application note, <cite class="cite">Volta Compatibility Guide for CUDA
+                              Applications</cite>, is intended to help developers ensure that their
+                           NVIDIA<sup>®</sup> CUDA<sup>®</sup> applications
+                           will run on GPUs based on the NVIDIA<sup>®</sup> Volta
+                           Architecture. This document provides guidance to developers who are
+                           already familiar with programming in CUDA C/C++ and want to make sure
+                           that their software applications are compatible with Volta.
+                        </p>
+                     </div>
+                  </div>
+                  <div class="topic concept nested1" xml:lang="en-US" id="application-compatibility-on-volta"><a name="application-compatibility-on-volta" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#application-compatibility-on-volta" name="application-compatibility-on-volta" shape="rect">1.2.&nbsp;Application Compatibility on Volta</a></h3>
+                     <div class="body conbody">
+                        <p class="p">The NVIDIA CUDA C compiler, <samp class="ph codeph">nvcc</samp>, can be used to
+                           generate both architecture-specific <dfn class="term">cubin</dfn> files and
+                           forward-compatible <dfn class="term">PTX</dfn> versions of each kernel. Each cubin
+                           file targets a specific compute-capability version and is
+                           forward-compatible <em class="ph i">only with GPU architectures of the same major
+                              version number</em>. For example, cubin files that target compute
+                           capability 3.0 are supported on all compute-capability 3.x (Kepler)
+                           devices but are <em class="ph i">not</em> supported on compute-capability 5.x (Maxwell) or 6.x
+                           (Pascal) devices. For this reason, to ensure forward compatibility
+                           with GPU architectures introduced after the application has been
+                           released, it is recommended that all applications include PTX versions
+                           of their kernels.
+                        </p>
+                        <div class="note note"><span class="notetitle">Note:</span> CUDA Runtime applications containing both cubin and PTX code for
+                           a given architecture will automatically use the cubin by default,
+                           keeping the PTX path strictly for forward-compatibility purposes.
+                           
+                        </div>
+                        <p class="p">Applications that already include PTX versions of their kernels
+                           should work as-is on Volta-based GPUs. Applications that only support
+                           specific GPU architectures via cubin files, however, will need to be
+                           updated to provide Volta-compatible PTX or cubins.
+                        </p>
+                     </div>
+                  </div>
+                  <div class="topic concept nested1" xml:lang="en-US" id="verifying-volta-compatibility"><a name="verifying-volta-compatibility" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#verifying-volta-compatibility" name="verifying-volta-compatibility" shape="rect">1.3.&nbsp;Verifying Volta Compatibility for Existing Applications</a></h3>
+                     <div class="body conbody">
+                        <p class="p">The first step is to check that Volta-compatible device code (at
+                           least PTX) is compiled into the application. The following sections
+                           show how to accomplish this for applications built with different CUDA
+                           Toolkit versions.
+                        </p>
+                     </div>
+                     <div class="topic concept nested2" xml:lang="en-US" id="verifying-volta-compatibility-using-cuda-8-0"><a name="verifying-volta-compatibility-using-cuda-8-0" shape="rect">
+                           <!-- --></a><h3 class="title topictitle2"><a href="#verifying-volta-compatibility-using-cuda-8-0" name="verifying-volta-compatibility-using-cuda-8-0" shape="rect">1.3.1.&nbsp;Applications Using CUDA Toolkit 8.0 or Earlier</a></h3>
+                        <div class="body conbody">
+                           <div class="p">CUDA applications built using CUDA Toolkit versions 2.1 through
+                              8.0 are compatible with Volta as long as they are built to include
+                              PTX versions of their kernels. To test that PTX JIT is working for
+                              your application, you can do the following:
+                              
+                              <ul class="ul">
+                                 <li class="li">Download and install the latest driver from <a class="xref" href="http://www.nvidia.com/drivers" target="_blank" shape="rect">http://www.nvidia.com/drivers</a>.
+                                 </li>
+                                 <li class="li">Set the environment variable
+                                    <samp class="ph codeph">CUDA_FORCE_PTX_JIT=1</samp>.
+                                 </li>
+                                 <li class="li">Launch your application.</li>
+                              </ul>
+                           </div>
+                           <p class="p">When starting a CUDA application for the first time with the above
+                              environment flag, the CUDA driver will JIT-compile the PTX for each
+                              CUDA kernel that is used into native cubin code.
+                           </p>
+                           <p class="p">If you set the environment variable above and then launch your
+                              program and it works properly, then you have successfully verified
+                              Volta compatibility.
+                           </p>
+                           <div class="note note"><span class="notetitle">Note:</span> Be sure to unset the CUDA_FORCE_PTX_JIT environment variable
+                              when you are done testing.
+                           </div>
+                        </div>
+                     </div>
+                     <div class="topic concept nested2" xml:lang="en-US" id="verifying-volta-compatibility-using-cuda-9-0"><a name="verifying-volta-compatibility-using-cuda-9-0" shape="rect">
+                           <!-- --></a><h3 class="title topictitle2"><a href="#verifying-volta-compatibility-using-cuda-9-0" name="verifying-volta-compatibility-using-cuda-9-0" shape="rect">1.3.2.&nbsp;Applications Using CUDA Toolkit 9.0</a></h3>
+                        <div class="body conbody">
+                           <p class="p">CUDA applications built using CUDA Toolkit 9.0 are
+                              compatible with Volta as long as they are built to include
+                              kernels in either Volta-native cubin format (see <a class="xref" href="index.html#building-applications-with-volta-support" shape="rect">Building Applications with Volta Support</a>) or PTX format
+                              (see <a class="xref" href="index.html#verifying-volta-compatibility-using-cuda-8-0" shape="rect">Applications Using CUDA Toolkit 8.0 or Earlier</a>)
+                              or both.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="topic concept nested1" xml:lang="en-US" id="building-applications-with-volta-support"><a name="building-applications-with-volta-support" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#building-applications-with-volta-support" name="building-applications-with-volta-support" shape="rect">1.4.&nbsp;Building Applications with Volta Support</a></h3>
+                     <div class="body conbody">
+                        <p class="p">When a CUDA application launches a kernel, the CUDA Runtime
+                           determines the compute capability of each GPU in the system and uses
+                           this information to automatically find the best matching cubin or PTX
+                           version of the kernel that is available.  If a cubin file supporting
+                           the architecture of the target GPU is available, it is used; otherwise,
+                           the CUDA Runtime will load the PTX and JIT-compile that PTX to the
+                           GPU's native cubin format before launching it. If neither is available,
+                           then the kernel launch will fail.
+                        </p>
+                        <p class="p">The method used to build your application with either native cubin
+                           or at least PTX support for Volta depend on the version of the CUDA
+                           Toolkit used.
+                        </p>
+                        <div class="p">The main advantages of providing native cubins are as follows:
+                           
+                           <ul class="ul">
+                              <li class="li">It saves the end user the time it takes to JIT-compile kernels
+                                 that are available only as PTX.  All kernels compiled into the
+                                 application must have native binaries at load time or else they
+                                 will be built just-in-time from PTX, including kernels from all
+                                 libraries linked to the application, even if those kernels are
+                                 never launched by the application.  Especially when using large
+                                 libraries, this JIT compilation can take a significant amount of
+                                 time.  The CUDA driver will cache the cubins generated as a result
+                                 of the PTX JIT, so this is mostly a one-time cost for a given user,
+                                 but it is time best avoided whenever possible.
+                              </li>
+                              <li class="li">PTX JIT-compiled kernels often cannot take advantage of
+                                 architectural features of newer GPUs, meaning that native-compiled
+                                 code may be faster or of greater accuracy.
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                     <div class="topic concept nested2" xml:lang="en-US" id="building-volta-compatible-apps-using-cuda-8-0"><a name="building-volta-compatible-apps-using-cuda-8-0" shape="rect">
+                           <!-- --></a><h3 class="title topictitle2"><a href="#building-volta-compatible-apps-using-cuda-8-0" name="building-volta-compatible-apps-using-cuda-8-0" shape="rect">1.4.1.&nbsp;Applications Using CUDA Toolkit 8.0 or Earlier</a></h3>
+                        <div class="body conbody">
+                           <div class="section">
+                              <p class="p">The compilers included in CUDA Toolkit 8.0 or earlier generate
+                                 cubin files native to earlier NVIDIA architectures such as Maxwell
+                                 and Pascal, but they <em class="ph i">cannot</em> generate cubin files native to
+                                 the Volta architecture. To allow support for Volta and future
+                                 architectures when using version 8.0 or earlier of the CUDA
+                                 Toolkit, the compiler must generate a PTX version of each
+                                 kernel.
+                              </p>
+                              <p class="p">Below are compiler settings that could be used to build
+                                 <samp class="ph codeph">mykernel.cu</samp> to run on Maxwell or Pascal devices
+                                 natively and on Volta devices via PTX JIT.
+                              </p>
+                              <p class="p">Note that <samp class="ph codeph">compute_XX</samp> refers to a PTX version
+                                 and <samp class="ph codeph">sm_XX</samp> refers to a cubin version. The
+                                 <samp class="ph codeph">arch=</samp> clause of the <samp class="ph codeph">-gencode=</samp>
+                                 command-line option to <samp class="ph codeph">nvcc</samp> specifies the
+                                 front-end compilation target and must always be a PTX version. The
+                                 <samp class="ph codeph">code=</samp> clause specifies the back-end compilation
+                                 target and can either be cubin or PTX or both. <strong class="ph b">Only the back-end
+                                    target version(s) specified by the <samp class="ph codeph">code=</samp> clause
+                                    will be retained in the resulting binary; at least one must be PTX
+                                    to provide Volta compatibility</strong>.
+                              </p>
+                           </div>
+                           <div class="example">
+                              <h4 class="title sectiontitle">Windows</h4><pre class="pre screen" xml:space="preserve">nvcc.exe -ccbin "C:\vs2010\VC\bin"
+  -Xcompiler "/EHsc /W3 /nologo /O2 /Zi /MT"
+  -gencode=arch=compute_50,code=sm_50
+  -gencode=arch=compute_52,code=sm_52
+  -gencode=arch=compute_60,code=sm_60
+  -gencode=arch=compute_61,code=sm_61
+  -gencode=arch=compute_61,code=compute_61
+  --compile -o "Release\mykernel.cu.obj" "mykernel.cu"</pre></div>
+                           <div class="example">
+                              <h4 class="title sectiontitle">Mac/Linux</h4><pre class="pre screen" xml:space="preserve">/usr/local/cuda/bin/nvcc
+  -gencode=arch=compute_50,code=sm_50
+  -gencode=arch=compute_52,code=sm_52
+  -gencode=arch=compute_60,code=sm_60
+  -gencode=arch=compute_61,code=sm_61
+  -gencode=arch=compute_61,code=compute_61
+  -O2 -o mykernel.o -c mykernel.cu</pre></div>
+                           <div class="section">
+                              <p class="p">Alternatively, you may be familiar with the simplified
+                                 <samp class="ph codeph">nvcc</samp> command-line option
+                                 <samp class="ph codeph">-arch=sm_XX</samp>, which is a shorthand equivalent to
+                                 the following more explicit <samp class="ph codeph">-gencode=</samp> command-line
+                                 options used above.  <samp class="ph codeph">-arch=sm_XX</samp> expands to the
+                                 following:
+                              </p><pre class="pre screen" xml:space="preserve">-gencode=arch=compute_XX,code=sm_XX
+-gencode=arch=compute_XX,code=compute_XX</pre><p class="p">However, while the <samp class="ph codeph">-arch=sm_XX</samp> command-line
+                                 option does result in inclusion of a PTX back-end target by
+                                 default, it can only specify a single target cubin architecture at
+                                 a time, and it is not possible to use multiple
+                                 <samp class="ph codeph">-arch=</samp> options on the same <samp class="ph codeph">nvcc</samp>
+                                 command line, which is why the examples above use
+                                 <samp class="ph codeph">-gencode=</samp> explicitly.
+                              </p>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="topic concept nested2" xml:lang="en-US" id="building-volta-compatible-apps-using-cuda-9-0"><a name="building-volta-compatible-apps-using-cuda-9-0" shape="rect">
+                           <!-- --></a><h3 class="title topictitle2"><a href="#building-volta-compatible-apps-using-cuda-9-0" name="building-volta-compatible-apps-using-cuda-9-0" shape="rect">1.4.2.&nbsp;Applications Using CUDA Toolkit 9.0</a></h3>
+                        <div class="body conbody">
+                           <div class="section">
+                              <p class="p">With version 9.0 of the CUDA Toolkit, <samp class="ph codeph">nvcc</samp> can
+                                 generate cubin files native to the Volta architecture
+                                 (compute capability 7.0). When using CUDA Toolkit
+                                 9.0, to ensure that <samp class="ph codeph">nvcc</samp> will generate
+                                 cubin files for all recent GPU architectures as
+                                 well as a PTX version for forward compatibility with future GPU
+                                 architectures, specify the appropriate <samp class="ph codeph">-gencode=</samp>
+                                 parameters on the <samp class="ph codeph">nvcc</samp> command line as shown in
+                                 the examples below.
+                              </p>
+                           </div>
+                           <div class="example">
+                              <h4 class="title sectiontitle">Windows</h4><pre class="pre screen" xml:space="preserve">nvcc.exe -ccbin "C:\vs2010\VC\bin"
+  -Xcompiler "/EHsc /W3 /nologo /O2 /Zi /MT"
+  -gencode=arch=compute_50,code=sm_50
+  -gencode=arch=compute_52,code=sm_52
+  -gencode=arch=compute_60,code=sm_60
+  -gencode=arch=compute_61,code=sm_61
+  -gencode=arch=compute_70,code=sm_70
+  -gencode=arch=compute_70,code=compute_70
+  --compile -o "Release\mykernel.cu.obj" "mykernel.cu"</pre></div>
+                           <div class="example">
+                              <h4 class="title sectiontitle">Mac/Linux</h4><pre class="pre screen" xml:space="preserve">/usr/local/cuda/bin/nvcc 
+  -gencode=arch=compute_50,code=sm_50
+  -gencode=arch=compute_52,code=sm_52
+  -gencode=arch=compute_60,code=sm_60
+  -gencode=arch=compute_61,code=sm_61
+  -gencode=arch=compute_70,code=sm_70
+  -gencode=arch=compute_70,code=compute_70
+  -O2 -o mykernel.o -c mykernel.cu</pre></div>
+                           <div class="section">
+                              <p class="p">Note that <samp class="ph codeph">compute_XX</samp> refers to a PTX version
+                                 and <samp class="ph codeph">sm_XX</samp> refers to a cubin version. The
+                                 <samp class="ph codeph">arch=</samp> clause of the <samp class="ph codeph">-gencode=</samp>
+                                 command-line option to <samp class="ph codeph">nvcc</samp> specifies the
+                                 front-end compilation target and must always be a PTX version. The
+                                 <samp class="ph codeph">code=</samp> clause specifies the back-end compilation
+                                 target and can either be cubin or PTX or both.  <strong class="ph b">Only the
+                                    back-end target version(s) specified by the <samp class="ph codeph">code=</samp>
+                                    clause will be retained in the resulting binary; at least one
+                                    should be PTX to provide compatibility with future
+                                    architectures.</strong></p>
+                              <p class="p">Also, note that CUDA 9.0 removes support for compute capability 2.x
+                                 (Fermi) devices. Any compute_2x and sm_2x flags need to be removed from
+                                 your compiler commands.
+                              </p>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="topic concept nested2" xml:lang="en-US" id="independent-thread-scheduling-compatibility"><a name="independent-thread-scheduling-compatibility" shape="rect">
+                           <!-- --></a><h3 class="title topictitle2"><a href="#independent-thread-scheduling-compatibility" name="independent-thread-scheduling-compatibility" shape="rect">1.4.3.&nbsp;Independent Thread Scheduling Compatibility</a></h3>
+                        <div class="body conbody">
+                           <p class="p">The Volta architecture introduces Independent Thread Scheduling among threads in
+                              a warp. If the developer made assumptions about warp-synchronicity,
+                              <a name="fnsrc_1" href="#fntarg_1" shape="rect"><sup>1</sup></a> 
+                              this feature
+                              can alter the set of threads participating in the executed code compared to previous
+                              architectures. Please see <cite class="cite">Compute Capability 7.0</cite> in the <cite class="cite">CUDA C Programming Guide</cite> for
+                              details and corrective actions. To aid migration Volta developers can opt-in to the
+                              Pascal scheduling model with the following combination of compiler options.
+                           </p><pre class="pre screen" xml:space="preserve">nvcc -arch=compute_60 -code=sm_70 ...</pre></div>
+                     </div>
+                  </div>
+               </div>
+               <div class="topic reference nested0" id="revision-history"><a name="revision-history" shape="rect">
+                     <!-- --></a><h2 class="title topictitle1"><a href="#revision-history" name="revision-history" shape="rect">A.&nbsp;Revision History</a></h2>
+                  <div class="body refbody">
+                     <div class="section">
+                        <h2 class="title sectiontitle">Version 1.0</h2>
+                        <ul class="ul">
+                           <li class="li">Initial public release.</li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+               <div class="topic concept nested0" id="notices-header"><a name="notices-header" shape="rect">
+                     <!-- --></a><h2 class="title topictitle1"><a href="#notices-header" name="notices-header" shape="rect">Notices</a></h2>
+                  <div class="topic reference nested1" id="notice"><a name="notice" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#notice" name="notice" shape="rect"></a></h3>
+                     <div class="body refbody">
+                        <div class="section">
+                           <h3 class="title sectiontitle">Notice</h3>
+                           <p class="p">ALL NVIDIA DESIGN SPECIFICATIONS, REFERENCE BOARDS, FILES, DRAWINGS, DIAGNOSTICS, LISTS, AND OTHER DOCUMENTS (TOGETHER AND
+                              SEPARATELY, "MATERIALS") ARE BEING PROVIDED "AS IS." NVIDIA MAKES NO WARRANTIES, EXPRESSED, IMPLIED, STATUTORY, OR OTHERWISE
+                              WITH RESPECT TO THE MATERIALS, AND EXPRESSLY DISCLAIMS ALL IMPLIED WARRANTIES OF NONINFRINGEMENT, MERCHANTABILITY, AND FITNESS
+                              FOR A PARTICULAR PURPOSE. 
+                           </p>
+                           <p class="p">Information furnished is believed to be accurate and reliable. However, NVIDIA Corporation assumes no responsibility for the
+                              consequences of use of such information or for any infringement of patents or other rights of third parties that may result
+                              from its use. No license is granted by implication of otherwise under any patent rights of NVIDIA Corporation. Specifications
+                              mentioned in this publication are subject to change without notice. This publication supersedes and replaces all other information
+                              previously supplied. NVIDIA Corporation products are not authorized as critical components in life support devices or systems
+                              without express written approval of NVIDIA Corporation.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="topic reference nested1" id="trademarks"><a name="trademarks" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#trademarks" name="trademarks" shape="rect"></a></h3>
+                     <div class="body refbody">
+                        <div class="section">
+                           <h3 class="title sectiontitle">Trademarks</h3>
+                           <p class="p">NVIDIA and the NVIDIA logo are trademarks or registered trademarks of NVIDIA Corporation
+                              in the U.S. and other countries.  Other company and product names may be trademarks of
+                              the respective companies with which they are associated.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="topic reference nested1" id="copyright"><a name="copyright" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#copyright" name="copyright" shape="rect"></a></h3>
+                     <div class="body refbody">
+                        <div class="section">
+                           <h3 class="title sectiontitle">Copyright</h3>
+                           <p class="p">© 2010-<span class="ph">2019</span> NVIDIA Corporation. All rights reserved.
+                           </p>
+                           <p class="p">This product includes software developed by the Syncro Soft SRL (http://www.sync.ro/).</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="fn"><a name="fntarg_1" href="#fnsrc_1" shape="rect"><sup>1</sup></a><dfn class="term">Warp-synchronous</dfn> refers to an assumption that threads
+                  in the same warp are synchronized at every instruction and can, for 
+                  example, communicate values without explicit synchronization.
+               </div>
+               
+               <hr id="contents-end"></hr>
+               
+            </article>
+         </div>
+      </div>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/formatting/common.min.js"></script>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/scripts/google-analytics/google-analytics-write.js"></script>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/scripts/google-analytics/google-analytics-tracker.js"></script>
+      <script type="text/javascript">var switchTo5x=true;</script><script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script><script type="text/javascript">stLight.options({publisher: "998dc202-a267-4d8e-bce9-14debadb8d92", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script><script type="text/javascript">_satellite.pageBottom();</script></body>
+</html>

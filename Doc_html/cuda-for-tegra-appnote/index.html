@@ -1,0 +1,1445 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="en-us">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+      <meta name="copyright" content="(C) Copyright 2005"></meta>
+      <meta name="DC.rights.owner" content="(C) Copyright 2005"></meta>
+      <meta name="DC.Type" content="concept"></meta>
+      <meta name="DC.Title" content="CUDA for Tegra"></meta>
+      <meta name="abstract" content="This application note provides an overview of NVIDIA® Tegra® memory architecture and considerations for porting code from a discrete GPU (dGPU) attached to an x86 system to the Tegra® integrated GPU (iGPU). It also discusses EGL interoperability."></meta>
+      <meta name="description" content="This application note provides an overview of NVIDIA® Tegra® memory architecture and considerations for porting code from a discrete GPU (dGPU) attached to an x86 system to the Tegra® integrated GPU (iGPU). It also discusses EGL interoperability."></meta>
+      <meta name="DC.Coverage" content="Application Notes"></meta>
+      <meta name="DC.subject" content="CUDA for Tegra Application Note"></meta>
+      <meta name="keywords" content="CUDA for Tegra Application Note"></meta>
+      <meta name="DC.Format" content="XHTML"></meta>
+      <meta name="DC.Identifier" content="cuda-for-tegra-abstract"></meta>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/commonltr.css"></link>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/site.css"></link>
+      <title>CUDA for Tegra :: CUDA Toolkit Documentation</title>
+      <!--[if lt IE 9]>
+      <script src="../common/formatting/html5shiv-printshiv.min.js"></script>
+      <![endif]-->
+      <script type="text/javascript" charset="utf-8" src="//assets.adobedtm.com/b92787824f2e0e9b68dc2e993f9bd995339fe417/satelliteLib-7ba51e58dc61bcb0e9311aadd02a0108ab24cc6c.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.min.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.ba-hashchange.min.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.scrollintoview.min.js"></script>
+      <script type="text/javascript" src="../search/htmlFileList.js"></script>
+      <script type="text/javascript" src="../search/htmlFileInfoList.js"></script>
+      <script type="text/javascript" src="../search/nwSearchFnt.min.js"></script>
+      <script type="text/javascript" src="../search/stemmers/en_stemmer.min.js"></script>
+      <script type="text/javascript" src="../search/index-1.js"></script>
+      <script type="text/javascript" src="../search/index-2.js"></script>
+      <script type="text/javascript" src="../search/index-3.js"></script>
+      <link rel="canonical" href="http://docs.nvidia.com/cuda/cuda-for-tegra-appnote/index.html"></link>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/qwcode.highlight.css"></link>
+   </head>
+   <body>
+      
+      <header id="header"><span id="company">NVIDIA</span><span id="site-title">CUDA Toolkit Documentation</span><form id="search" method="get" action="search">
+            <input type="text" name="search-text"></input><fieldset id="search-location">
+               <legend>Search In:</legend>
+               <label><input type="radio" name="search-type" value="site"></input>Entire Site</label>
+               <label><input type="radio" name="search-type" value="document"></input>Just This Document</label></fieldset>
+            <button type="reset">clear search</button>
+            <button id="submit" type="submit">search</button></form>
+      </header>
+      <div id="site-content">
+         <nav id="site-nav">
+            <div class="category closed"><a href="../index.html" title="The root of the site.">CUDA Toolkit 
+                  
+                  
+                  v10.1.168</a></div>
+            <div class="category"><a href="index.html" title="CUDA for Tegra">CUDA for Tegra</a></div>
+            <ul>
+               <li>
+                  <div class="section-link"><a href="#overview">1.&nbsp;Overview</a></div>
+               </li>
+               <li>
+                  <div class="section-link"><a href="#memory-management">2.&nbsp;Memory Management</a></div>
+               </li>
+               <li>
+                  <div class="section-link"><a href="#porting-considerations">3.&nbsp;Porting Considerations</a></div>
+                  <ul>
+                     <li>
+                        <div class="section-link"><a href="#memory-selection">3.1.&nbsp;Memory Selection</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="#pinned-memory">3.2.&nbsp;Pinned Memory</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="#effective-usage-unified-memory">3.3.&nbsp;Effective Usage of Unified Memory on Tegra</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="#gpu-selection">3.4.&nbsp;GPU Selection</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="#sync-mechanism-selection">3.5.&nbsp;Synchronization Mechanism Selection</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="#gpudirect-on-tegra">3.6.&nbsp;GPUDirect RDMA on Tegra</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="#not-supported-on-tegra">3.7.&nbsp;CUDA Features Not Supported on Tegra</a></div>
+                     </li>
+                  </ul>
+               </li>
+               <li>
+                  <div class="section-link"><a href="#egl-interoperability">4.&nbsp;EGL Interoperability</a></div>
+                  <ul>
+                     <li>
+                        <div class="section-link"><a href="#eglstream">4.1.&nbsp;EGLStream</a></div>
+                        <ul>
+                           <li>
+                              <div class="section-link"><a href="#eglstream-flow">4.1.1.&nbsp;EGLStream Flow</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="#cuda-as-producer">4.1.2.&nbsp;CUDA as Producer</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="#cuda-as-consumer">4.1.3.&nbsp;CUDA as Consumer</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="#implicit-sync">4.1.4.&nbsp;Implicit Synchronization</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="#data-transfer-between-producer-and-consumer">4.1.5.&nbsp;Data Transfer Between Producer and Consumer</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="#eglstream-pipeline">4.1.6.&nbsp;EGLStream Pipeline</a></div>
+                           </li>
+                        </ul>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="#eglimage">4.2.&nbsp;EGLImage</a></div>
+                        <ul>
+                           <li>
+                              <div class="section-link"><a href="#cuda-interop-with-eglimage">4.2.1.&nbsp;CUDA interop with EGLImage</a></div>
+                           </li>
+                        </ul>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="#eglsync">4.3.&nbsp;EGLSync</a></div>
+                        <ul>
+                           <li>
+                              <div class="section-link"><a href="#cuda-interop-with-eglsync">4.3.1.&nbsp;CUDA Interop with EGLSync</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="#creating-eglsync-from-cuda-event">4.3.2.&nbsp;Creating EGLSync from a CUDA Event</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="#creating-cuda-event-from-eglsync">4.3.3.&nbsp;Creating a CUDA Event from EGLSync</a></div>
+                           </li>
+                        </ul>
+                     </li>
+                  </ul>
+               </li>
+            </ul>
+         </nav>
+         <div id="resize-nav"></div>
+         <nav id="search-results">
+            <h2>Search Results</h2>
+            <ol></ol>
+         </nav>
+         
+         <div id="contents-container">
+            <div id="breadcrumbs-container">
+               <div id="release-info">CUDA for Tegra
+                  (<a href="../../pdf/CUDA-for-Tegra-AppNote.pdf">PDF</a>)
+                  -
+                   
+                  
+                  
+                  v10.1.168
+                  (<a href="https://developer.nvidia.com/cuda-toolkit-archive">older</a>)
+                  -
+                  Last updated April 24, 2019
+                  -
+                  <a href="mailto:CUDAIssues@nvidia.com?subject=CUDA Toolkit Documentation Feedback: CUDA for Tegra">Send Feedback</a></div>
+            </div>
+            <article id="contents">
+               <div class="topic nested0" id="cuda-for-tegra-abstract"><a name="cuda-for-tegra-abstract" shape="rect">
+                     <!-- --></a><h2 class="title topictitle1"><a href="#cuda-for-tegra-abstract" name="cuda-for-tegra-abstract" shape="rect">CUDA for Tegra</a></h2>
+                  <div class="body conbody">
+                     <p class="shortdesc">This application note provides an overview of NVIDIA® Tegra® memory architecture and
+                        considerations for porting code from a discrete GPU (dGPU) attached to an x86 system to the
+                        Tegra® integrated GPU (iGPU). It also discusses EGL interoperability. 
+                     </p>
+                  </div>
+               </div>
+               <div class="topic concept nested0" id="overview"><a name="overview" shape="rect">
+                     <!-- --></a><h2 class="title topictitle1"><a href="#overview" name="overview" shape="rect">1.&nbsp;Overview</a></h2>
+                  <div class="body conbody">
+                     <p class="p">This document provides an overview of NVIDIA® Tegra® memory architecture and
+                        considerations for porting code from a discrete GPU (dGPU) attached to an x86 system to
+                        the Tegra® integrated GPU (iGPU). It also discusses EGL interoperability.
+                     </p>
+                     <p class="p">This guide is for developers who are already familiar with programming in CUDA, and
+                        C/C++, and who want to develop applications for the Tegra® SoC.
+                     </p>
+                     <p class="p">Performance guidelines, best practices, terminology, and general information provided in
+                        the <em class="ph i">CUDA C Programming Guide</em> and the <em class="ph i">CUDA C Best Practices Guide</em> are
+                        applicable to all CUDA-capable GPU architectures, including Tegra® devices.
+                     </p>
+                     <p class="p">The <span class="ph" id="overview___Hlk505785147"><a name="overview___Hlk505785147" shape="rect">
+                              <!-- --></a><em class="ph i">CUDA C Programming Guide</em></span> and the <em class="ph i">CUDA C Best
+                           Practices Guide</em> are available at the following web sites:
+                     </p>
+                     <p class="p"><em class="ph i">CUDA C Programming Guide:</em></p>
+                     <p class="p"></p>
+                     <p class="p"><a class="xref" href="http://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html" target="_blank" shape="rect">http://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html</a></p>
+                     <p class="p"></p>
+                     <p class="p"><em class="ph i">CUDA C Best Practices Guide:</em></p>
+                     <p class="p"></p>
+                     <p class="p"><a class="xref" href="http://docs.nvidia.com/cuda/cuda-c-best-practices-guide/index.html" target="_blank" shape="rect">http://docs.nvidia.com/cuda/cuda-c-best-practices-guide/index.html</a></p>
+                     <p class="p"></p>
+                  </div>
+               </div>
+               <div class="topic concept nested0" xml:lang="en-US" id="memory-management"><a name="memory-management" shape="rect">
+                     <!-- --></a><h2 class="title topictitle1"><a href="#memory-management" name="memory-management" shape="rect">2.&nbsp;Memory Management</a></h2>
+                  <div class="body conbody">
+                     <p class="p">In Tegra® devices, both the CPU (Host) and the iGPU share SoC DRAM memory. A
+                        dGPU with separate DRAM memory can be connected to the Tegra® device over PCIe or
+                        NVLink.
+                     </p>
+                     <p class="p">An overview of a dGPU-connected Tegra® memory system is shown in <a class="xref" href="index.html#memory-management__fig-dGPU-connected-tegra-memory-system" shape="rect">Figure 1</a>.
+                     </p>
+                     <div class="fig fignone" id="memory-management__fig-dGPU-connected-tegra-memory-system"><a name="memory-management__fig-dGPU-connected-tegra-memory-system" shape="rect">
+                           <!-- --></a><span class="figcap">Figure 1. dGPU-connected Tegra Memory System</span><br clear="none"></br><div class="imagecenter"><img class="image imagecenter" width="450" src="../common/graphics/dGPU-connected-tegra-memory-system.png" alt="dGPU-connected Tegra Memory System"></img></div><br clear="none"></br></div>
+                     <p class="p">In Tegra®, device memory, host memory, and unified memory are allocated on the same
+                        physical SoC DRAM. On a dGPU, device memory is allocated on the dGPU DRAM. The
+                        caching behavior in a Tegra® system is different from that of an x86 system with a
+                        dGPU. The caching and accessing behavior of different memory types in a Tegra®
+                        system is shown in <a class="xref" href="index.html#memory-management__table_memory_types" shape="rect">Table 1</a>.
+                     </p>
+                     <div class="tablenoborder"><a name="memory-management__table_memory_types" shape="rect">
+                           <!-- --></a><table cellpadding="4" cellspacing="0" summary="" id="memory-management__table_memory_types" class="table" frame="border" border="1" rules="all">
+                           <caption><span class="tablecap">Table 1. Characteristics of Different Memory Types in a Tegra System</span></caption>
+                           <tbody class="tbody">
+                              <tr class="row">
+                                 <td class="entry" valign="top" width="21.052631578947366%" rowspan="1" colspan="1"><strong class="ph b">Memory Type</strong></td>
+                                 <td class="entry" valign="top" width="24.210526315789473%" rowspan="1" colspan="1"><strong class="ph b">CPU</strong></td>
+                                 <td class="entry" valign="top" width="23.36842105263158%" rowspan="1" colspan="1"><strong class="ph b">iGPU</strong></td>
+                                 <td class="entry" valign="top" width="31.36842105263158%" rowspan="1" colspan="1"><strong class="ph b">Tegra®-connected dGPU</strong></td>
+                              </tr>
+                              <tr class="row">
+                                 <td class="entry" valign="top" width="21.052631578947366%" rowspan="1" colspan="1">Device memory</td>
+                                 <td class="entry" valign="top" width="24.210526315789473%" rowspan="1" colspan="1">Not directly accessible</td>
+                                 <td class="entry" valign="top" width="23.36842105263158%" rowspan="1" colspan="1">Cached</td>
+                                 <td class="entry" valign="top" width="31.36842105263158%" rowspan="1" colspan="1">Cached</td>
+                              </tr>
+                              <tr class="row">
+                                 <td class="entry" valign="top" width="21.052631578947366%" rowspan="1" colspan="1">Pageable host memory</td>
+                                 <td class="entry" valign="top" width="24.210526315789473%" rowspan="1" colspan="1">Cached</td>
+                                 <td class="entry" valign="top" width="23.36842105263158%" rowspan="1" colspan="1">Not directly accessible</td>
+                                 <td class="entry" valign="top" width="31.36842105263158%" rowspan="1" colspan="1">Not directly accessible</td>
+                              </tr>
+                              <tr class="row">
+                                 <td class="entry" valign="top" width="21.052631578947366%" rowspan="1" colspan="1">Pinned host memory</td>
+                                 <td class="entry" valign="top" width="24.210526315789473%" rowspan="1" colspan="1">
+                                    <p class="p">Uncached where compute capability is less than 7.2.</p>
+                                    <p class="p">Cached where compute capability is greater than or equal to
+                                       7.2.
+                                    </p>
+                                 </td>
+                                 <td class="entry" valign="top" width="23.36842105263158%" rowspan="1" colspan="1">Uncached</td>
+                                 <td class="entry" valign="top" width="31.36842105263158%" rowspan="1" colspan="1">Uncached</td>
+                              </tr>
+                              <tr class="row">
+                                 <td class="entry" valign="top" width="21.052631578947366%" rowspan="1" colspan="1">Unified memory</td>
+                                 <td class="entry" valign="top" width="24.210526315789473%" rowspan="1" colspan="1">Cached</td>
+                                 <td class="entry" valign="top" width="23.36842105263158%" rowspan="1" colspan="1">Cached</td>
+                                 <td class="entry" valign="top" width="31.36842105263158%" rowspan="1" colspan="1">Not supported</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                     <p class="p">On Tegra®, because device memory, host memory, and unified memory are
+                        allocated on the same physical SoC DRAM, duplicate memory allocations and data
+                        transfers can be avoided.
+                     </p>
+                  </div>
+               </div>
+               <div class="topic concept nested0" xml:lang="en-US" id="porting-considerations"><a name="porting-considerations" shape="rect">
+                     <!-- --></a><h2 class="title topictitle1"><a href="#porting-considerations" name="porting-considerations" shape="rect">3.&nbsp;Porting Considerations</a></h2>
+                  <div class="body conbody">
+                     <p class="p">CUDA applications originally developed for dGPUs attached to x86 systems may require
+                        modifications to perform efficiently on Tegra® systems. This section describes the
+                        considerations for porting such applications to a Tegra® system, such as selecting
+                        an appropriate memory buffer type (pinned memory, unified memory, and others) and
+                        selecting between iGPU and dGPU, to achieve efficient performance for the
+                        application.
+                     </p>
+                  </div>
+                  <div class="topic concept nested1" id="memory-selection"><a name="memory-selection" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#memory-selection" name="memory-selection" shape="rect">3.1.&nbsp;Memory Selection</a></h3>
+                     <div class="body conbody">
+                        <p class="p">CUDA applications can use various kinds of memory buffers, such as device memory,
+                           pageable host memory, pinned memory, and unified memory. Even though these
+                           memory buffer types are allocated on the same physical device, each has
+                           different accessing and caching behaviors, as shown in <a class="xref" href="index.html#memory-management__table_memory_types" shape="rect">Table 1</a>. It is important to select the most
+                           appropriate memory buffer type for efficient application execution.
+                        </p>
+                        <div class="section" id="memory-selection__device-memory"><a name="memory-selection__device-memory" shape="rect">
+                              <!-- --></a><h3 class="title sectiontitle">Device Memory</h3>
+                           <p class="p">Use device memory for buffers whose accessibility is limited to the iGPU. For
+                              example, in an application with multiple kernels, there may be buffers that are
+                              used only by the intermediate kernels of the application as input or output.
+                              These buffers are accessed only by the iGPU. Such buffers should be allocated
+                              with device memory.
+                           </p>
+                        </div>
+                        <div class="section" id="memory-selection__section_fdf_sfp_gfb"><a name="memory-selection__section_fdf_sfp_gfb" shape="rect">
+                              <!-- --></a><h3 class="title sectiontitle">Pageable Host Memory</h3>
+                           <p class="p">Use pageable host memory for buffers whose accessibility is limited to the
+                              CPU.
+                           </p>
+                        </div>
+                        <div class="section" id="memory-selection__section_gdf_sfp_gfb"><a name="memory-selection__section_gdf_sfp_gfb" shape="rect">
+                              <!-- --></a><h3 class="title sectiontitle">Pinned Memory</h3>
+                           <p class="p">Tegra® systems with different compute capabilities exhibit different behavior in
+                              terms of I/O coherency. For example, Tegra® systems with compute capability
+                              greater than or equal to 7.2 are I/O coherent and others are not I/O coherent.
+                              On Tegra® systems with I/O coherency, the CPU access time of pinned memory is as
+                              good as pageable host memory because it is cached on the CPU. However, on Tegra®
+                              systems without I/O coherency, the CPU access time of pinned memory is higher,
+                              because it is not cached on the CPU.
+                           </p>
+                           <p class="p">Pinned memory is recommended for small buffers because the caching effect is
+                              negligible for such buffers and also because pinned memory does not involve any
+                              additional overhead, unlike Unified Memory. With no additional overhead, pinned
+                              memory is also preferable for large buffers if the access pattern is not cache
+                              friendly on iGPU. For large buffers, when the buffer is accessed only once on
+                              iGPU in a coalescing manner, performance on iGPU can be as good as unified
+                              memory on iGPU.
+                           </p>
+                        </div>
+                        <div class="section" id="memory-selection__section_hdf_sfp_gfb"><a name="memory-selection__section_hdf_sfp_gfb" shape="rect">
+                              <!-- --></a><h3 class="title sectiontitle">Unified Memory</h3>
+                           <p class="p">Unified memory is cached on the iGPU and the CPU. On Tegra®, using unified memory
+                              in applications requires additional coherency and cache maintenance operations
+                              during the kernel launch, synchronization and prefetching hint calls. This
+                              coherency maintenance overhead is slightly higher on a Tegra® system with
+                              compute capability less than 7.2 as they lack I/O coherency.
+                           </p>
+                           <p class="p">On Tegra® devices with I/O coherency (with a compute capability of 7.2 or
+                              greater) where unified memory is cached on both CPU and iGPU, for large buffers
+                              which are frequently accessed by the iGPU and the CPU and <em class="ph i">the accesses on
+                                 iGPU are repetitive</em>, unified memory is preferable since repetitive
+                              accesses can offset the cache maintenance cost. On Tegra® devices without I/O
+                              coherency (with a compute capability of less than 7.2), for large buffers which
+                              are frequently accessed by the CPU and the iGPU and <em class="ph i">the accesses on iGPU are
+                                 not repetitive</em>, unified memory is still preferable over pinned memory
+                              because pinned memory is not cached on both CPU and iGPU. That way, the
+                              application can take advantage of unified memory caching on the CPU. 
+                           </p>
+                           <p class="p">Pinned memory or unified memory can be used to reduce the data transfer overhead
+                              between CPU and iGPU as both memories are directly accessible from the CPU and
+                              the iGPU. In an application, input and output buffers that must be accessible on
+                              both the host and the iGPU can be allocated using either unified memory or
+                              pinned memory.
+                           </p>
+                           <div class="note note"><span class="notetitle">Note:</span> The unified memory model requires the driver and system software to manage
+                              coherence on the current Tegra SOC. Software managed coherence is by nature
+                              non-deterministic and not recommended in a safe context. Zero-copy memory
+                              (pinned memory) is preferable in these applications. 
+                           </div>
+                           <p class="p">Evaluate the impact of unified memory overheads, pinned memory cache misses, and
+                              device memory data transfers in applications to determine the correct memory
+                              selection.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="topic concept nested1" id="pinned-memory"><a name="pinned-memory" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#pinned-memory" name="pinned-memory" shape="rect">3.2.&nbsp;Pinned Memory</a></h3>
+                     <div class="body conbody">
+                        <p class="p">This section provides guidelines for porting applications that use pinned memory
+                           allocations in x86 systems with dGPUs to Tegra®. CUDA applications developed for
+                           a dGPU attached to x86 system use pinned memory to reduce data transfer time and
+                           to overlap data transfers with kernel execution time. For specific information
+                           on this topic, see “Data Transfer Between Host and Device” and “Asynchronous and
+                           Overlapping Transfers with Computation” at the following websites.
+                        </p>
+                        <p class="p">“Data Transfer Between Host and Device”:</p>
+                        <p class="p"></p>
+                        <p class="p"><a class="xref" href="http://docs.nvidia.com/cuda/cuda-c-best-practices-guide/index.html#data-transfer-between-host-and-device" target="_blank" shape="rect">http://docs.nvidia.com/cuda/cuda-c-best-practices-guide/index.html#data-transfer-between-host-and-device</a></p>
+                        <p class="p"></p>
+                        <p class="p">“Asynchronous and Overlapping Transfers with Computation”:</p>
+                        <p class="p"></p>
+                        <p class="p"><a class="xref" href="http://docs.nvidia.com/cuda/cuda-c-best-practices-guide/index.html#asynchronous-transfers-and-overlapping-transfers-with-computation" target="_blank" shape="rect">http://docs.nvidia.com/cuda/cuda-c-best-practices-guide/index.html#asynchronous-transfers-and-overlapping-transfers-with-computation</a></p>
+                        <p class="p"></p>
+                        <p class="p">On Tegra® systems with no I/O coherency, repetitive access of pinned memory
+                           degrades application performance, because pinned memory is not cached on the CPU
+                           in such systems.
+                        </p>
+                        <p class="p">A sample application is shown below in which a set of filters and operations (k1,
+                           k2, and k3) are applied to an image. Pinned memory is allocated to reduce data
+                           transfer time on an x86 system with a dGPU, increasing the overall application
+                           speed. However, targeting a Tegra® device with the same code causes a drastic
+                           increase in the execution time of the <samp class="ph codeph">readImage()</samp> function
+                           because it repeatedly accesses an uncached buffer. This increases the overall
+                           application time. If the time taken by <samp class="ph codeph">readImage()</samp> is
+                           significantly higher compared to kernels execution time, it is recommended to
+                           use unified memory to reduce the <samp class="ph codeph">readImage()</samp> time. Otherwise,
+                           evaluate the application with pinned memory and unified memory by removing
+                           unnecessary data transfer calls to decide best suited memory.
+                        </p>
+                        <p class="p"></p><pre xml:space="preserve"><span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// Sample code for an x86 system with a discrete GPU</span>
+<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span> main()
+{
+    <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span> *h_a,*d_a,*d_b,*d_c,*d_d,*h_d;
+    <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span> height = 1024;
+    <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span> width = 1024;
+    size_t sizeOfImage = width * height * <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">sizeof</span>(<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span>); <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// 4MB image</span>
+    
+    <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">//Pinned memory allocated to reduce data transfer time</span>
+    cudaMallocHost(h_a, sizeOfImage);
+    cudaMallocHost(h_d, sizeOfImage);
+    
+    <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">//Allocate buffers on GPU</span>
+    cudaMalloc(&amp;d_a, sizeOfImage);
+    cudaMalloc(&amp;d_b, sizeOfImage);
+    cudaMalloc(&amp;d_c, sizeOfImage);
+    cudaMalloc(&amp;d_d, sizeOfImage);
+    
+    <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">//CPU reads Image;</span>
+    readImage(h_a); <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// Intialize the h_a buffer</span>
+    
+    <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// Transfer image to GPU</span>
+    cudaMemcpy(d_a, h_a, sizeOfImage, cudaMemcpyHostToDevice);
+    
+    <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// Data transfer is fast as we used pinned memory</span>
+    <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// ----- CUDA Application pipeline start ----</span>
+    k1<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-attribute">&lt;&lt;&lt;</span>..<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-attribute">&gt;&gt;&gt;</span>(d_a,d_b) <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// Apply filter 1</span>
+    k2<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-attribute">&lt;&lt;&lt;</span>..<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-attribute">&gt;&gt;&gt;</span>(d_b,d_c)<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// Apply filter 2</span>
+    k3<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-attribute">&lt;&lt;&lt;</span>..<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-attribute">&gt;&gt;&gt;</span>(d_c,d_d)<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// Some operation on image data</span>
+    <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// ----- CUDA Application pipeline end ----</span>
+    
+    <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// Transfer processed image to CPU</span>
+    cudaMemcpy(h_d, d_d, sizeOfImage, cudaMemcpyDeviceToHost);
+    <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// Data transfer is fast as we used pinned memory</span>
+    
+    <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// Use processed Image i.e h_d in later computations on CPU.</span>
+    UseImageonCPU(h_d);
+}
+            
+<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// Porting the code on Tegra</span>
+<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span> main()
+{
+    <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span> *h_a,*d_b,*d_c,*h_d;
+    <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span> height = 1024;
+    <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span> width = 1024;
+    size_t sizeOfImage = width * height * <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">sizeof</span>(<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span>); <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// 4MB image</span>
+    
+    <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">//Unified memory allocated for input and output </span>
+    <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">//buffer of application pipeline</span>
+    cudaMallocManaged(h_a, sizeOfImage,cudaMemAttachHost);
+    cudaMallocManaged(h_d, sizeOfImage);
+    
+    <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">//Intermediate buffers not needed on CPU side. </span>
+    <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">//So allocate them on device memory</span>
+    cudaMalloc(&amp;d_b, sizeOfImage);
+    cudaMalloc(&amp;d_c, sizeOfImage);
+    
+    <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">//CPU reads Image;</span>
+    readImage (h_a); <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// Intialize the h_a buffer</span>
+    <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// ----- CUDA Application pipeline start ----</span>
+    <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// Prefetch input image data to GPU</span>
+    cudaStreamAttachMemAsync(NULL, h_a, 0, cudaMemAttachGlobal);
+    k1<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-attribute">&lt;&lt;&lt;</span>..<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-attribute">&gt;&gt;&gt;</span>(h_a,d_b)
+    k2<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-attribute">&lt;&lt;&lt;</span>..<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-attribute">&gt;&gt;&gt;</span>(d_b,d_c)
+    k3<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-attribute">&lt;&lt;&lt;</span>..<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-attribute">&gt;&gt;&gt;</span>(d_c,h_d)
+    <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// Prefetch output image data to CPU</span>
+    cudaStreamAttachMemAsync(NULL, h_d, 0, cudaMemAttachHost);
+    cudaStreamSynchronize(NULL);
+    <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// ----- CUDA Application pipeline end ----</span>
+    
+    <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// Use processed Image i.e h_d on CPU side.</span>
+    UseImageonCPU(h_d);
+} </pre><div class="section" id="pinned-memory__section_kdf_sfp_gfb"><a name="pinned-memory__section_kdf_sfp_gfb" shape="rect">
+                              <!-- --></a><h3 class="title sectiontitle"><span class="ph" id="pinned-memory___Toc514836915"><a name="pinned-memory___Toc514836915" shape="rect">
+                                    <!-- --></a>The </span><samp class="ph codeph">cudaHostRegister()</samp>
+                              function
+                           </h3>
+                           <p class="p">The <samp class="ph codeph">cudaHostRegister()</samp> function is not supported on Tegra®
+                              devices with compute capability less than 7.2, because those devices do not have
+                              I/O coherency. Use other pinned memory allocation functions such as
+                              <samp class="ph codeph">cudaMallocHost()</samp> and <samp class="ph codeph">cudaHostAlloc()</samp> if
+                              <samp class="ph codeph">cudaHostRegister()</samp> is not supported on the device.
+                           </p>
+                        </div>
+                        <div class="section" id="pinned-memory__section_ldf_sfp_gfb"><a name="pinned-memory__section_ldf_sfp_gfb" shape="rect">
+                              <!-- --></a><h3 class="title sectiontitle">GNU Atomic operations on pinned memory</h3>
+                           <p class="p">The GNU atomic operations on uncached memory is not supported on Tegra® CPU. As
+                              pinned memory is not cached on Tegra® devices with compute capability less than
+                              7.2, GNU atomic operations is not supported on pinned memory.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="topic concept nested1" id="effective-usage-unified-memory"><a name="effective-usage-unified-memory" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#effective-usage-unified-memory" name="effective-usage-unified-memory" shape="rect">3.3.&nbsp;Effective Usage of Unified Memory on Tegra</a></h3>
+                     <div class="body conbody">
+                        <p class="p">Using unified memory in applications requires additional coherency and cache
+                           maintenance operations at kernel launch, synchronization, and prefetching hint
+                           calls. These operations are performed synchronously with other GPU work which
+                           can cause unpredictable latencies in the application.
+                        </p>
+                        <p class="p">The performance of unified memory on Tegra® can be improved by providing data
+                           prefetching hints. The driver can use these prefetching hints to optimize the
+                           coherence operations. To prefetch the data, the
+                           <samp class="ph codeph">cudaStreamAttachMemAsync()</samp> function can be used, in addition to
+                           the techniques described in the “Coherency and Concurrency” section of the <em class="ph i">CUDA C
+                              Programming Guide</em> at the following link:
+                        </p>
+                        <p class="p"></p>
+                        <p class="p"><a class="xref" href="http://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#um-coherency-hd" target="_blank" shape="rect">http://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#um-coherency-hd</a></p>
+                        <p class="p"> to prefetch the data. The prefetching behavior of unified memory, as triggered by
+                           the changing states of the attachment flag, is shown in <a class="xref" href="index.html#effective-usage-unified-memory__table_unified_memory_prefetching" shape="rect">Table 2</a>.
+                        </p>
+                        <div class="tablenoborder"><a name="effective-usage-unified-memory__table_unified_memory_prefetching" shape="rect">
+                              <!-- --></a><table cellpadding="4" cellspacing="0" summary="" id="effective-usage-unified-memory__table_unified_memory_prefetching" class="table" frame="border" border="1" rules="all">
+                              <caption><span class="tablecap">Table 2. Unified Memory Prefetching Behavior per Changing Attachment Flag States</span></caption>
+                              <tbody class="tbody">
+                                 <tr class="row">
+                                    <td class="entry" valign="top" width="38.2716049382716%" rowspan="1" colspan="1"><strong class="ph b">Previous Flag</strong></td>
+                                    <td class="entry" valign="top" width="30.864197530864196%" rowspan="1" colspan="1"><strong class="ph b">Current Flag</strong></td>
+                                    <td class="entry" valign="top" width="30.864197530864196%" rowspan="1" colspan="1"><strong class="ph b">Prefetching Behavior</strong></td>
+                                 </tr>
+                                 <tr class="row">
+                                    <td class="entry" valign="top" width="38.2716049382716%" rowspan="1" colspan="1">cudaMemAttachGlobal/cudaMemAttachSingle</td>
+                                    <td class="entry" valign="top" width="30.864197530864196%" rowspan="1" colspan="1">cudaMemAttachHost</td>
+                                    <td class="entry" valign="top" width="30.864197530864196%" rowspan="1" colspan="1">Causes prefetch to CPU</td>
+                                 </tr>
+                                 <tr class="row">
+                                    <td class="entry" valign="top" width="38.2716049382716%" rowspan="1" colspan="1">cudaMemAttachHost</td>
+                                    <td class="entry" valign="top" width="30.864197530864196%" rowspan="1" colspan="1">
+                                       <p class="p">cudaMemAttachGlobal/</p>
+                                       <p class="p"> cudaMemAttachSingle</p>
+                                    </td>
+                                    <td class="entry" valign="top" width="30.864197530864196%" rowspan="1" colspan="1">Causes prefetch to GPU</td>
+                                 </tr>
+                                 <tr class="row">
+                                    <td class="entry" valign="top" width="38.2716049382716%" rowspan="1" colspan="1">cudaMemAttachGlobal</td>
+                                    <td class="entry" valign="top" width="30.864197530864196%" rowspan="1" colspan="1">cudaMemAttachSingle</td>
+                                    <td class="entry" valign="top" width="30.864197530864196%" rowspan="1" colspan="1">No prefetch to GPU</td>
+                                 </tr>
+                                 <tr class="row">
+                                    <td class="entry" valign="top" width="38.2716049382716%" rowspan="1" colspan="1">cudaMemAttachSingle</td>
+                                    <td class="entry" valign="top" width="30.864197530864196%" rowspan="1" colspan="1">cudaMemAttachGlobal</td>
+                                    <td class="entry" valign="top" width="30.864197530864196%" rowspan="1" colspan="1">No prefetch to GPU</td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <p class="p">The following example shows usage of <samp class="ph codeph">cudaStreamAttachMemAsync()</samp>
+                           to prefetch data. 
+                        </p>
+                        <div class="note note"><span class="notetitle">Note:</span><p class="p">However, not supported on Tegra® devices are the data prefetching techniques that use
+                              <samp class="ph codeph">cudaMemPrefetchAsync()</samp> as described in the “Performance
+                              Tuning” section of the <em class="ph i">CUDA C Programming Guide</em> at the following web
+                              site:
+                           </p>
+                           <p class="p"><a class="xref" href="http://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#um-performance-tuning" target="_blank" shape="rect">http://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#um-performance-tuning</a></p>
+                        </div>
+                        <div class="p">
+                           <div class="note note"><span class="notetitle">Note:</span> There are limitations in QNX system software which prevent implementation of
+                              all UVM optimizations. Because of this, using
+                              <samp class="ph codeph">cudaStreamAttachMemAsync()</samp> to prefetch hints on QNX does
+                              not benefit performance. 
+                           </div>
+                        </div><pre xml:space="preserve"><span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-attribute">__global__</span> <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">void</span> matrixMul(<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span> *p, <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span> *q, <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span>*r, <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span> hp, <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span> hq, <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span> wp, <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span> wq)
+{
+<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// Matrix multiplication kernel code</span>
+}
+<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">void</span> MatrixMul(<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span> hp, <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span> hq, <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span> wp, <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span> wq)
+{
+    <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span> *p,*q,*r;
+    <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span> i;
+    size_t sizeP = hp*wp*<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">sizeof</span>(<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span>);
+    size_t sizeQ = hq*wq*<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">sizeof</span>(<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span>);
+    size_t sizeR = hp*wq*<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">sizeof</span>(<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span>);
+
+    <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">//Attach buffers ‘p’ and ‘q’ to CPU and buffer ‘r’ to GPU</span>
+    cudaMallocManaged(&amp;p, sizeP, cudaMemAttachHost);
+    cudaMallocManaged(&amp;q, sizeQ, cudaMemAttachHost);
+    cudaMallocManaged(&amp;r, sizeR);
+    <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">//Intialize with random values</span>
+    randFill(p,q,hp,wp,hq,wq);
+
+    <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// Prefetch p,q to GPU as they are needed in computation</span>
+    cudaStreamAttachMemAsync(NULL, p, 0, cudaMemAttachGlobal);
+    cudaStreamAttachMemAsync(NULL, q, 0, cudaMemAttachGlobal);
+    matrixMul<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-attribute">&lt;&lt;&lt;</span>....<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-attribute">&gt;&gt;&gt;</span>(p,q,r, hp,hq,wp,wq);
+
+    <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// Prefetch 'r' to CPU as only 'r' is needed</span>
+    cudaStreamAttachMemAsync(NULL, r, 0, cudaMemAttachHost);
+    cudaStreamSynchronize(NULL);
+
+    <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// Print buffer ‘r’ values</span>
+    <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">for</span>(i = 0; i &lt; hp*wq; i++)
+    printf(<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-string">"%d "</span>, r[i]);
+} </pre><div class="note note"><span class="notetitle">Note:</span><p class="p">An additional <samp class="ph codeph">cudaStreamSynchronize(NULL)</samp> call can be added
+                              after the <samp class="ph codeph">matrixMul</samp> kernel code to avoid callback threads that
+                              cause unpredictability in a <samp class="ph codeph">cudaStreamAttachMemAsync()</samp>
+                              call.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="topic concept nested1" id="gpu-selection"><a name="gpu-selection" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#gpu-selection" name="gpu-selection" shape="rect">3.4.&nbsp;GPU Selection</a></h3>
+                     <div class="body conbody">
+                        <p class="p">On a Tegra system with a dGPU, deciding whether a CUDA application runs on the iGPU
+                           or the dGPU can have implications for the performance of the application. Some of
+                           the factors that need to be considered while making such a decision are kernel
+                           execution time, data transfer time, data locality, and latency. For example, to run
+                           an application on a dGPU, data must be transferred between the SoC and the dGPU.
+                           This data transfer can be avoided if the application runs on an iGPU.
+                        </p>
+                     </div>
+                  </div>
+                  <div class="topic concept nested1" id="sync-mechanism-selection"><a name="sync-mechanism-selection" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#sync-mechanism-selection" name="sync-mechanism-selection" shape="rect">3.5.&nbsp;Synchronization Mechanism Selection</a></h3>
+                     <div class="body conbody">
+                        <p class="p">The <samp class="ph codeph">cudaSetDeviceFlags</samp> API is used to control the
+                           				synchronization behaviour of CPU thread. 
+                        </p>
+                        <p class="p">Prior to CUDA 10.1, by default, the synchronization mechanism on iGPU uses <a class="xref" href="https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html#group__CUDART__TYPES_1g130ddae663f1873258fee5a6e0808b71" target="_blank" shape="rect">cudaDeviceBlockingSync</a> flag, which blocks the
+                           				CPU thread on a synchronization primitive when waiting for the device to finish work.
+                           				The <a class="xref" href="https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html#group__CUDART__TYPES_1g130ddae663f1873258fee5a6e0808b71" target="_blank" shape="rect">cudaDeviceBlockingSync</a> flag is suited for
+                           				platforms with power constraints. But on platforms which require low latency, the <a class="xref" href="https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html#group__CUDART__TYPES_1gf01347c3dafebf07e1a0b4321a030a63" target="_blank" shape="rect">cudaDeviceScheduleSpin</a> flag must be set
+                           				manually. 
+                        </p>
+                        <p class="p">In CUDA 10.1 and later releases, the default synchronization flag is determined based on
+                           				what is optimized for each platform. 
+                        </p>
+                        <p class="p">More information about the synchronization flags is given at <a class="xref" href="https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__DEVICE.html#group__CUDART__DEVICE_1g69e73c7dda3fc05306ae7c811a690fac" target="_blank" shape="rect">cudaSetDeviceFlags</a> API documentation.
+                        </p>
+                     </div>
+                  </div>
+                  <div class="topic concept nested1" id="gpudirect-on-tegra"><a name="gpudirect-on-tegra" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#gpudirect-on-tegra" name="gpudirect-on-tegra" shape="rect">3.6.&nbsp;GPUDirect RDMA on Tegra</a></h3>
+                     <div class="body conbody">
+                        <p dir="ltr" class="p" id="gpudirect-on-tegra__docs-internal-guid-15c64e8b-7fff-0c3a-f4ad-839ca47b213c"><a name="gpudirect-on-tegra__docs-internal-guid-15c64e8b-7fff-0c3a-f4ad-839ca47b213c" shape="rect">
+                              <!-- --></a>Starting CUDA 10.1,
+                           				GPUDirect RDMA is supported on Jetson platform. This feature enables iGPU and PCIe
+                           				devices to access the same memory. This will eliminate the overhead of extra memory
+                           				copies from PCIe accessible memory to iGPU accessible memory, and vice versa. 
+                        </p>
+                        <div class="p" dir="ltr">
+                           <div class="note note"><span class="notetitle">Note:</span> Applications developed for Linux Desktop must be modified slightly while porting
+                              					to Jetson. See <a class="xref" href="https://docs.nvidia.com/cuda/gpudirect-rdma/index.html" target="_blank" shape="rect"><u class="ph u">Developing a Linux Kernel Module using GPUDirect
+                                    							RDMA</u></a> for more information. 
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="topic concept nested1" id="not-supported-on-tegra"><a name="not-supported-on-tegra" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#not-supported-on-tegra" name="not-supported-on-tegra" shape="rect">3.7.&nbsp;CUDA Features Not Supported on Tegra</a></h3>
+                     <div class="body conbody">
+                        <p class="p">All core features of CUDA are supported on Tegra platforms. The exceptions are
+                           listed below.
+                        </p><a name="not-supported-on-tegra__ul_rzg_5sp_gfb" shape="rect">
+                           <!-- --></a><ul class="ul" id="not-supported-on-tegra__ul_rzg_5sp_gfb">
+                           <li class="li">The <samp class="ph codeph">cudaHostRegister()</samp> function is not supported on QNX
+                              systems. This is due to the limitations on QNX OS. It is supported in Linux
+                              systems with compute capability greater than or equal to 7.2.
+                           </li>
+                           <li class="li">System wide atomics are not supported on Tegra devices with compute
+                              capability less than 7.2.
+                           </li>
+                           <li class="li">Unified memory is not supported on dGPU attached to Tegra. </li>
+                           <li class="li"><samp class="ph codeph">cudaMemPrefetchAsync()</samp> function is not supported since
+                              unified memory with concurrent access is not yet supported on iGPU.
+                           </li>
+                           <li class="li">NVIDIA management library (NVML) library is not supported on Tegra. However,
+                              as an alternative to monitor the resource utilization,
+                              <em class="ph i"><samp class="ph codeph">tegrastats</samp></em> can be used.
+                           </li>
+                           <li class="li">CUDA IPC (CUDA Inter-process communication) is not supported on Tegra
+                              devices. EGLStream can be used communicate between CUDA contexts in two
+                              processes.
+                           </li>
+                           <li class="li">Remote direct memory access (RDMA) is supported only on Jetson AGX Xavier
+                              					platform. On other Tegra platforms, this feature remains unsupported. See <a class="xref" href="index.html#gpudirect-on-tegra" shape="rect">GPUDirect RDMA on Tegra</a> for
+                              					details.
+                           </li>
+                           <li class="li">JIT compilation might require a considerable amount of CPU and bandwidth
+                              resources, potentially interfering with other workloads in the system. Thus,
+                              JIT compilations such as PTX-JIT and NVRTC JIT are not recommended for
+                              deterministic automotive applications and can be bypassed completely by
+                              compiling for specific GPU targets. JIT compilation is not supported on
+                              Tegra devices in the safe context.
+                           </li>
+                           <li class="li">Multi process service (MPS) is not supported on Tegra. </li>
+                           <li class="li">Peer to peer (P2P) communication calls are not supported on Tegra.</li>
+                           <li class="li">The cuSOLVER library is not supported on in Tegra® systems running QNX.</li>
+                           <li class="li">The nvGRAPH library is not supported.</li>
+                        </ul>
+                        <p class="p">More information on some of these features can be found at the following web
+                           sites:
+                        </p>
+                        <p class="p">IPC:</p>
+                        <p class="p"></p>
+                        <p class="p"><a class="xref" href="http://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#interprocess-communication" target="_blank" shape="rect">http://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#interprocess-communication</a></p>
+                        <p class="p"></p>
+                        <p class="p">RDMA:</p>
+                        <p class="p"></p>
+                        <p class="p"><a class="xref" href="http://docs.nvidia.com/cuda/gpudirect-rdma/index.html" target="_blank" shape="rect">http://docs.nvidia.com/cuda/gpudirect-rdma/index.html</a></p>
+                        <p class="p"></p>
+                        <p class="p">MPS:</p>
+                        <p class="p"></p>
+                        <p class="p"><a class="xref" href="https://docs.nvidia.com/deploy/pdf/CUDA_Multi_Process_Service_Overview.pdf" target="_blank" shape="rect">https://docs.nvidia.com/deploy/pdf/CUDA_Multi_Process_Service_Overview.pdf</a></p>
+                        <p class="p"></p>
+                        <p class="p">P2P:</p>
+                        <p class="p"></p>
+                        <p class="p"><a class="xref" href="http://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#peer-to-peer-memory-access" target="_blank" shape="rect">http://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#peer-to-peer-memory-access</a></p>
+                     </div>
+                  </div>
+               </div>
+               <div class="topic concept nested0" id="egl-interoperability"><a name="egl-interoperability" shape="rect">
+                     <!-- --></a><h2 class="title topictitle1"><a href="#egl-interoperability" name="egl-interoperability" shape="rect">4.&nbsp;EGL Interoperability</a></h2>
+                  <div class="body conbody">
+                     <p class="p">An interop is an efficient mechanism to share resources between two APIs. To share
+                        data with multiple APIs, an API must implement an individual interop for each.
+                     </p>
+                     <p class="p">EGL provides interop extensions that allow it to function as a hub connecting APIs,
+                        removing the need for multiple interops, and encapsulating the shared resource. An
+                        API must implement these extensions to interoperate with any other API via EGL. The
+                        CUDA supported EGL interops are EGLStream, EGLImage, and EGLSync.
+                     </p>
+                     <p class="p">EGL interop extensions allow applications to switch between APIs without the need to
+                        rewrite code. For example, an EGLStream-based application in which NvMedia is the
+                        producer and CUDA is the consumer can be modified to use OpenGL as the consumer
+                        without modifying the producer code.
+                     </p>
+                  </div>
+                  <div class="topic concept nested1" id="eglstream"><a name="eglstream" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#eglstream" name="eglstream" shape="rect">4.1.&nbsp;EGLStream</a></h3>
+                     <div class="body conbody">
+                        <p class="p">EGLStream interoperability facilitates efficient transfer of a sequence of frames
+                           from one API to another API, allowing use of multiple Tegra® engines such as
+                           CPU, GPU, ISP, and others.
+                        </p>
+                        <p class="p">Consider an application where a camera captures images continuously, shares them
+                           with CUDA for processing, and then later renders those images using OpenGL. In
+                           this application, the image frames are shared across NvMedia, CUDA and OpenGL.
+                           The absence of EGLStream interoperability would require the application to
+                           include multiple interops and redundant data transfers between APIs. EGLStream
+                           has one producer and one consumer.
+                        </p>
+                        <p class="p">EGLStream offers the following benefits:</p><a name="eglstream__ul_hwp_y5p_gfb" shape="rect">
+                           <!-- --></a><ul class="ul" id="eglstream__ul_hwp_y5p_gfb">
+                           <li class="li">Efficient transfer of frames between a producer and a consumer.</li>
+                           <li class="li">Implicit synchronization handling.</li>
+                           <li class="li">Cross-process support.</li>
+                           <li class="li">dGPU and iGPU support.</li>
+                           <li class="li">Linux, QNX, and Android operating system support.</li>
+                        </ul>
+                     </div>
+                     <div class="topic concept nested2" id="eglstream-flow"><a name="eglstream-flow" shape="rect">
+                           <!-- --></a><h3 class="title topictitle2"><a href="#eglstream-flow" name="eglstream-flow" shape="rect">4.1.1.&nbsp;EGLStream Flow</a></h3>
+                        <div class="body conbody">
+                           <p class="p">The EGLStream flow has the following steps:</p><a name="eglstream-flow__ol_jwp_y5p_gfb" shape="rect">
+                              <!-- --></a><ol class="ol" id="eglstream-flow__ol_jwp_y5p_gfb">
+                              <li class="li">Initialize producer and consumer APIs</li>
+                              <li class="li">Create an EGLStream and connect the consumer and the producer. 
+                                 <div class="note note"><span class="notetitle">Note:</span><p class="p">EGLStream is created using <samp class="ph codeph">eglCreateStreamKHR()</samp> and
+                                       destroyed using <samp class="ph codeph">eglDestroyStreamKHR()</samp>.
+                                    </p>
+                                    <p class="p">The consumer should always connect to EGLStream before the producer.</p>
+                                 </div>
+                                 <p class="p">For more information see the EGLStream specification at the following
+                                    web site: <a class="xref" href="https://www.khronos.org/registry/EGL/extensions/KHR/EGL_KHR_stream.txt" target="_blank" shape="rect">https://www.khronos.org/registry/EGL/extensions/KHR/EGL_KHR_stream.txt</a></p>
+                              </li>
+                              <li class="li">Allocate memory used for EGL frames.</li>
+                              <li class="li">The producer populates an EGL frame and presents it to EGLStream.</li>
+                              <li class="li">The consumer acquires the frame from EGLStream and releases it back to
+                                 EGLStream after processing.
+                              </li>
+                              <li class="li">The producer collects the consumer-released frame from EGLStream.</li>
+                              <li class="li">The producer presents the same frame, or a new frame to EGLStream.</li>
+                              <li class="li">Steps 4-7 are repeated until completion of the task, with an old frame or a
+                                 new frame.
+                              </li>
+                              <li class="li">The consumer and the producer disconnect from EGLStream.</li>
+                              <li class="li">Deallocate the memory used for EGL frames.</li>
+                              <li class="li">De-initialize the producer and consumer APIs.</li>
+                           </ol>
+                           <p class="p">EGLStream application flow is shown in <a class="xref" href="index.html#eglstream-flow__fig-eglstream-flow" shape="rect">Figure 2</a>.
+                           </p>
+                           <div class="fig fignone" id="eglstream-flow__fig-eglstream-flow"><a name="eglstream-flow__fig-eglstream-flow" shape="rect">
+                                 <!-- --></a><span class="figcap">Figure 2. EGLStream Flow</span><br clear="none"></br><div class="imagecenter"><img class="image imagecenter" width="450" src="../common/graphics/eglstream-flow.png" alt="EGLStream Flow"></img></div><br clear="none"></br></div>
+                           <p class="p">CUDA producer and consumer functions are listed in <a class="xref" href="index.html#eglstream-flow__table_producer_consumer_functions" shape="rect">Table 3</a>.
+                           </p>
+                           <div class="tablenoborder"><a name="eglstream-flow__table_producer_consumer_functions" shape="rect">
+                                 <!-- --></a><table cellpadding="4" cellspacing="0" summary="" id="eglstream-flow__table_producer_consumer_functions" class="table" frame="border" border="1" rules="all">
+                                 <caption><span class="tablecap">Table 3. CUDA Producer and Consumer Functions</span></caption>
+                                 <tbody class="tbody">
+                                    <tr class="row">
+                                       <td class="entry" valign="top" width="12.300123001230014%" rowspan="1" colspan="1"><strong class="ph b">Role</strong></td>
+                                       <td class="entry" valign="top" width="30.627306273062736%" rowspan="1" colspan="1"><strong class="ph b">Functionality</strong></td>
+                                       <td class="entry" valign="top" width="57.07257072570726%" rowspan="1" colspan="1"><strong class="ph b">API</strong></td>
+                                    </tr>
+                                    <tr class="row">
+                                       <td class="entry" rowspan="4" valign="top" width="12.300123001230014%" colspan="1">Producer</td>
+                                       <td class="entry" valign="top" width="30.627306273062736%" rowspan="1" colspan="1">To connect a producer to EGLStream</td>
+                                       <td class="entry" valign="top" width="57.07257072570726%" rowspan="1" colspan="1">
+                                          <p class="p"><a class="xref" href="http://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__EGL.html#group__CUDA__EGL_1g5d181803d994a06f1bf9b05f52757bef" target="_blank" shape="rect">cuEGLStreamProducerConnect</a>()
+                                          </p>
+                                          <p class="p"><a class="xref" href="http://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__EGL.html#group__CUDA__EGL_1g5d181803d994a06f1bf9b05f52757bef" target="_blank" shape="rect">cudaEGLStreamProducerConnect</a>()
+                                          </p>
+                                       </td>
+                                    </tr>
+                                    <tr class="row">
+                                       <td class="entry" valign="top" width="30.627306273062736%" rowspan="1" colspan="1">To present frame to EGLStream</td>
+                                       <td class="entry" valign="top" width="57.07257072570726%" rowspan="1" colspan="1">
+                                          <p class="p">cuEGLStreamProducerPresentFrame()</p>
+                                          <p class="p"> cudaEGLStreamProducerPresentFrame()</p>
+                                       </td>
+                                    </tr>
+                                    <tr class="row">
+                                       <td class="entry" valign="top" width="30.627306273062736%" rowspan="1" colspan="1">Obtain released frames</td>
+                                       <td class="entry" valign="top" width="57.07257072570726%" rowspan="1" colspan="1">
+                                          <p class="p">cuEGLStreamProducerReturnFrame()</p>
+                                          <p class="p"> cudaEGLStreamProducerReturnFrame()</p>
+                                       </td>
+                                    </tr>
+                                    <tr class="row">
+                                       <td class="entry" valign="top" width="30.627306273062736%" rowspan="1" colspan="1">To disconnect from EGLStream</td>
+                                       <td class="entry" valign="top" width="57.07257072570726%" rowspan="1" colspan="1">
+                                          <p class="p"><a class="xref" href="http://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__EGL.html#group__CUDA__EGL_1gbdc9664bfb17dd3fa1e0a3ca68a8cafd" target="_blank" shape="rect">cuEGLStreamProducerDisconnect</a>()
+                                          </p>
+                                          <p class="p"><a class="xref" href="http://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__EGL.html#group__CUDA__EGL_1gbdc9664bfb17dd3fa1e0a3ca68a8cafd" target="_blank" shape="rect">cudaEGLStreamProducerDisconnect</a>()
+                                          </p>
+                                       </td>
+                                    </tr>
+                                    <tr class="row">
+                                       <td class="entry" rowspan="4" valign="top" width="12.300123001230014%" colspan="1">Consumer</td>
+                                       <td class="entry" valign="top" width="30.627306273062736%" rowspan="1" colspan="1">To connect a consumer to EGLStream</td>
+                                       <td class="entry" valign="top" width="57.07257072570726%" rowspan="1" colspan="1">
+                                          <p class="p">cuEGLStreamConsumerConnect()</p>
+                                          <p class="p"> cuEGLStreamConsumeConnectWithFlags()</p>
+                                          <p class="p"><a class="xref" href="http://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__EGL.html#group__CUDART__EGL_1g7993b0e3802420547e3f403549be65a1" target="_blank" shape="rect">cudaEGLStreamConsumerConnect</a>()
+                                          </p>
+                                          <p class="p"> cudaEGLStreamConsumerConnectWithFlags()</p>
+                                       </td>
+                                    </tr>
+                                    <tr class="row">
+                                       <td class="entry" valign="top" width="30.627306273062736%" rowspan="1" colspan="1">To acquire frame from EGLStream</td>
+                                       <td class="entry" valign="top" width="57.07257072570726%" rowspan="1" colspan="1">
+                                          <p class="p">cuEGLStreamConsumerAcquireFrame()</p>
+                                          <p class="p"><a class="xref" href="http://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__EGL.html#group__CUDART__EGL_1g83dd1bfea48c093d3f0b247754970f58" target="_blank" shape="rect">cudaEGLStreamConsumerAcquireFrame</a>()
+                                          </p>
+                                       </td>
+                                    </tr>
+                                    <tr class="row">
+                                       <td class="entry" valign="top" width="30.627306273062736%" rowspan="1" colspan="1">To release the consumed frame</td>
+                                       <td class="entry" valign="top" width="57.07257072570726%" rowspan="1" colspan="1">
+                                          <p class="p">cuEGLStreamConsumerReleaseFrame()</p>
+                                          <p class="p"> cudaEGLStreamConsumerReleaseFrame()</p>
+                                       </td>
+                                    </tr>
+                                    <tr class="row">
+                                       <td class="entry" valign="top" width="30.627306273062736%" rowspan="1" colspan="1">To disconnect from EGLStream</td>
+                                       <td class="entry" valign="top" width="57.07257072570726%" rowspan="1" colspan="1">
+                                          <p class="p"><a class="xref" href="http://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__EGL.html#group__CUDA__EGL_1g3ab15cff9be3b25447714101ecda6a61" target="_blank" shape="rect">cuEGLStreamConsumerDisconnect</a>()
+                                          </p>
+                                          <p class="p"><a class="xref" href="http://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__EGL.html#group__CUDART__EGL_1gb2ef252e72ad2419506f3cf305753c6a" target="_blank" shape="rect">cudaEGLStreamConsumerDisconnect</a>()
+                                          </p>
+                                       </td>
+                                    </tr>
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="topic concept nested2" id="cuda-as-producer"><a name="cuda-as-producer" shape="rect">
+                           <!-- --></a><h3 class="title topictitle2"><a href="#cuda-as-producer" name="cuda-as-producer" shape="rect">4.1.2.&nbsp;CUDA as Producer</a></h3>
+                        <div class="body conbody">
+                           <p class="p">When CUDA is the producer, the supported consumers are CUDA, NvMedia and OpenGL.
+                              API functions to be used when CUDA is the producer are listed in <a class="xref" href="index.html#eglstream-flow__table_producer_consumer_functions" shape="rect">Table 3</a>. Except for connecting and
+                              disconnecting from EGLStream, all API calls are non-blocking.
+                           </p>
+                           <p class="p">The following producer side steps are shown in the example code that follows:</p><a name="cuda-as-producer__ol_pwp_y5p_gfb" shape="rect">
+                              <!-- --></a><ol class="ol" id="cuda-as-producer__ol_pwp_y5p_gfb">
+                              <li class="li">Prepare a frame (lines 3-19).</li>
+                              <li class="li">Connect the producer to EGLStream (line 21).</li>
+                              <li class="li">Populate the frame and present to EGLStream (lines 23-25).</li>
+                              <li class="li">Get the released frame back from EGLStream (Line 27).</li>
+                              <li class="li">Disconnect the consumer after completion of the task. (Line 31).</li>
+                           </ol><pre xml:space="preserve"><span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">void</span> ProducerThread(EGLStreamKHR eglStream) {
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">//Prepares frame</span>
+ cudaEglFrame* cudaEgl = (cudaEglFrame *)malloc(<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">sizeof</span>(cudaEglFrame));
+ cudaEgl-&gt;planeDesc[0].width = WIDTH;
+ cudaEgl-&gt;planeDesc[0].depth = 0;
+ cudaEgl-&gt;planeDesc[0].height = HEIGHT;
+ cudaEgl-&gt;planeDesc[0].numChannels = 4;
+ cudaEgl-&gt;planeDesc[0].pitch = WIDTH * cudaEgl-&gt;planeDesc[0].numChannels;
+ cudaEgl-&gt;frameType = cudaEglFrameTypePitch;
+ cudaEgl-&gt;planeCount = 1;
+ cudaEgl-&gt;eglColorFormat = cudaEglColorFormatARGB;
+ cudaEgl-&gt;planeDesc[0].channelDesc.f=cudaChannelFormatKindUnsigned
+ cudaEgl-&gt;planeDesc[0].channelDesc.w = 8;
+ cudaEgl-&gt;planeDesc[0].channelDesc.x = 8;
+ cudaEgl-&gt;planeDesc[0].channelDesc.y = 8;
+ cudaEgl-&gt;planeDesc[0].channelDesc.z = 8;
+ size_t numElem = cudaEgl-&gt;planeDesc[0].pitch * cudaEgl-&gt;planeDesc[0].height;
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// Buffer allocated by producer</span>
+ cudaMalloc(&amp;(cudaEgl-&gt;pPitch[0].ptr), numElem);
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">//CUDA producer connects to EGLStream</span>
+ cudaEGLStreamProducerConnect(&amp;conn, eglStream, WIDTH, HEIGHT))
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// Sets all elements in the buffer to 1</span>
+ K1<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-attribute">&lt;&lt;&lt;</span>...<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-attribute">&gt;&gt;&gt;</span>(cudaEgl-&gt;pPitch[0].ptr, 1, numElem);
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// Present frame to EGLStream</span>
+ cudaEGLStreamProducerPresentFrame(&amp;conn, *cudaEgl, NULL);
+ 
+ cudaEGLStreamProducerReturnFrame(&amp;conn, cudaEgl, eglStream);
+ .
+ .
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">//clean up</span>
+ cudaEGLStreamProducerDisconnect(&amp;conn);
+ 
+ .
+}  </pre><p class="p">A frame is represented as a <samp class="ph codeph">cudaEglFramestructure</samp>. The
+                              <samp class="ph codeph">frameType</samp> parameter in <samp class="ph codeph">cudaEglFrame</samp> indicates
+                              the memory layout of the frame. The supported memory layouts are CUDA Array and
+                              device pointer. Any mismatch in the width and height values of frame with the values
+                              specified in <samp class="ph codeph">cudaEGLStreamProducerConnect()</samp> leads to undefined
+                              behavior. In the sample, the CUDA producer is sending a single frame, but it can
+                              send multiple frames over a loop. CUDA cannot present more than 64 active frames to
+                              EGLStream.
+                           </p>
+                           <p class="p">The <samp class="ph codeph">cudaEGLStreamProducerReturnFrame()</samp> call waits until it
+                              receives the released frame from the consumer. Once the CUDA producer presents the
+                              first frame to EGLstream, at least one frame is always available for consumer
+                              acquisition until the producer disconnects. This prevents the removal of the last
+                              frame from EGLStream, which would block <a class="xref" href="http://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__EGL.html#group__CUDA__EGL_1g70c84d9d01f343fc07cd632f9cfc3a06" target="_blank" shape="rect">cudaEGLStreamProducerReturnFrame</a>().
+                           </p>
+                           <p class="p">Use the <samp class="ph codeph">EGL_NV_stream_reset</samp> extension to set EGLStream attribute
+                              <samp class="ph codeph">EGL_SUPPORT_REUSE_NV</samp> to false to allow the last frame to be
+                              removed from EGLStream. This allows removing or returning the last frame from
+                              EGLStream.
+                           </p>
+                        </div>
+                     </div>
+                     <div class="topic concept nested2" id="cuda-as-consumer"><a name="cuda-as-consumer" shape="rect">
+                           <!-- --></a><h3 class="title topictitle2"><a href="#cuda-as-consumer" name="cuda-as-consumer" shape="rect">4.1.3.&nbsp;CUDA as Consumer</a></h3>
+                        <div class="body conbody">
+                           <p class="p">When CUDA is the consumer, the supported producers are CUDA, OpenGL, NvMedia,
+                              Argus, and Camera. API functions to be used when CUDA is the consumer are listed
+                              in Table 3. Except for connecting and disconnecting from EGLStream, all API
+                              calls are non-blocking.
+                           </p>
+                           <p class="p">The following consumer side steps are shown in the sample code that follows:</p><a name="cuda-as-consumer__ol_rwp_y5p_gfb" shape="rect">
+                              <!-- --></a><ol class="ol" id="cuda-as-consumer__ol_rwp_y5p_gfb">
+                              <li class="li">Connect consumer to EGLStream (line 5).</li>
+                              <li class="li">Acquire frame from EGLStream (lines 8-10).</li>
+                              <li class="li">Process the frame on consumer (line 16).</li>
+                              <li class="li">Release frame back to EGLStream (line 19).</li>
+                              <li class="li">Disconnect the consumer after completion of the task (line 22).</li>
+                           </ol><pre xml:space="preserve"><span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">void</span> ConsumerThread(EGLStreamKHR eglStream) {
+.
+.
+<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">//Connect consumer to EGLStream</span>
+cudaEGLStreamConsumerConnect(&amp;conn, eglStream);
+<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// consumer acquires a frame</span>
+<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">unsigned</span> <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span> timeout = 16000;
+cudaEGLStreamConsumerAcquireFrame(&amp; conn, &amp;cudaResource, eglStream, timeout);
+<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">//consumer gets a cuda object pointer</span>
+cudaGraphicsResourceGetMappedEglFrame(&amp;cudaEgl, cudaResource, 0, 0);
+size_t numElem = cudaEgl-&gt;planeDesc[0].pitch * cudaEgl-&gt;planeDesc[0].height;
+.
+.
+<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span> checkIfOne = 1;
+<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// Checks if each value in the buffer is 1, if any value is not 1, it sets checkIfOne = 0. </span>
+K2<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-attribute">&lt;&lt;&lt;</span>...<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-attribute">&gt;&gt;&gt;</span>(cudaEgl-&gt;pPitch[0].ptr, 1, numElem, checkIfOne);
+.
+.
+cudaEGLStreamConsumerReleaseFrame(&amp;conn, cudaResource, &amp;eglStream);
+.
+.
+cudaEGLStreamConsumerDisconnect(&amp;conn);
+.
+}  </pre><p class="p">In the sample code, the CUDA consumer receives a single frame, but it can also
+                              receive multiple frames over a loop. If a CUDA consumer fails to receive a new frame
+                              in the specified time limit using <a class="xref" href="https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__EGL.html#group__CUDART__EGL_1g83dd1bfea48c093d3f0b247754970f58" target="_blank" shape="rect">cudaEGLStreamConsumerAcquireFrame()</a>, it
+                              reacquires the previous frame from EGLStream. The time limit is indicated by the
+                              timeout parameter.
+                           </p>
+                           <p class="p">The application can use <samp class="ph codeph">eglQueryStreamKHR()</samp> to query for the
+                              availability of new frames using. If the consumer uses already released frames, it
+                              results in undefined behavior. The consumer behavior is defined only for read
+                              operations. Behavior is undefined when the consumer writes to a frame.
+                           </p>
+                           <p class="p">If the CUDA context is destroyed while connected to EGLStream, the stream is
+                              placed in the <samp class="ph codeph">EGL_STREAM_STATE_DISCONNECTED_KHR</samp> state and the
+                              connection handle is invalidated. 
+                           </p>
+                        </div>
+                     </div>
+                     <div class="topic concept nested2" id="implicit-sync"><a name="implicit-sync" shape="rect">
+                           <!-- --></a><h3 class="title topictitle2"><a href="#implicit-sync" name="implicit-sync" shape="rect">4.1.4.&nbsp;Implicit Synchronization</a></h3>
+                        <div class="body conbody">
+                           <p class="p">EGLStream provides implicit synchronization in an application. For example, in
+                              the previous code samples, both the producer and consumer threads are running in
+                              parallel and the K1 and K2 kernel processes access the same frame, but K2 execution
+                              in the consumer thread is guaranteed to occur only after kernel K1 in the producer
+                              thread finishes. The <samp class="ph codeph">cudaEGLStreamConsumerAcquireFrame()</samp> function
+                              waits on the GPU side until K1 finishes and ensures synchronization between producer
+                              and consumer. The variable <samp class="ph codeph">checkIfOne</samp> is never set to 0 inside the
+                              K2 kernel in the consumer thread.
+                           </p>
+                           <p class="p">Similarly, <samp class="ph codeph">cudaEGLStreamProducerReturnFrame()</samp> in the producer
+                              thread is guaranteed to get the frame only after K2 finishes and the consumer
+                              releases the frame. These non-blocking calls allow the CPU to do other computation
+                              in between, as synchronization is taken care of on the GPU side.
+                           </p>
+                           <p class="p">The <samp class="ph codeph">EGLStreams_CUDA_Interop </samp>CUDA sample code shows the usage of
+                              EGLStream in detail.
+                           </p>
+                        </div>
+                     </div>
+                     <div class="topic concept nested2" id="data-transfer-between-producer-and-consumer"><a name="data-transfer-between-producer-and-consumer" shape="rect">
+                           <!-- --></a><h3 class="title topictitle2"><a href="#data-transfer-between-producer-and-consumer" name="data-transfer-between-producer-and-consumer" shape="rect">4.1.5.&nbsp;Data Transfer Between Producer and Consumer</a></h3>
+                        <div class="body conbody">
+                           <p class="p">Data transfer between producer and consumer is avoided when they are present on the
+                              same device. In a Tegra® platform that includes a dGPU however, such as is in NVIDIA
+                              DRIVE™ PX 2, the producer and consumer can be present on different devices. In that
+                              case, an additional memory copy is required internally to move the frame between
+                              Tegra® SoC DRAM and dGPU DRAM. EGLStream allows producer and consumer to run on any
+                              GPU without code modification.
+                           </p>
+                           <div class="note note"><span class="notetitle">Note:</span> On systems where a Tegra® device is connected to a dGPU, if a producer frame uses
+                              CUDA array, both producer and consumer should be on the same GPU. But if a producer
+                              frame uses CUDA device pointers, the consumer can be present on any GPU. 
+                           </div>
+                        </div>
+                     </div>
+                     <div class="topic concept nested2" id="eglstream-pipeline"><a name="eglstream-pipeline" shape="rect">
+                           <!-- --></a><h3 class="title topictitle2"><a href="#eglstream-pipeline" name="eglstream-pipeline" shape="rect">4.1.6.&nbsp;EGLStream Pipeline</a></h3>
+                        <div class="body conbody">
+                           <p class="p">An application can use multiple EGL streams in a pipeline to pass the frames from
+                              one API to another. For an application where NvMedia sends a frame to CUDA for
+                              computation, CUDA sends the same frame to OpenGL for rendering after the
+                              computation.
+                           </p>
+                           <p class="p">The EGLStream pipeline is illustrated in <a class="xref" href="index.html#eglstream-pipeline__fig-eglstream-pipeline" shape="rect">Figure 3</a>.
+                           </p>
+                           <div class="fig fignone" id="eglstream-pipeline__fig-eglstream-pipeline"><a name="eglstream-pipeline__fig-eglstream-pipeline" shape="rect">
+                                 <!-- --></a><span class="figcap">Figure 3. EGLStream Pipeline</span><br clear="none"></br><div class="imagecenter"><img class="image imagecenter" width="450" src="../common/graphics/eglstream-pipeline.png" alt="EGLStream Pipeline"></img></div><br clear="none"></br></div>
+                           <p class="p">NvMedia and CUDA connect as producer and consumer respectively to one EGLStream.
+                              CUDA and OpenGL connect as producer and consumer respectively to another
+                              EGLStream.
+                           </p>
+                           <p class="p">Using multiple EGLStreams in pipeline fashion gives the flexibility to send
+                              frames across multiple APIs without allocating additional memory or requiring
+                              explicit data transfers. Sending a frame across the above EGLStream pipeline
+                              involves the following steps.
+                           </p><a name="eglstream-pipeline__ol_wwp_y5p_gfb" shape="rect">
+                              <!-- --></a><ol class="ol" id="eglstream-pipeline__ol_wwp_y5p_gfb">
+                              <li class="li">NvMedia sends a frame to CUDA for processing.</li>
+                              <li class="li">CUDA uses the frame for computation and sends to OpenGL for rendering.</li>
+                              <li class="li">OpenGL consumes the frame and releases it back to CUDA.</li>
+                              <li class="li">CUDA releases the frame back to NvMedia.</li>
+                           </ol>
+                           <p class="p">The above steps can be performed in a loop to facilitate the transfer of multiple
+                              frames in the EGLStream pipeline.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="topic concept nested1" id="eglimage"><a name="eglimage" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#eglimage" name="eglimage" shape="rect">4.2.&nbsp;EGLImage</a></h3>
+                     <div class="body conbody">
+                        <p class="p">An EGLImage interop allows an EGL client API to share image data with other EGL
+                           client APIs. For example, an application can use an EGLImage interop to share an
+                           OpenGL texture with CUDA without allocating any additional memory. A single EGLImage
+                           object can be shared across multiple client APIs for modification.
+                        </p>
+                        <p class="p">An EGLImage interop does not provide implicit synchronization. Applications must
+                           maintain synchronization to avoid race conditions.
+                        </p>
+                        <div class="note note"><span class="notetitle">Note:</span> An EGLImage is created using <samp class="ph codeph">eglCreateImageKHR()</samp> and destroyed
+                           using <samp class="ph codeph">eglDestroyImageKHR()</samp>. 
+                        </div>
+                        <p class="p">For more information see the EGLImage specification at the following web site:</p>
+                        <p class="p"><a class="xref" href="https://www.khronos.org/registry/EGL/extensions/KHR/EGL_KHR_image_base.txt" target="_blank" shape="rect">https://www.khronos.org/registry/EGL/extensions/KHR/EGL_KHR_image_base.txt</a></p>
+                     </div>
+                     <div class="topic concept nested2" id="cuda-interop-with-eglimage"><a name="cuda-interop-with-eglimage" shape="rect">
+                           <!-- --></a><h3 class="title topictitle2"><a href="#cuda-interop-with-eglimage" name="cuda-interop-with-eglimage" shape="rect">4.2.1.&nbsp;CUDA interop with EGLImage</a></h3>
+                        <div class="body conbody">
+                           <p class="p">CUDA supports interoperation with EGLImage, allowing CUDA to read or modify the data
+                              of an EGLImage. An EGLImage can be a single or multi-planar resource. In CUDA, a
+                              single-planar EGLImage object is represented as a CUDA array or device pointer.
+                              Similarly, a multi-planar EGLImage object is represented as an array of device
+                              pointers or CUDA arrays. EGLImage is supported on Tegra® devices running the Linux,
+                              QNX, or Android operating systems.
+                           </p>
+                           <p class="p">Use the <samp class="ph codeph">cudaGraphicsEGLRegisterImage()</samp> API to register an EGLImage
+                              object with CUDA. Registering an EGLImage with CUDA creates a graphics resource
+                              object. An application can use
+                              <samp class="ph codeph">cudaGraphicsResourceGetMappedEglFrame()</samp> to get a frame from the
+                              graphics resource object. In CUDA, a frame is represented as a
+                              <samp class="ph codeph">cudaEglFrame</samp> structure. The <samp class="ph codeph">frameType</samp>
+                              parameter in cudaEglFrame indicates if the frame is a CUDA device pointer or a CUDA
+                              array. For a single planar graphics resource, an application can directly obtain a
+                              device pointer or CUDA array using
+                              <samp class="ph codeph">cudaGraphicsResourceGetMappedPointer()</samp> or
+                              <samp class="ph codeph">cudaGraphicsSubResourceGetMappedArray()</samp> respectively. A CUDA
+                              array can be bound to a texture or surface reference to access inside a kernel.
+                              Also, a multi-dimensional CUDA array can be read and written via
+                              <samp class="ph codeph">cudaMemcpy3D()</samp>. 
+                           </p>
+                           <div class="note note"><span class="notetitle">Note:</span> An EGLImage cannot be created from a CUDA object. The
+                              <samp class="ph codeph">cudaGraphicsEGLRegisterImage()</samp> function is only supported on
+                              Tegra® devices.
+                           </div>
+                           <p class="p">The following sample code shows EGLImage interoperability. In the code, an EGLImage
+                              object <samp class="ph codeph">eglImage</samp> is created using OpenGL texture. The
+                              <samp class="ph codeph">eglImage</samp> object is mapped as a CUDA array
+                              <samp class="ph codeph">pArray</samp> in CUDA. The <samp class="ph codeph">pArray</samp> array is bound to a
+                              surface object to allow modification of the OpenGL texture in the changeTexture. The
+                              function <samp class="ph codeph">checkBuf()</samp> checks if the texture is updated with new
+                              values.
+                           </p><pre xml:space="preserve"><span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span> width = 256;
+<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span> height = 256;
+<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span> main()
+{
+ .
+ .
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">unsigned</span> <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">char</span> *hostSurf;
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">unsigned</span> <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">char</span> *pSurf;
+ CUarray pArray;
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">unsigned</span> <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span> bufferSize = WIDTH * HEIGHT * 4;
+ pSurf= (<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">unsigned</span> <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">char</span> *)malloc(bufferSize); hostSurf = (<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">unsigned</span> <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">char</span> *)malloc(bufferSize);
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// Initialize the buffer</span>
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">for</span>(<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span> y = 0; y &lt; HEIGHT; y++)
+ {
+    <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">for</span>(<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span> x = 0; x &lt; WIDTH; x++)
+    {
+    pSurf[(y*WIDTH + x) * 4 ] = 0; pSurf[(y*WIDTH + x) * 4 + 1] = 0;
+    pSurf[(y*WIDTH + x) * 4 + 2] = 0; pSurf[(y*WIDTH + x) * 4 + 3] = 0;
+    }
+ }
+ 
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// NOP call to error-check the above glut calls</span>
+ GL_SAFE_CALL({});
+ 
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">//Init texture</span>
+ GL_SAFE_CALL(glGenTextures(1, &amp;tex));
+ GL_SAFE_CALL(glBindTexture(GL_TEXTURE_2D, tex));
+ GL_SAFE_CALL(glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, WIDTH, HEIGHT, 0, GL_RGBA, GL_UNSIGNED_BYTE, pSurf));
+ 
+ EGLDisplay eglDisplayHandle = eglGetCurrentDisplay();
+ EGLContext eglCtx = eglGetCurrentContext();
+ 
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// Create the EGL_Image</span>
+ EGLint eglImgAttrs[] = { EGL_IMAGE_PRESERVED_KHR, EGL_FALSE, EGL_NONE, EGL_NONE };
+ EGLImageKHR eglImage = eglCreateImageKHR(eglDisplayHandle, eglCtx, EGL_GL_TEXTURE_2D_KHR, (EGLClientBuffer)(intptr_t)tex, eglImgAttrs);
+ glFinish();
+ glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, WIDTH, HEIGHT, GL_RGBA, GL_UNSIGNED_BYTE, pSurf);
+ glFinish();
+ 
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// Register buffer with CUDA </span>
+ cuGraphicsEGLRegisterImage(&amp;pResource, eglImage, CU_GRAPHICS_REGISTER_FLAGS_NONE);
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">//Get CUDA array from graphics resource object</span>
+ cuGraphicsSubResourceGetMappedArray( &amp;pArray, pResource, 0, 0);
+ 
+ cuCtxSynchronize();
+ 
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">//Create a CUDA surface object from pArray</span>
+ CUresult status = CUDA_SUCCESS;
+ CUDA_RESOURCE_DESC wdsc;
+ memset(&amp;wdsc, 0, <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">sizeof</span>(wdsc));
+ wdsc.resType = CU_RESOURCE_TYPE_ARRAY; wdsc.res.array.hArray = pArray;
+ CUsurfObject writeSurface;
+ cuSurfObjectCreate(&amp;writeSurface, &amp;wdsc);
+ 
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-attribute">dim3</span> blockSize(32,32);
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-attribute">dim3</span> gridSize(width/blockSize.x,height/blockSize.y);
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// Modifies the OpenGL texture using CUDA surface object</span>
+ changeTexture<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-attribute">&lt;&lt;&lt;</span>gridSize, blockSize<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-attribute">&gt;&gt;&gt;</span>(writeSurface, width, height);
+ cuCtxSynchronize();
+ 
+ CUDA_MEMCPY3D cpdesc;
+ memset(&amp;cpdesc, 0, <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">sizeof</span>(cpdesc));
+ cpdesc.srcXInBytes = cpdesc.srcY = cpdesc.srcZ = cpdesc.srcLOD = 0;
+ cpdesc.dstXInBytes = cpdesc.dstY = cpdesc.dstZ = cpdesc.dstLOD = 0;
+ cpdesc.srcMemoryType = CU_MEMORYTYPE_ARRAY; cpdesc.dstMemoryType = CU_MEMORYTYPE_HOST;
+ cpdesc.srcArray = pArray; cpdesc.dstHost = (<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">void</span> *)hostSurf;
+ cpdesc.WidthInBytes = WIDTH * 4; cpdesc.Height = HEIGHT; cpdesc.Depth = 1;
+ 
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">//Copy CUDA surface object values to hostSurf</span>
+ cuMemcpy3D(&amp;cpdesc);
+ 
+ cuCtxSynchronize();
+ 
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">unsigned</span> <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">char</span>* temp = (<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">unsigned</span> <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">char</span>*)(malloc(bufferSize * <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">sizeof</span>(<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">unsigned</span> <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">char</span>)));
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// Get the modified texture values as</span>
+ GL_SAFE_CALL(glGetTexImage(GL_TEXTURE_2D, 0, GL_RGBA, GL_UNSIGNED_BYTE,(<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">void</span>*)temp));
+ glFinish();
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// Check if the OpenGL texture got modified values</span>
+ checkbuf(temp,hostSurf);
+ 
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// Clean up CUDA</span>
+ cuGraphicsUnregisterResource(pResource);
+ cuSurfObjectDestroy(writeSurface);
+ .
+ .
+}
+<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-attribute">__global__</span> <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">void</span> changeTexture(cudaSurfaceObject_t arr, <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">unsigned</span> <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span> width, <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">unsigned</span> <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span> height){
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">unsigned</span> <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span> x = <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-attribute">threadIdx</span>.x + <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-attribute">blockIdx</span>.x * <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-attribute">blockDim</span>.x;
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">unsigned</span> <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span> y = <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-attribute">threadIdx</span>.y + <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-attribute">blockIdx</span>.y * <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-attribute">blockDim</span>.y;
+ uchar4 data = make_uchar4(1, 2, 3, 4);
+ surf2Dwrite(data, arr, x * 4, y);
+}
+<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">void</span> checkbuf(<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">unsigned</span> <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">char</span> *ref, <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">unsigned</span> <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">char</span> *hostSurf) { 
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">for</span>(<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span> y = 0; y &lt; height*width*4; y++){
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">if</span> (ref[y] != hostSurf[y])
+ printf(<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-string">"mis match at %d\n"</span>,y);
+ } 
+} </pre><p class="p">Because EGLImage does not provide implicit synchronization, the above sample
+                              application uses <samp class="ph codeph">glFinish()</samp> and
+                              <samp class="ph codeph">cudaThreadSynchronize()</samp> calls to achieve synchronization. Both
+                              calls block the CPU thread. To avoid blocking the CPU thread, use EGLSync to provide
+                              synchronization. An example using EGLImage and EGLSync is shown in the following
+                              section.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="topic concept nested1" id="eglsync"><a name="eglsync" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#eglsync" name="eglsync" shape="rect">4.3.&nbsp;EGLSync</a></h3>
+                     <div class="body conbody">
+                        <p class="p">EGLSync is a cross-API synchronization primitive. It allows an EGL client API to
+                           share its synchronization object with other EGL client APIs. For example,
+                           applications can use an EGLSync interop to share the OpenGL synchronization object
+                           with CUDA.
+                        </p>
+                        <div class="note note"><span class="notetitle">Note:</span> An EGLSync object is created using <samp class="ph codeph">eglCreateSyncKHR()</samp> and
+                           destroyed using <samp class="ph codeph">eglDestroySyncKHR()</samp>. 
+                        </div>
+                        <p class="p">For more information see the EGLSync specification at the following web site:</p>
+                        <p class="p"><a class="xref" href="https://www.khronos.org/registry/EGL/extensions/KHR/EGL_KHR_fence_sync.txt" target="_blank" shape="rect">https://www.khronos.org/registry/EGL/extensions/KHR/EGL_KHR_fence_sync.txt</a></p>
+                     </div>
+                     <div class="topic concept nested2" id="cuda-interop-with-eglsync"><a name="cuda-interop-with-eglsync" shape="rect">
+                           <!-- --></a><h3 class="title topictitle2"><a href="#cuda-interop-with-eglsync" name="cuda-interop-with-eglsync" shape="rect">4.3.1.&nbsp;CUDA Interop with EGLSync</a></h3>
+                        <div class="body conbody">
+                           <p class="p">In an imaging application, where two clients run on a GPU and share a resource, the
+                              absence of a cross-API GPU synchronization object forces the clients to use CPU-side
+                              synchronization to avoid race conditions. The CUDA interop with EGLSync allows the
+                              application to exchange synchronization objects between CUDA and other client APIs
+                              directly. This avoids the need for CPU-side synchronization and allows CPU to
+                              complete other tasks. In CUDA, an EGLSync object is mapped as a CUDA event.
+                           </p>
+                           <div class="note note"><span class="notetitle">Note:</span> Currently CUDA interop with EGLSync is supported only on Tegra® devices. 
+                           </div>
+                        </div>
+                     </div>
+                     <div class="topic concept nested2" id="creating-eglsync-from-cuda-event"><a name="creating-eglsync-from-cuda-event" shape="rect">
+                           <!-- --></a><h3 class="title topictitle2"><a href="#creating-eglsync-from-cuda-event" name="creating-eglsync-from-cuda-event" shape="rect">4.3.2.&nbsp;Creating EGLSync from a CUDA Event</a></h3>
+                        <div class="body conbody">
+                           <p class="p">Creating an EGLSync object from a CUDA event is shown in the following sample
+                              code.
+                           </p><pre xml:space="preserve">EGLDisplay dpy = eglGetCurrentDisplay();
+<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// Create CUDA event</span>
+cudaEvent_t event;
+cudaStream_t *stream;
+cudaEventCreate(&amp;event);
+cudaStreamCreate(&amp;stream);
+<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// Record the event with cuda event</span>
+cudaEventRecord(event, stream);
+<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">const</span> EGLAttrib attribs[] = {
+ EGL_CUDA_EVENT_HANDLE_NV, (EGLAttrib )event,
+ EGL_NONE
+};
+<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">//Create EGLSync from the cuda event</span>
+eglsync = eglCreateSync(dpy, EGL_NV_CUDA_EVENT_NV, attribs);
+<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">//Wait on the sync</span>
+eglWaitSyncKHR(...);  </pre><div class="note note"><span class="notetitle">Note:</span> Initialize a CUDA event before creating an EGLSync object from it to avoid
+                              undefined behavior. 
+                           </div>
+                        </div>
+                     </div>
+                     <div class="topic concept nested2" id="creating-cuda-event-from-eglsync"><a name="creating-cuda-event-from-eglsync" shape="rect">
+                           <!-- --></a><h3 class="title topictitle2"><a href="#creating-cuda-event-from-eglsync" name="creating-cuda-event-from-eglsync" shape="rect">4.3.3.&nbsp;Creating a CUDA Event from EGLSync</a></h3>
+                        <div class="body conbody">
+                           <p class="p">Creating a CUDA event from an EGLSync object is shown in the following sample
+                              code.
+                           </p><pre xml:space="preserve">EGLSync eglsync;
+EGLDisplay dpy = eglGetCurrentDisplay();
+<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// Create an eglSync object from openGL fense sync object</span>
+eglsync = eglCreateSyncKHR(dpy, EGL_SYNC_FENCE_KHR, NULL);
+cudaEvent_t event;
+cudaStream_t* stream;
+cudaStreamCreate(&amp;stream);
+<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// Create CUDA event from eglSync</span>
+cudaEventCreateFromEGLSync(&amp;event, eglSync, cudaEventDefault);
+<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// Wait on the cuda event. It waits on GPU till OpenGL finishes its </span>
+<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// task</span>
+cudaStreamWaitEvent(stream, event, 0);  </pre><div class="note note"><span class="notetitle">Note:</span> The <samp class="ph codeph">cudaEventRecord()</samp> and <samp class="ph codeph">cudaEventElapsedTime()</samp>
+                              functions are not supported for events created from an EGLSync object.
+                           </div>
+                           <p class="p">The same example given in the EGLImage section is re-written below to illustrate the
+                              usage of an EGLSync interop. In the sample code, the CPU blocking calls such as
+                              <samp class="ph codeph">glFinish()</samp> and <samp class="ph codeph">cudaThreadSynchronize()</samp> are
+                              replaced with EGLSync interop calls.
+                           </p>
+                           <div class="p" dir="ltr" id="creating-cuda-event-from-eglsync__docs-internal-guid-ecc514ab-7fff-43c6-3f4c-23f8eab45935"><a name="creating-cuda-event-from-eglsync__docs-internal-guid-ecc514ab-7fff-43c6-3f4c-23f8eab45935" shape="rect">
+                                 <!-- --></a><div class="note note"><span class="notetitle">Note:</span> Starting from CUDA 10.1, the EGLSync object can be created once and reused several
+                                 					times.
+                              </div>
+                           </div><pre xml:space="preserve"><span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span> width = 256;
+<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span> height = 256;
+<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span> main()
+{
+ .
+ .
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">unsigned</span> <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">char</span> *hostSurf;
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">unsigned</span> <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">char</span> *pSurf;
+ cudaArray_t pArray;
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">unsigned</span> <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span> bufferSize = WIDTH * HEIGHT * 4;
+ pSurf= (<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">unsigned</span> <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">char</span> *)malloc(bufferSize); hostSurf = (<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">unsigned</span> <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">char</span> *)malloc(bufferSize);
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// Intialize the buffer</span>
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">for</span>(<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">int</span> y = 0; y &lt; bufferSize; y++)
+ pSurf[y] = 0; 
+ 
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">//Init texture</span>
+ GL_SAFE_CALL(glGenTextures(1, &amp;tex));
+ GL_SAFE_CALL(glBindTexture(GL_TEXTURE_2D, tex));
+ GL_SAFE_CALL(glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, WIDTH, HEIGHT, 0, GL_RGBA, GL_UNSIGNED_BYTE, pSurf));
+ EGLDisplay eglDisplayHandle = eglGetCurrentDisplay();
+ EGLContext eglCtx = eglGetCurrentContext();
+ 
+ cudaEvent_t cuda_event;
+ cudaEventCreateWithFlags(cuda_event, cudaEventDisableTiming);
+ EGLAttribKHR eglattrib[] = { EGL_CUDA_EVENT_HANDLE_NV, (EGLAttrib) cuda_event, EGL_NONE};
+ cudaStream_t* stream;
+ cudaStreamCreateWithFlags(&amp;stream,cudaStreamDefault);
+ 
+ EGLSyncKHR eglsync1, eglsync2;
+ cudaEvent_t egl_event;
+ 
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// Create the EGL_Image</span>
+ EGLint eglImgAttrs[] = { EGL_IMAGE_PRESERVED_KHR, EGL_FALSE, EGL_NONE, EGL_NONE };
+ EGLImageKHR eglImage = eglCreateImageKHR(eglDisplayHandle, eglCtx, EGL_GL_TEXTURE_2D_KHR, (EGLClientBuffer)(intptr_t)tex, eglImgAttrs);
+ 
+ glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, WIDTH, HEIGHT, GL_RGBA, GL_UNSIGNED_BYTE, pSurf); 
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">//Creates an EGLSync object from GL Sync object to track</span>
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">//finishing of copy.</span>
+ eglsync1 = eglCreateSyncKHR(eglDisplayHandle, EGL_SYNC_FENCE_KHR, NULL);
+ 
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">//Create CUDA event object from EGLSync obejct</span>
+ cuEventCreateFromEGLSync(&amp;egl_event, eglsync1, cudaEventDefault);
+ 
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">//Waiting on GPU to finish GL copy</span>
+ cuStreamWaitEvent(stream, egl_event, 0);
+ 
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// Register buffer with CUDA </span>
+ cudaGraphicsEGLRegisterImage(&amp;pResource, eglImage, cudaGraphicsRegisterFlagsNone);
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">//Get CUDA array from graphics resource object</span>
+ cudaGraphicsSubResourceGetMappedArray( &amp;pArray, pResource, 0, 0);
+ . 
+ . 
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">//Create a CUDA surface object from pArray</span>
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">struct</span> cudaResourceDesc resDesc;
+ memset(&amp;resDesc, 0, <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">sizeof</span>(resDesc));
+ resDesc.resType = cudaResourceTypeArray; resDesc.res.array.array = pArray;
+ cudaSurfaceObject_t inputSurfObj = 0;
+ cudaCreateSurfaceObject(&amp;inputSurfObj, &amp;resDesc);
+ 
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-attribute">dim3</span> blockSize(32,32);
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-attribute">dim3</span> gridSize(width/blockSize.x,height/blockSize.y);
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// Modifies the CUDA array using CUDA surface object</span>
+ changeTexture<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-attribute">&lt;&lt;&lt;</span>gridSize, blockSize<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-attribute">&gt;&gt;&gt;</span>(inputSurfObj, width, height);
+ cuEventRecord(cuda_event, stream); 
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">//Create EGLsync object from CUDA event cuda_event</span>
+ eglsync2 = eglCreateSync64KHR(dpy, EGL_SYNC_CUDA_EVENT_NV, eglattrib);
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">//waits till kernel to finish</span>
+ eglWaitSyncKHR(eglDisplayHandle, eglsync2, 0); 
+ .
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">//Copy modified pArray values to hostSurf</span>
+ . 
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">unsigned</span> <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">char</span>* temp = (<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">unsigned</span> <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">char</span>*)(malloc(bufferSize * <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">sizeof</span>(<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">unsigned</span> <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">char</span>)));
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// Get the modified texture values</span>
+ GL_SAFE_CALL(glGetTexImage(GL_TEXTURE_2D, 0, GL_RGBA, GL_UNSIGNED_BYTE,(<span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-keyword">void</span>*)temp));
+ .
+ .
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// This function check if the OpenGL texture got modified values</span>
+ checkbuf(temp,hostSurf);
+ 
+ <span xmlns:xslthl="http://xslthl.sf.net" class="xslthl-comment">// Clean up CUDA</span>
+ cudaGraphicsUnregisterResource(pResource);
+ cudaDestroySurfaceObject(inputSurfObj);
+ eglDestroySyncKHR(eglDisplayHandle, eglsync1);
+ eglDestroySyncKHR(eglDisplayHandle, eglsync2);
+ cudaEventDestroy(egl_event);
+ cudaEventDestroy(cuda_event);
+ .
+ .
+}  </pre></div>
+                     </div>
+                  </div>
+               </div>
+               <div class="topic concept nested0" id="notices-header"><a name="notices-header" shape="rect">
+                     <!-- --></a><h2 class="title topictitle1"><a href="#notices-header" name="notices-header" shape="rect">Notices</a></h2>
+                  <div class="topic reference nested1" id="notice"><a name="notice" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#notice" name="notice" shape="rect"></a></h3>
+                     <div class="body refbody">
+                        <div class="section">
+                           <h3 class="title sectiontitle">Notice</h3>
+                           <p class="p">ALL NVIDIA DESIGN SPECIFICATIONS, REFERENCE BOARDS, FILES, DRAWINGS, DIAGNOSTICS, LISTS, AND OTHER DOCUMENTS (TOGETHER AND
+                              SEPARATELY, "MATERIALS") ARE BEING PROVIDED "AS IS." NVIDIA MAKES NO WARRANTIES, EXPRESSED, IMPLIED, STATUTORY, OR OTHERWISE
+                              WITH RESPECT TO THE MATERIALS, AND EXPRESSLY DISCLAIMS ALL IMPLIED WARRANTIES OF NONINFRINGEMENT, MERCHANTABILITY, AND FITNESS
+                              FOR A PARTICULAR PURPOSE. 
+                           </p>
+                           <p class="p">Information furnished is believed to be accurate and reliable. However, NVIDIA Corporation assumes no responsibility for the
+                              consequences of use of such information or for any infringement of patents or other rights of third parties that may result
+                              from its use. No license is granted by implication of otherwise under any patent rights of NVIDIA Corporation. Specifications
+                              mentioned in this publication are subject to change without notice. This publication supersedes and replaces all other information
+                              previously supplied. NVIDIA Corporation products are not authorized as critical components in life support devices or systems
+                              without express written approval of NVIDIA Corporation.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="topic reference nested1" id="trademarks"><a name="trademarks" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#trademarks" name="trademarks" shape="rect"></a></h3>
+                     <div class="body refbody">
+                        <div class="section">
+                           <h3 class="title sectiontitle">Trademarks</h3>
+                           <p class="p">NVIDIA and the NVIDIA logo are trademarks or registered trademarks of NVIDIA Corporation
+                              in the U.S. and other countries.  Other company and product names may be trademarks of
+                              the respective companies with which they are associated.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="topic reference nested1" id="copyright-present"><a name="copyright-present" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#copyright-present" name="copyright-present" shape="rect"></a></h3>
+                     <div class="body refbody">
+                        <div class="section">
+                           <h3 class="title sectiontitle">Copyright</h3>
+                           <p class="p">© <span class="ph">2019</span> NVIDIA Corporation. All rights
+                              reserved.
+                           </p>
+                           <p class="p">This product includes software developed by the Syncro Soft SRL (http://www.sync.ro/).</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               
+               <hr id="contents-end"></hr>
+               
+            </article>
+         </div>
+      </div>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/formatting/common.min.js"></script>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/scripts/google-analytics/google-analytics-write.js"></script>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/scripts/google-analytics/google-analytics-tracker.js"></script>
+      <script type="text/javascript">var switchTo5x=true;</script><script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script><script type="text/javascript">stLight.options({publisher: "998dc202-a267-4d8e-bce9-14debadb8d92", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script><script type="text/javascript">_satellite.pageBottom();</script></body>
+</html>

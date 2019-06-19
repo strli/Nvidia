@@ -1,0 +1,789 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="en-us">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+      <meta name="copyright" content="(C) Copyright 2005"></meta>
+      <meta name="DC.rights.owner" content="(C) Copyright 2005"></meta>
+      <meta name="DC.Type" content="cppModule"></meta>
+      <meta name="DC.Title" content="External Resource Interoperability"></meta>
+      <meta name="abstract" content=""></meta>
+      <meta name="description" content=""></meta>
+      <meta name="DC.Format" content="XHTML"></meta>
+      <meta name="DC.Identifier" content="group__CUDA__EXTRES__INTEROP"></meta>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/commonltr.css"></link>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/site.css"></link>
+      <title>CUDA Driver API :: CUDA Toolkit Documentation</title>
+      <!--[if lt IE 9]>
+      <script src="../common/formatting/html5shiv-printshiv.min.js"></script>
+      <![endif]-->
+      <script type="text/javascript" charset="utf-8" src="//assets.adobedtm.com/b92787824f2e0e9b68dc2e993f9bd995339fe417/satelliteLib-7ba51e58dc61bcb0e9311aadd02a0108ab24cc6c.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.min.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.ba-hashchange.min.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.scrollintoview.min.js"></script>
+      <script type="text/javascript" src="../search/htmlFileList.js"></script>
+      <script type="text/javascript" src="../search/htmlFileInfoList.js"></script>
+      <script type="text/javascript" src="../search/nwSearchFnt.min.js"></script>
+      <script type="text/javascript" src="../search/stemmers/en_stemmer.min.js"></script>
+      <script type="text/javascript" src="../search/index-1.js"></script>
+      <script type="text/javascript" src="../search/index-2.js"></script>
+      <script type="text/javascript" src="../search/index-3.js"></script>
+      <link rel="canonical" href="http://docs.nvidia.com/cuda/cuda-driver-api/index.html"></link>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/qwcode.highlight.css"></link>
+   </head>
+   <body>
+      
+      <header id="header"><span id="company">NVIDIA</span><span id="site-title">CUDA Toolkit Documentation</span><form id="search" method="get" action="search">
+            <input type="text" name="search-text"></input><fieldset id="search-location">
+               <legend>Search In:</legend>
+               <label><input type="radio" name="search-type" value="site"></input>Entire Site</label>
+               <label><input type="radio" name="search-type" value="document"></input>Just This Document</label></fieldset>
+            <button type="reset">clear search</button>
+            <button id="submit" type="submit">search</button></form>
+      </header>
+      <div id="site-content">
+         <nav id="site-nav">
+            <div class="category closed"><a href="../index.html" title="The root of the site.">CUDA Toolkit 
+                  
+                  
+                  v10.1.168</a></div>
+            <div class="category"><a href="index.html" title="CUDA Driver API">CUDA Driver API</a></div>
+            <ul>
+               <li>
+                  <div class="section-link"><a href="driver-vs-runtime-api.html#driver-vs-runtime-api">1.&nbsp;Difference between the driver and runtime APIs </a></div>
+               </li>
+               <li>
+                  <div class="section-link"><a href="api-sync-behavior.html#api-sync-behavior">2.&nbsp;API synchronization behavior </a></div>
+               </li>
+               <li>
+                  <div class="section-link"><a href="stream-sync-behavior.html#stream-sync-behavior">3.&nbsp;Stream synchronization behavior</a></div>
+               </li>
+               <li>
+                  <div class="section-link"><a href="graphs-thread-safety.html#graphs-thread-safety">4.&nbsp;Graph object thread safety</a></div>
+               </li>
+               <li>
+                  <div class="section-link"><a href="modules.html#modules">5.&nbsp;Modules</a></div>
+                  <ul>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__TYPES.html#group__CUDA__TYPES">5.1.&nbsp;Data types used by CUDA driver</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__ERROR.html#group__CUDA__ERROR">5.2.&nbsp;Error Handling</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__INITIALIZE.html#group__CUDA__INITIALIZE">5.3.&nbsp;Initialization</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__VERSION.html#group__CUDA__VERSION">5.4.&nbsp;Version Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__DEVICE.html#group__CUDA__DEVICE">5.5.&nbsp;Device Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__DEVICE__DEPRECATED.html#group__CUDA__DEVICE__DEPRECATED">5.6.&nbsp;Device Management [DEPRECATED]</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__PRIMARY__CTX.html#group__CUDA__PRIMARY__CTX">5.7.&nbsp;Primary Context Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__CTX.html#group__CUDA__CTX">5.8.&nbsp;Context Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__CTX__DEPRECATED.html#group__CUDA__CTX__DEPRECATED">5.9.&nbsp;Context Management [DEPRECATED]</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__MODULE.html#group__CUDA__MODULE">5.10.&nbsp;Module Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__MEM.html#group__CUDA__MEM">5.11.&nbsp;Memory Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__UNIFIED.html#group__CUDA__UNIFIED">5.12.&nbsp;Unified Addressing</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__STREAM.html#group__CUDA__STREAM">5.13.&nbsp;Stream Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__EVENT.html#group__CUDA__EVENT">5.14.&nbsp;Event Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__EXTRES__INTEROP.html#group__CUDA__EXTRES__INTEROP">5.15.&nbsp;External Resource Interoperability</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__MEMOP.html#group__CUDA__MEMOP">5.16.&nbsp;Stream memory operations</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__EXEC.html#group__CUDA__EXEC">5.17.&nbsp;Execution Control</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__EXEC__DEPRECATED.html#group__CUDA__EXEC__DEPRECATED">5.18.&nbsp;Execution Control [DEPRECATED]</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__GRAPH.html#group__CUDA__GRAPH">5.19.&nbsp;Graph Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__OCCUPANCY.html#group__CUDA__OCCUPANCY">5.20.&nbsp;Occupancy</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__TEXREF__DEPRECATED.html#group__CUDA__TEXREF__DEPRECATED">5.21.&nbsp;Texture Reference Management [DEPRECATED]</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__SURFREF__DEPRECATED.html#group__CUDA__SURFREF__DEPRECATED">5.22.&nbsp;Surface Reference Management [DEPRECATED]</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__TEXOBJECT.html#group__CUDA__TEXOBJECT">5.23.&nbsp;Texture Object Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__SURFOBJECT.html#group__CUDA__SURFOBJECT">5.24.&nbsp;Surface Object Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__PEER__ACCESS.html#group__CUDA__PEER__ACCESS">5.25.&nbsp;Peer Context Memory Access</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__GRAPHICS.html#group__CUDA__GRAPHICS">5.26.&nbsp;Graphics Interoperability</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__PROFILER.html#group__CUDA__PROFILER">5.27.&nbsp;Profiler Control</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__GL.html#group__CUDA__GL">5.28.&nbsp;OpenGL Interoperability</a></div>
+                        <ul>
+                           <li>
+                              <div class="section-link"><a href="group__CUDA__GL__DEPRECATED.html#group__CUDA__GL__DEPRECATED">5.28.1.&nbsp;OpenGL Interoperability [DEPRECATED]</a></div>
+                           </li>
+                        </ul>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__D3D9.html#group__CUDA__D3D9">5.29.&nbsp;Direct3D 9 Interoperability</a></div>
+                        <ul>
+                           <li>
+                              <div class="section-link"><a href="group__CUDA__D3D9__DEPRECATED.html#group__CUDA__D3D9__DEPRECATED">5.29.1.&nbsp;Direct3D 9 Interoperability [DEPRECATED]</a></div>
+                           </li>
+                        </ul>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__D3D10.html#group__CUDA__D3D10">5.30.&nbsp;Direct3D 10 Interoperability</a></div>
+                        <ul>
+                           <li>
+                              <div class="section-link"><a href="group__CUDA__D3D10__DEPRECATED.html#group__CUDA__D3D10__DEPRECATED">5.30.1.&nbsp;Direct3D 10 Interoperability [DEPRECATED]</a></div>
+                           </li>
+                        </ul>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__D3D11.html#group__CUDA__D3D11">5.31.&nbsp;Direct3D 11 Interoperability</a></div>
+                        <ul>
+                           <li>
+                              <div class="section-link"><a href="group__CUDA__D3D11__DEPRECATED.html#group__CUDA__D3D11__DEPRECATED">5.31.1.&nbsp;Direct3D 11 Interoperability [DEPRECATED]</a></div>
+                           </li>
+                        </ul>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__VDPAU.html#group__CUDA__VDPAU">5.32.&nbsp;VDPAU Interoperability</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDA__EGL.html#group__CUDA__EGL">5.33.&nbsp;EGL Interoperability</a></div>
+                     </li>
+                  </ul>
+               </li>
+               <li>
+                  <div class="section-link"><a href="annotated.html#annotated">6.&nbsp;Data Structures</a></div>
+                  <ul>
+                     <li>
+                        <div class="section-link"><a href="structCUDA__ARRAY3D__DESCRIPTOR.html#structCUDA__ARRAY3D__DESCRIPTOR">6.1.&nbsp;CUDA_ARRAY3D_DESCRIPTOR</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUDA__ARRAY__DESCRIPTOR.html#structCUDA__ARRAY__DESCRIPTOR">6.2.&nbsp;CUDA_ARRAY_DESCRIPTOR</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUDA__EXTERNAL__MEMORY__BUFFER__DESC.html#structCUDA__EXTERNAL__MEMORY__BUFFER__DESC">6.3.&nbsp;CUDA_EXTERNAL_MEMORY_BUFFER_DESC</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUDA__EXTERNAL__MEMORY__HANDLE__DESC.html#structCUDA__EXTERNAL__MEMORY__HANDLE__DESC">6.4.&nbsp;CUDA_EXTERNAL_MEMORY_HANDLE_DESC</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUDA__EXTERNAL__MEMORY__MIPMAPPED__ARRAY__DESC.html#structCUDA__EXTERNAL__MEMORY__MIPMAPPED__ARRAY__DESC">6.5.&nbsp;CUDA_EXTERNAL_MEMORY_MIPMAPPED_ARRAY_DESC</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUDA__EXTERNAL__SEMAPHORE__HANDLE__DESC.html#structCUDA__EXTERNAL__SEMAPHORE__HANDLE__DESC">6.6.&nbsp;CUDA_EXTERNAL_SEMAPHORE_HANDLE_DESC</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUDA__EXTERNAL__SEMAPHORE__SIGNAL__PARAMS.html#structCUDA__EXTERNAL__SEMAPHORE__SIGNAL__PARAMS">6.7.&nbsp;CUDA_EXTERNAL_SEMAPHORE_SIGNAL_PARAMS</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUDA__EXTERNAL__SEMAPHORE__WAIT__PARAMS.html#structCUDA__EXTERNAL__SEMAPHORE__WAIT__PARAMS">6.8.&nbsp;CUDA_EXTERNAL_SEMAPHORE_WAIT_PARAMS</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUDA__HOST__NODE__PARAMS.html#structCUDA__HOST__NODE__PARAMS">6.9.&nbsp;CUDA_HOST_NODE_PARAMS</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUDA__KERNEL__NODE__PARAMS.html#structCUDA__KERNEL__NODE__PARAMS">6.10.&nbsp;CUDA_KERNEL_NODE_PARAMS</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUDA__LAUNCH__PARAMS.html#structCUDA__LAUNCH__PARAMS">6.11.&nbsp;CUDA_LAUNCH_PARAMS</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUDA__MEMCPY2D.html#structCUDA__MEMCPY2D">6.12.&nbsp;CUDA_MEMCPY2D</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUDA__MEMCPY3D.html#structCUDA__MEMCPY3D">6.13.&nbsp;CUDA_MEMCPY3D</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUDA__MEMCPY3D__PEER.html#structCUDA__MEMCPY3D__PEER">6.14.&nbsp;CUDA_MEMCPY3D_PEER</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUDA__MEMSET__NODE__PARAMS.html#structCUDA__MEMSET__NODE__PARAMS">6.15.&nbsp;CUDA_MEMSET_NODE_PARAMS</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUDA__POINTER__ATTRIBUTE__P2P__TOKENS.html#structCUDA__POINTER__ATTRIBUTE__P2P__TOKENS">6.16.&nbsp;CUDA_POINTER_ATTRIBUTE_P2P_TOKENS</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUDA__RESOURCE__DESC.html#structCUDA__RESOURCE__DESC">6.17.&nbsp;CUDA_RESOURCE_DESC</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUDA__RESOURCE__VIEW__DESC.html#structCUDA__RESOURCE__VIEW__DESC">6.18.&nbsp;CUDA_RESOURCE_VIEW_DESC</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUDA__TEXTURE__DESC.html#structCUDA__TEXTURE__DESC">6.19.&nbsp;CUDA_TEXTURE_DESC</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUdevprop.html#structCUdevprop">6.20.&nbsp;CUdevprop</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUeglFrame.html#structCUeglFrame">6.21.&nbsp;CUeglFrame</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUipcEventHandle.html#structCUipcEventHandle">6.22.&nbsp;CUipcEventHandle</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUipcMemHandle.html#structCUipcMemHandle">6.23.&nbsp;CUipcMemHandle</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="unionCUstreamBatchMemOpParams.html#unionCUstreamBatchMemOpParams">6.24.&nbsp;CUstreamBatchMemOpParams</a></div>
+                     </li>
+                  </ul>
+               </li>
+               <li>
+                  <div class="section-link"><a href="functions.html#functions">7.&nbsp;Data Fields</a></div>
+               </li>
+               <li>
+                  <div class="section-link"><a href="deprecated.html#deprecated">8.&nbsp;Deprecated List</a></div>
+               </li>
+               <li>
+                  <div class="section-link"><a href="notices-header.html#notices-header">Notices</a></div>
+                  <ul></ul>
+               </li>
+            </ul>
+         </nav>
+         <div id="resize-nav"></div>
+         <nav id="search-results">
+            <h2>Search Results</h2>
+            <ol></ol>
+         </nav>
+         
+         <div id="contents-container">
+            <div id="breadcrumbs-container">
+               <div id="breadcrumbs"><a href="group__CUDA__EVENT.html" shape="rect">&lt; Previous</a> | <a href="group__CUDA__MEMOP.html" shape="rect">Next &gt;</a></div>
+               <div id="release-info">CUDA Driver API
+                  (<a href="../../pdf/CUDA_Driver_API.pdf">PDF</a>)
+                  -
+                   
+                  
+                  
+                  v10.1.168
+                  (<a href="https://developer.nvidia.com/cuda-toolkit-archive">older</a>)
+                  -
+                  Last updated April 24, 2019
+                  -
+                  <a href="mailto:CUDAIssues@nvidia.com?subject=CUDA Toolkit Documentation Feedback: CUDA Driver API">Send Feedback</a></div>
+            </div>
+            <article id="contents">
+               <div class="topic reference apiRef apiPackage cppModule" id="group__CUDA__EXTRES__INTEROP"><a name="group__CUDA__EXTRES__INTEROP" shape="rect">
+                     <!-- --></a><h2 class="topictitle2 cppModule">5.15.&nbsp;External Resource Interoperability</h2>
+                  <div class="section">
+                     <p>This section describes the external resource interoperability functions of the low-level CUDA driver application programming
+                        interface. 
+                     </p>
+                  </div>
+                  <h3 class="fake_sectiontitle member_header">Functions</h3>
+                  <dl class="members">
+                     <dt><span class="member_type"><a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc6c391505e117393cc2558fff6bfc2e9" title="" shape="rect">CUresult</a>&nbsp;</span><span class="member_name"><a href="#group__CUDA__EXTRES__INTEROP_1g1b586dda86565617e7e0883b956c7052" shape="rect">cuDestroyExternalMemory</a> (  <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc9500ef066876b1186f8a54afff900ba" title="" shape="rect">CUexternalMemory</a><span>&nbsp;</span><span class="keyword keyword apiItemName">extMem</span> ) </span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc">Destroys an external memory object. </span></dd>
+                     <dt><span class="member_type"><a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc6c391505e117393cc2558fff6bfc2e9" title="" shape="rect">CUresult</a>&nbsp;</span><span class="member_name"><a href="#group__CUDA__EXTRES__INTEROP_1g7f13444973542fa50b7e75bcfb2f923d" shape="rect">cuDestroyExternalSemaphore</a> (  <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1g0bc360152166a414e50a5167250552b8" title="" shape="rect">CUexternalSemaphore</a><span>&nbsp;</span><span class="keyword keyword apiItemName">extSem</span> ) </span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc">Destroys an external semaphore. </span></dd>
+                     <dt><span class="member_type"><a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc6c391505e117393cc2558fff6bfc2e9" title="" shape="rect">CUresult</a>&nbsp;</span><span class="member_name"><a href="#group__CUDA__EXTRES__INTEROP_1gb9fec33920400c70961b4e33d838da91" shape="rect">cuExternalMemoryGetMappedBuffer</a> (  <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1g5e264ce2ad6a38761e7e04921ef771de" title="" shape="rect">CUdeviceptr</a>*<span>&nbsp;</span><span class="keyword keyword apiItemName">devPtr</span>, <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc9500ef066876b1186f8a54afff900ba" title="" shape="rect">CUexternalMemory</a><span>&nbsp;</span><span class="keyword keyword apiItemName">extMem</span>, const <a href="structCUDA__EXTERNAL__MEMORY__BUFFER__DESC.html#structCUDA__EXTERNAL__MEMORY__BUFFER__DESC" title="" shape="rect">CUDA_EXTERNAL_MEMORY_BUFFER_DESC</a>*<span>&nbsp;</span><span class="keyword keyword apiItemName">bufferDesc</span> ) </span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc">Maps a buffer onto an imported memory object. </span></dd>
+                     <dt><span class="member_type"><a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc6c391505e117393cc2558fff6bfc2e9" title="" shape="rect">CUresult</a>&nbsp;</span><span class="member_name"><a href="#group__CUDA__EXTRES__INTEROP_1g02debbfa1b997e4f0e05300a312c17cc" shape="rect">cuExternalMemoryGetMappedMipmappedArray</a> (  <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1g96db856ab3d2940fb694ce4501d9b583" title="" shape="rect">CUmipmappedArray</a>*<span>&nbsp;</span><span class="keyword keyword apiItemName">mipmap</span>, <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc9500ef066876b1186f8a54afff900ba" title="" shape="rect">CUexternalMemory</a><span>&nbsp;</span><span class="keyword keyword apiItemName">extMem</span>, const <a href="structCUDA__EXTERNAL__MEMORY__MIPMAPPED__ARRAY__DESC.html#structCUDA__EXTERNAL__MEMORY__MIPMAPPED__ARRAY__DESC" title="" shape="rect">CUDA_EXTERNAL_MEMORY_MIPMAPPED_ARRAY_DESC</a>*<span>&nbsp;</span><span class="keyword keyword apiItemName">mipmapDesc</span> ) </span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc">Maps a CUDA mipmapped array onto an external memory object. </span></dd>
+                     <dt><span class="member_type"><a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc6c391505e117393cc2558fff6bfc2e9" title="" shape="rect">CUresult</a>&nbsp;</span><span class="member_name"><a href="#group__CUDA__EXTRES__INTEROP_1g52aba3a7f780157d8ba12972b2481735" shape="rect">cuImportExternalMemory</a> (  <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc9500ef066876b1186f8a54afff900ba" title="" shape="rect">CUexternalMemory</a>*<span>&nbsp;</span><span class="keyword keyword apiItemName">extMem_out</span>, const <a href="structCUDA__EXTERNAL__MEMORY__HANDLE__DESC.html#structCUDA__EXTERNAL__MEMORY__HANDLE__DESC" title="" shape="rect">CUDA_EXTERNAL_MEMORY_HANDLE_DESC</a>*<span>&nbsp;</span><span class="keyword keyword apiItemName">memHandleDesc</span> ) </span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc">Imports an external memory object. </span></dd>
+                     <dt><span class="member_type"><a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc6c391505e117393cc2558fff6bfc2e9" title="" shape="rect">CUresult</a>&nbsp;</span><span class="member_name"><a href="#group__CUDA__EXTRES__INTEROP_1ge593134f5f9650474af74db644c4a326" shape="rect">cuImportExternalSemaphore</a> (  <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1g0bc360152166a414e50a5167250552b8" title="" shape="rect">CUexternalSemaphore</a>*<span>&nbsp;</span><span class="keyword keyword apiItemName">extSem_out</span>, const <a href="structCUDA__EXTERNAL__SEMAPHORE__HANDLE__DESC.html#structCUDA__EXTERNAL__SEMAPHORE__HANDLE__DESC" title="" shape="rect">CUDA_EXTERNAL_SEMAPHORE_HANDLE_DESC</a>*<span>&nbsp;</span><span class="keyword keyword apiItemName">semHandleDesc</span> ) </span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc">Imports an external semaphore. </span></dd>
+                     <dt><span class="member_type"><a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc6c391505e117393cc2558fff6bfc2e9" title="" shape="rect">CUresult</a>&nbsp;</span><span class="member_name"><a href="#group__CUDA__EXTRES__INTEROP_1g86cd6c4b3f439ba786f4e65d1b8107c3" shape="rect">cuSignalExternalSemaphoresAsync</a> (  const <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1g0bc360152166a414e50a5167250552b8" title="" shape="rect">CUexternalSemaphore</a>*<span>&nbsp;</span><span class="keyword keyword apiItemName">extSemArray</span>, const <a href="structCUDA__EXTERNAL__SEMAPHORE__SIGNAL__PARAMS.html#structCUDA__EXTERNAL__SEMAPHORE__SIGNAL__PARAMS" title="" shape="rect">CUDA_EXTERNAL_SEMAPHORE_SIGNAL_PARAMS</a>*<span>&nbsp;</span><span class="keyword keyword apiItemName">paramsArray</span>, unsigned int <span>&nbsp;</span><span class="keyword keyword apiItemName">numExtSems</span>, <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gb946c7f02e09efd788a204718015d88a" title="" shape="rect">CUstream</a><span>&nbsp;</span><span class="keyword keyword apiItemName">stream</span> ) </span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc">Signals a set of external semaphore objects. </span></dd>
+                     <dt><span class="member_type"><a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc6c391505e117393cc2558fff6bfc2e9" title="" shape="rect">CUresult</a>&nbsp;</span><span class="member_name"><a href="#group__CUDA__EXTRES__INTEROP_1g063f01a524818ac89bacf521c55a39f0" shape="rect">cuWaitExternalSemaphoresAsync</a> (  const <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1g0bc360152166a414e50a5167250552b8" title="" shape="rect">CUexternalSemaphore</a>*<span>&nbsp;</span><span class="keyword keyword apiItemName">extSemArray</span>, const <a href="structCUDA__EXTERNAL__SEMAPHORE__WAIT__PARAMS.html#structCUDA__EXTERNAL__SEMAPHORE__WAIT__PARAMS" title="" shape="rect">CUDA_EXTERNAL_SEMAPHORE_WAIT_PARAMS</a>*<span>&nbsp;</span><span class="keyword keyword apiItemName">paramsArray</span>, unsigned int <span>&nbsp;</span><span class="keyword keyword apiItemName">numExtSems</span>, <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gb946c7f02e09efd788a204718015d88a" title="" shape="rect">CUstream</a><span>&nbsp;</span><span class="keyword keyword apiItemName">stream</span> ) </span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc">Waits on a set of external semaphore objects. </span></dd>
+                  </dl>
+                  <div class="description">
+                     <h3 class="sectiontitle">Functions</h3>
+                     <dl class="description">
+                        <dt class="description"><a name="group__CUDA__EXTRES__INTEROP_1g1b586dda86565617e7e0883b956c7052" id="group__CUDA__EXTRES__INTEROP_1g1b586dda86565617e7e0883b956c7052" shape="rect">
+                              <!-- --></a><span><a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc6c391505e117393cc2558fff6bfc2e9" title="" shape="rect">CUresult</a> cuDestroyExternalMemory (  <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc9500ef066876b1186f8a54afff900ba" title="" shape="rect">CUexternalMemory</a><span>&nbsp;</span><span class="keyword keyword apiItemName">extMem</span> ) </span></dt>
+                        <dd class="description">
+                           <div class="section">Destroys an external memory object. </div>
+                           <div class="section">
+                              <h6 class="parameter_header">
+                                 Parameters
+                                 
+                              </h6>
+                              <dl class="table-display-params">
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">extMem</span></tt></dt>
+                                 <dd>- External memory object to be destroyed</dd>
+                              </dl>
+                           </div>
+                           <div class="section">
+                              <h6 class="return_header">Returns</h6>
+                              <p class="return"><a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9a0eed720f8a87cd1c5fd1c453bc7a03d" shape="rect">CUDA_SUCCESS</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e98feb999f0af99b4a25ab26b3866f4df8" shape="rect">CUDA_ERROR_NOT_INITIALIZED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e90fd2e63260c6317ba943af0f7e4b8d21" shape="rect">CUDA_ERROR_INVALID_HANDLE</a></p>
+                           </div>
+                           <div class="section">
+                              <h6 class="description_header">Description</h6>
+                              <p>Destroys the specified external memory object. Any existing buffers and CUDA mipmapped arrays mapped onto this object must
+                                 no longer be used and must be explicitly freed using <a class="xref" href="group__CUDA__MEM.html#group__CUDA__MEM_1g89b3f154e17cc89b6eea277dbdf5c93a" title="Frees device memory." shape="rect">cuMemFree</a> and <a class="xref" href="group__CUDA__MEM.html#group__CUDA__MEM_1ge0d7c768b6a6963c4d4bde5bbc74f0ad" title="Destroys a CUDA mipmapped array." shape="rect">cuMipmappedArrayDestroy</a> respectively.
+                              </p>
+                              <p class="p"></p>
+                              <p class="p"></p>
+                              <p class="p">
+                                 <div class="note note"><span class="notetitle">Note:</span><p class="p">Note that this function may also return error codes from previous, asynchronous launches.</p>
+                                 </div>
+                              </p>
+                              <p class="p"></p>
+                              <p class="p apiDesc_subtitle"><strong class="ph b">See also:</strong></p>
+                              <p class="p see_subsection"><a class="xref" href="group__CUDA__EXTRES__INTEROP.html#group__CUDA__EXTRES__INTEROP_1g52aba3a7f780157d8ba12972b2481735" title="Imports an external memory object." shape="rect">cuImportExternalMemory</a><a class="xref" href="group__CUDA__EXTRES__INTEROP.html#group__CUDA__EXTRES__INTEROP_1gb9fec33920400c70961b4e33d838da91" title="Maps a buffer onto an imported memory object." shape="rect">cuExternalMemoryGetMappedBuffer</a>, <a class="xref" href="group__CUDA__EXTRES__INTEROP.html#group__CUDA__EXTRES__INTEROP_1g02debbfa1b997e4f0e05300a312c17cc" title="Maps a CUDA mipmapped array onto an external memory object." shape="rect">cuExternalMemoryGetMappedMipmappedArray</a></p>
+                              <p class="p"></p>
+                           </div>
+                        </dd>
+                        <dt class="description"><a name="group__CUDA__EXTRES__INTEROP_1g7f13444973542fa50b7e75bcfb2f923d" id="group__CUDA__EXTRES__INTEROP_1g7f13444973542fa50b7e75bcfb2f923d" shape="rect">
+                              <!-- --></a><span><a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc6c391505e117393cc2558fff6bfc2e9" title="" shape="rect">CUresult</a> cuDestroyExternalSemaphore (  <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1g0bc360152166a414e50a5167250552b8" title="" shape="rect">CUexternalSemaphore</a><span>&nbsp;</span><span class="keyword keyword apiItemName">extSem</span> ) </span></dt>
+                        <dd class="description">
+                           <div class="section">Destroys an external semaphore. </div>
+                           <div class="section">
+                              <h6 class="parameter_header">
+                                 Parameters
+                                 
+                              </h6>
+                              <dl class="table-display-params">
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">extSem</span></tt></dt>
+                                 <dd>- External semaphore to be destroyed</dd>
+                              </dl>
+                           </div>
+                           <div class="section">
+                              <h6 class="return_header">Returns</h6>
+                              <p class="return"><a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9a0eed720f8a87cd1c5fd1c453bc7a03d" shape="rect">CUDA_SUCCESS</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e98feb999f0af99b4a25ab26b3866f4df8" shape="rect">CUDA_ERROR_NOT_INITIALIZED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e90fd2e63260c6317ba943af0f7e4b8d21" shape="rect">CUDA_ERROR_INVALID_HANDLE</a></p>
+                           </div>
+                           <div class="section">
+                              <h6 class="description_header">Description</h6>
+                              <p>Destroys an external semaphore object and releases any references to the underlying resource. Any outstanding signals or waits
+                                 must have completed before the semaphore is destroyed.
+                              </p>
+                              <p class="p"></p>
+                              <p class="p"></p>
+                              <p class="p">
+                                 <div class="note note"><span class="notetitle">Note:</span><p class="p">Note that this function may also return error codes from previous, asynchronous launches.</p>
+                                 </div>
+                              </p>
+                              <p class="p"></p>
+                              <p class="p apiDesc_subtitle"><strong class="ph b">See also:</strong></p>
+                              <p class="p see_subsection"><a class="xref" href="group__CUDA__EXTRES__INTEROP.html#group__CUDA__EXTRES__INTEROP_1ge593134f5f9650474af74db644c4a326" title="Imports an external semaphore." shape="rect">cuImportExternalSemaphore</a>, <a class="xref" href="group__CUDA__EXTRES__INTEROP.html#group__CUDA__EXTRES__INTEROP_1g86cd6c4b3f439ba786f4e65d1b8107c3" title="Signals a set of external semaphore objects." shape="rect">cuSignalExternalSemaphoresAsync</a>, <a class="xref" href="group__CUDA__EXTRES__INTEROP.html#group__CUDA__EXTRES__INTEROP_1g063f01a524818ac89bacf521c55a39f0" title="Waits on a set of external semaphore objects." shape="rect">cuWaitExternalSemaphoresAsync</a></p>
+                              <p class="p"></p>
+                           </div>
+                        </dd>
+                        <dt class="description"><a name="group__CUDA__EXTRES__INTEROP_1gb9fec33920400c70961b4e33d838da91" id="group__CUDA__EXTRES__INTEROP_1gb9fec33920400c70961b4e33d838da91" shape="rect">
+                              <!-- --></a><span><a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc6c391505e117393cc2558fff6bfc2e9" title="" shape="rect">CUresult</a> cuExternalMemoryGetMappedBuffer (  <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1g5e264ce2ad6a38761e7e04921ef771de" title="" shape="rect">CUdeviceptr</a>*<span>&nbsp;</span><span class="keyword keyword apiItemName">devPtr</span>, <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc9500ef066876b1186f8a54afff900ba" title="" shape="rect">CUexternalMemory</a><span>&nbsp;</span><span class="keyword keyword apiItemName">extMem</span>, const <a href="structCUDA__EXTERNAL__MEMORY__BUFFER__DESC.html#structCUDA__EXTERNAL__MEMORY__BUFFER__DESC" title="" shape="rect">CUDA_EXTERNAL_MEMORY_BUFFER_DESC</a>*<span>&nbsp;</span><span class="keyword keyword apiItemName">bufferDesc</span> ) </span></dt>
+                        <dd class="description">
+                           <div class="section">Maps a buffer onto an imported memory object. </div>
+                           <div class="section">
+                              <h6 class="parameter_header">
+                                 Parameters
+                                 
+                              </h6>
+                              <dl class="table-display-params">
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">devPtr</span></tt></dt>
+                                 <dd>- Returned device pointer to buffer </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">extMem</span></tt></dt>
+                                 <dd>- Handle to external memory object </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">bufferDesc</span></tt></dt>
+                                 <dd>- Buffer descriptor</dd>
+                              </dl>
+                           </div>
+                           <div class="section">
+                              <h6 class="return_header">Returns</h6>
+                              <p class="return"><a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9a0eed720f8a87cd1c5fd1c453bc7a03d" shape="rect">CUDA_SUCCESS</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e98feb999f0af99b4a25ab26b3866f4df8" shape="rect">CUDA_ERROR_NOT_INITIALIZED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e90fd2e63260c6317ba943af0f7e4b8d21" shape="rect">CUDA_ERROR_INVALID_HANDLE</a></p>
+                           </div>
+                           <div class="section">
+                              <h6 class="description_header">Description</h6>
+                              <p>Maps a buffer onto an imported memory object and returns a device pointer in <tt class="ph tt code">devPtr</tt>.
+                              </p>
+                              <p class="p">The properties of the buffer being mapped must be described in <tt class="ph tt code">bufferDesc</tt>. The <a class="xref" href="structCUDA__EXTERNAL__MEMORY__BUFFER__DESC.html#structCUDA__EXTERNAL__MEMORY__BUFFER__DESC" shape="rect">CUDA_EXTERNAL_MEMORY_BUFFER_DESC</a> structure is defined as follows:
+                              </p>
+                              <p class="p"><pre xml:space="preserve">‎        typedef struct CUDA_EXTERNAL_MEMORY_BUFFER_DESC_st {
+                  unsigned long long offset;
+                  unsigned long long size;
+                  unsigned int flags;
+              } <a class="xref" href="structCUDA__EXTERNAL__MEMORY__BUFFER__DESC.html#structCUDA__EXTERNAL__MEMORY__BUFFER__DESC" shape="rect">CUDA_EXTERNAL_MEMORY_BUFFER_DESC</a>;</pre></p>
+                              <p class="p">where <a class="xref" href="structCUDA__EXTERNAL__MEMORY__BUFFER__DESC.html#structCUDA__EXTERNAL__MEMORY__BUFFER__DESC_1ee4861a75667ab006ea03c388192f249" shape="rect">CUDA_EXTERNAL_MEMORY_BUFFER_DESC::offset</a> is the offset in the memory object where the buffer's base address is. <a class="xref" href="structCUDA__EXTERNAL__MEMORY__BUFFER__DESC.html#structCUDA__EXTERNAL__MEMORY__BUFFER__DESC_11dedc7f8f17b2399cb525eefdef58936" shape="rect">CUDA_EXTERNAL_MEMORY_BUFFER_DESC::size</a> is the size of the buffer. <a class="xref" href="structCUDA__EXTERNAL__MEMORY__BUFFER__DESC.html#structCUDA__EXTERNAL__MEMORY__BUFFER__DESC_19caed1dc741705233f1b6ceb4cde91da" shape="rect">CUDA_EXTERNAL_MEMORY_BUFFER_DESC::flags</a> must be zero.
+                              </p>
+                              <p class="p">The offset and size have to be suitably aligned to match the requirements of the external API. Mapping two buffers whose ranges
+                                 overlap may or may not result in the same virtual address being returned for the overlapped portion. In such cases, the application
+                                 must ensure that all accesses to that region from the GPU are volatile. Otherwise writes made via one address are not guaranteed
+                                 to be visible via the other address, even if they're issued by the same thread. It is recommended that applications map the
+                                 combined range instead of mapping separate buffers and then apply the appropriate offsets to the returned pointer to derive
+                                 the individual buffers.
+                              </p>
+                              <p class="p">The returned pointer <tt class="ph tt code">devPtr</tt> must be freed using <a class="xref" href="group__CUDA__MEM.html#group__CUDA__MEM_1g89b3f154e17cc89b6eea277dbdf5c93a" title="Frees device memory." shape="rect">cuMemFree</a>.
+                              </p>
+                              <p class="p"></p>
+                              <p class="p"></p>
+                              <p class="p">
+                                 <div class="note note"><span class="notetitle">Note:</span><p class="p">Note that this function may also return error codes from previous, asynchronous launches.</p>
+                                 </div>
+                              </p>
+                              <p class="p"></p>
+                              <p class="p apiDesc_subtitle"><strong class="ph b">See also:</strong></p>
+                              <p class="p see_subsection"><a class="xref" href="group__CUDA__EXTRES__INTEROP.html#group__CUDA__EXTRES__INTEROP_1g52aba3a7f780157d8ba12972b2481735" title="Imports an external memory object." shape="rect">cuImportExternalMemory</a><a class="xref" href="group__CUDA__EXTRES__INTEROP.html#group__CUDA__EXTRES__INTEROP_1g1b586dda86565617e7e0883b956c7052" title="Destroys an external memory object." shape="rect">cuDestroyExternalMemory</a>, <a class="xref" href="group__CUDA__EXTRES__INTEROP.html#group__CUDA__EXTRES__INTEROP_1g02debbfa1b997e4f0e05300a312c17cc" title="Maps a CUDA mipmapped array onto an external memory object." shape="rect">cuExternalMemoryGetMappedMipmappedArray</a></p>
+                              <p class="p"></p>
+                           </div>
+                        </dd>
+                        <dt class="description"><a name="group__CUDA__EXTRES__INTEROP_1g02debbfa1b997e4f0e05300a312c17cc" id="group__CUDA__EXTRES__INTEROP_1g02debbfa1b997e4f0e05300a312c17cc" shape="rect">
+                              <!-- --></a><span><a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc6c391505e117393cc2558fff6bfc2e9" title="" shape="rect">CUresult</a> cuExternalMemoryGetMappedMipmappedArray (  <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1g96db856ab3d2940fb694ce4501d9b583" title="" shape="rect">CUmipmappedArray</a>*<span>&nbsp;</span><span class="keyword keyword apiItemName">mipmap</span>, <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc9500ef066876b1186f8a54afff900ba" title="" shape="rect">CUexternalMemory</a><span>&nbsp;</span><span class="keyword keyword apiItemName">extMem</span>, const <a href="structCUDA__EXTERNAL__MEMORY__MIPMAPPED__ARRAY__DESC.html#structCUDA__EXTERNAL__MEMORY__MIPMAPPED__ARRAY__DESC" title="" shape="rect">CUDA_EXTERNAL_MEMORY_MIPMAPPED_ARRAY_DESC</a>*<span>&nbsp;</span><span class="keyword keyword apiItemName">mipmapDesc</span> ) </span></dt>
+                        <dd class="description">
+                           <div class="section">Maps a CUDA mipmapped array onto an external memory object. </div>
+                           <div class="section">
+                              <h6 class="parameter_header">
+                                 Parameters
+                                 
+                              </h6>
+                              <dl class="table-display-params">
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">mipmap</span></tt></dt>
+                                 <dd>- Returned CUDA mipmapped array </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">extMem</span></tt></dt>
+                                 <dd>- Handle to external memory object </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">mipmapDesc</span></tt></dt>
+                                 <dd>- CUDA array descriptor</dd>
+                              </dl>
+                           </div>
+                           <div class="section">
+                              <h6 class="return_header">Returns</h6>
+                              <p class="return"><a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9a0eed720f8a87cd1c5fd1c453bc7a03d" shape="rect">CUDA_SUCCESS</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e98feb999f0af99b4a25ab26b3866f4df8" shape="rect">CUDA_ERROR_NOT_INITIALIZED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e90fd2e63260c6317ba943af0f7e4b8d21" shape="rect">CUDA_ERROR_INVALID_HANDLE</a></p>
+                           </div>
+                           <div class="section">
+                              <h6 class="description_header">Description</h6>
+                              <p>Maps a CUDA mipmapped array onto an external object and returns a handle to it in <tt class="ph tt code">mipmap</tt>.
+                              </p>
+                              <p class="p">The properties of the CUDA mipmapped array being mapped must be described in <tt class="ph tt code">mipmapDesc</tt>. The structure <a class="xref" href="structCUDA__EXTERNAL__MEMORY__MIPMAPPED__ARRAY__DESC.html#structCUDA__EXTERNAL__MEMORY__MIPMAPPED__ARRAY__DESC" shape="rect">CUDA_EXTERNAL_MEMORY_MIPMAPPED_ARRAY_DESC</a> is defined as follows:
+                              </p>
+                              <p class="p"><pre xml:space="preserve">‎        typedef struct CUDA_EXTERNAL_MEMORY_MIPMAPPED_ARRAY_DESC_st {
+                  unsigned long long offset;
+                  <a class="xref" href="structCUDA__ARRAY3D__DESCRIPTOR.html#structCUDA__ARRAY3D__DESCRIPTOR" shape="rect">CUDA_ARRAY3D_DESCRIPTOR</a> arrayDesc;
+                  unsigned int numLevels;
+              } <a class="xref" href="structCUDA__EXTERNAL__MEMORY__MIPMAPPED__ARRAY__DESC.html#structCUDA__EXTERNAL__MEMORY__MIPMAPPED__ARRAY__DESC" shape="rect">CUDA_EXTERNAL_MEMORY_MIPMAPPED_ARRAY_DESC</a>;</pre></p>
+                              <p class="p">where <a class="xref" href="structCUDA__EXTERNAL__MEMORY__MIPMAPPED__ARRAY__DESC.html#structCUDA__EXTERNAL__MEMORY__MIPMAPPED__ARRAY__DESC_1bee521e1e0d86c256995c3e6ee0a50de" shape="rect">CUDA_EXTERNAL_MEMORY_MIPMAPPED_ARRAY_DESC::offset</a> is the offset in the memory object where the base level of the mipmap chain is. <a class="xref" href="structCUDA__EXTERNAL__MEMORY__MIPMAPPED__ARRAY__DESC.html#structCUDA__EXTERNAL__MEMORY__MIPMAPPED__ARRAY__DESC_150d11865c5f238d3b583308bfc6515a2" shape="rect">CUDA_EXTERNAL_MEMORY_MIPMAPPED_ARRAY_DESC::arrayDesc</a> describes the format, dimensions and type of the base level of the mipmap chain. For further details on these parameters,
+                                 please refer to the documentation for <a class="xref" href="group__CUDA__MEM.html#group__CUDA__MEM_1ga5d2e311c7f9b0bc6d130af824a40bd3" title="Creates a CUDA mipmapped array." shape="rect">cuMipmappedArrayCreate</a>. Note that if the mipmapped array is bound as a color target in the graphics API, then the flag <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1g26e6ae0e2d1dcef8205a840ebc193022" shape="rect">CUDA_ARRAY3D_COLOR_ATTACHMENT</a> must be specified in CUDA_EXTERNAL_MEMORY_MIPMAPPED_ARRAY_DESC::arrayDesc::Flags. <a class="xref" href="structCUDA__EXTERNAL__MEMORY__MIPMAPPED__ARRAY__DESC.html#structCUDA__EXTERNAL__MEMORY__MIPMAPPED__ARRAY__DESC_17798b909a8e5647b25eca1185929438a" shape="rect">CUDA_EXTERNAL_MEMORY_MIPMAPPED_ARRAY_DESC::numLevels</a> specifies the total number of levels in the mipmap chain.
+                              </p>
+                              <p class="p">The returned CUDA mipmapped array must be freed using <a class="xref" href="group__CUDA__MEM.html#group__CUDA__MEM_1ge0d7c768b6a6963c4d4bde5bbc74f0ad" title="Destroys a CUDA mipmapped array." shape="rect">cuMipmappedArrayDestroy</a>.
+                              </p>
+                              <p class="p"></p>
+                              <p class="p"></p>
+                              <p class="p">
+                                 <div class="note note"><span class="notetitle">Note:</span><p class="p">Note that this function may also return error codes from previous, asynchronous launches.</p>
+                                 </div>
+                              </p>
+                              <p class="p"></p>
+                              <p class="p apiDesc_subtitle"><strong class="ph b">See also:</strong></p>
+                              <p class="p see_subsection"><a class="xref" href="group__CUDA__EXTRES__INTEROP.html#group__CUDA__EXTRES__INTEROP_1g52aba3a7f780157d8ba12972b2481735" title="Imports an external memory object." shape="rect">cuImportExternalMemory</a><a class="xref" href="group__CUDA__EXTRES__INTEROP.html#group__CUDA__EXTRES__INTEROP_1g1b586dda86565617e7e0883b956c7052" title="Destroys an external memory object." shape="rect">cuDestroyExternalMemory</a>, <a class="xref" href="group__CUDA__EXTRES__INTEROP.html#group__CUDA__EXTRES__INTEROP_1gb9fec33920400c70961b4e33d838da91" title="Maps a buffer onto an imported memory object." shape="rect">cuExternalMemoryGetMappedBuffer</a></p>
+                              <p class="p"></p>
+                           </div>
+                        </dd>
+                        <dt class="description"><a name="group__CUDA__EXTRES__INTEROP_1g52aba3a7f780157d8ba12972b2481735" id="group__CUDA__EXTRES__INTEROP_1g52aba3a7f780157d8ba12972b2481735" shape="rect">
+                              <!-- --></a><span><a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc6c391505e117393cc2558fff6bfc2e9" title="" shape="rect">CUresult</a> cuImportExternalMemory (  <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc9500ef066876b1186f8a54afff900ba" title="" shape="rect">CUexternalMemory</a>*<span>&nbsp;</span><span class="keyword keyword apiItemName">extMem_out</span>, const <a href="structCUDA__EXTERNAL__MEMORY__HANDLE__DESC.html#structCUDA__EXTERNAL__MEMORY__HANDLE__DESC" title="" shape="rect">CUDA_EXTERNAL_MEMORY_HANDLE_DESC</a>*<span>&nbsp;</span><span class="keyword keyword apiItemName">memHandleDesc</span> ) </span></dt>
+                        <dd class="description">
+                           <div class="section">Imports an external memory object. </div>
+                           <div class="section">
+                              <h6 class="parameter_header">
+                                 Parameters
+                                 
+                              </h6>
+                              <dl class="table-display-params">
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">extMem_out</span></tt></dt>
+                                 <dd>- Returned handle to an external memory object </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">memHandleDesc</span></tt></dt>
+                                 <dd>- Memory import handle descriptor</dd>
+                              </dl>
+                           </div>
+                           <div class="section">
+                              <h6 class="return_header">Returns</h6>
+                              <p class="return"><a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9a0eed720f8a87cd1c5fd1c453bc7a03d" shape="rect">CUDA_SUCCESS</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e98feb999f0af99b4a25ab26b3866f4df8" shape="rect">CUDA_ERROR_NOT_INITIALIZED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e90fd2e63260c6317ba943af0f7e4b8d21" shape="rect">CUDA_ERROR_INVALID_HANDLE</a></p>
+                           </div>
+                           <div class="section">
+                              <h6 class="description_header">Description</h6>
+                              <p>Imports an externally allocated memory object and returns a handle to that in <tt class="ph tt code">extMem_out</tt>.
+                              </p>
+                              <p class="p">The properties of the handle being imported must be described in <tt class="ph tt code">memHandleDesc</tt>. The <a class="xref" href="structCUDA__EXTERNAL__MEMORY__HANDLE__DESC.html#structCUDA__EXTERNAL__MEMORY__HANDLE__DESC" shape="rect">CUDA_EXTERNAL_MEMORY_HANDLE_DESC</a> structure is defined as follows:
+                              </p>
+                              <p class="p"><pre xml:space="preserve">‎        typedef struct CUDA_EXTERNAL_MEMORY_HANDLE_DESC_st {
+                  <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gbca0bdde9a33c47058b5c97f21e2edd8" shape="rect">CUexternalMemoryHandleType</a> type;
+                  union {
+                      int fd;
+                      struct {
+                          void *handle;
+                          const void *name;
+                      } win32;
+                  } handle;
+                  unsigned long long size;
+                  unsigned int flags;
+              } <a class="xref" href="structCUDA__EXTERNAL__MEMORY__HANDLE__DESC.html#structCUDA__EXTERNAL__MEMORY__HANDLE__DESC" shape="rect">CUDA_EXTERNAL_MEMORY_HANDLE_DESC</a>;</pre></p>
+                              <p class="p">where <a class="xref" href="structCUDA__EXTERNAL__MEMORY__HANDLE__DESC.html#structCUDA__EXTERNAL__MEMORY__HANDLE__DESC_12bea55b4e977192856d5ef3b710e350b" shape="rect">CUDA_EXTERNAL_MEMORY_HANDLE_DESC::type</a> specifies the type of handle being imported. <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gbca0bdde9a33c47058b5c97f21e2edd8" shape="rect">CUexternalMemoryHandleType</a> is defined as:
+                              </p>
+                              <p class="p"><pre xml:space="preserve">‎        typedef enum CUexternalMemoryHandleType_enum {
+                  <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggbca0bdde9a33c47058b5c97f21e2edd864efb8402f2268e489336396b2048c07" shape="rect">CU_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD</a>        = 1,
+                  <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggbca0bdde9a33c47058b5c97f21e2edd8d76fbf1ffdee6cee58aa8a4a41f6b5fd" shape="rect">CU_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32</a>     = 2,
+                  <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggbca0bdde9a33c47058b5c97f21e2edd8fde7150bec78dae8ee4cd6e88a7f4064" shape="rect">CU_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT</a> = 3,
+                  <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggbca0bdde9a33c47058b5c97f21e2edd81a96f6957350ec0508b6ac4ec17f465f" shape="rect">CU_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_HEAP</a>       = 4,
+                  <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggbca0bdde9a33c47058b5c97f21e2edd8532abdef8908d5d35a773e491ea68f5b" shape="rect">CU_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_RESOURCE</a>   = 5
+              } <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gbca0bdde9a33c47058b5c97f21e2edd8" shape="rect">CUexternalMemoryHandleType</a>;</pre></p>
+                              <p class="p">If <a class="xref" href="structCUDA__EXTERNAL__MEMORY__HANDLE__DESC.html#structCUDA__EXTERNAL__MEMORY__HANDLE__DESC_12bea55b4e977192856d5ef3b710e350b" shape="rect">CUDA_EXTERNAL_MEMORY_HANDLE_DESC::type</a> is <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggbca0bdde9a33c47058b5c97f21e2edd864efb8402f2268e489336396b2048c07" shape="rect">CU_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_FD</a>, then CUDA_EXTERNAL_MEMORY_HANDLE_DESC::handle::fd must be a valid file descriptor referencing a memory object. Ownership
+                                 of the file descriptor is transferred to the CUDA driver when the handle is imported successfully. Performing any operations
+                                 on the file descriptor after it is imported results in undefined behavior.
+                              </p>
+                              <p class="p">If <a class="xref" href="structCUDA__EXTERNAL__MEMORY__HANDLE__DESC.html#structCUDA__EXTERNAL__MEMORY__HANDLE__DESC_12bea55b4e977192856d5ef3b710e350b" shape="rect">CUDA_EXTERNAL_MEMORY_HANDLE_DESC::type</a> is <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggbca0bdde9a33c47058b5c97f21e2edd8d76fbf1ffdee6cee58aa8a4a41f6b5fd" shape="rect">CU_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32</a>, then exactly one of CUDA_EXTERNAL_MEMORY_HANDLE_DESC::handle::win32::handle and CUDA_EXTERNAL_MEMORY_HANDLE_DESC::handle::win32::name
+                                 must not be NULL. If CUDA_EXTERNAL_MEMORY_HANDLE_DESC::handle::win32::handle is not NULL, then it must represent a valid shared
+                                 NT handle that references a memory object. Ownership of this handle is not transferred to CUDA after the import operation,
+                                 so the application must release the handle using the appropriate system call. If CUDA_EXTERNAL_MEMORY_HANDLE_DESC::handle::win32::name
+                                 is not NULL, then it must point to a NULL-terminated array of UTF-16 characters that refers to a memory object.
+                              </p>
+                              <p class="p">If <a class="xref" href="structCUDA__EXTERNAL__MEMORY__HANDLE__DESC.html#structCUDA__EXTERNAL__MEMORY__HANDLE__DESC_12bea55b4e977192856d5ef3b710e350b" shape="rect">CUDA_EXTERNAL_MEMORY_HANDLE_DESC::type</a> is <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggbca0bdde9a33c47058b5c97f21e2edd8fde7150bec78dae8ee4cd6e88a7f4064" shape="rect">CU_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT</a>, then CUDA_EXTERNAL_MEMORY_HANDLE_DESC::handle::win32::handle must be non-NULL and CUDA_EXTERNAL_MEMORY_HANDLE_DESC::handle::win32::name
+                                 must be NULL. The handle specified must be a globally shared KMT handle. This handle does not hold a reference to the underlying
+                                 object, and thus will be invalid when all references to the memory object are destroyed.
+                              </p>
+                              <p class="p">If <a class="xref" href="structCUDA__EXTERNAL__MEMORY__HANDLE__DESC.html#structCUDA__EXTERNAL__MEMORY__HANDLE__DESC_12bea55b4e977192856d5ef3b710e350b" shape="rect">CUDA_EXTERNAL_MEMORY_HANDLE_DESC::type</a> is <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggbca0bdde9a33c47058b5c97f21e2edd81a96f6957350ec0508b6ac4ec17f465f" shape="rect">CU_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_HEAP</a>, then exactly one of CUDA_EXTERNAL_MEMORY_HANDLE_DESC::handle::win32::handle and CUDA_EXTERNAL_MEMORY_HANDLE_DESC::handle::win32::name
+                                 must not be NULL. If CUDA_EXTERNAL_MEMORY_HANDLE_DESC::handle::win32::handle is not NULL, then it must represent a valid shared
+                                 NT handle that is returned by ID3DDevice::CreateSharedHandle when referring to a ID3D12Heap object. This handle holds a reference
+                                 to the underlying object. If CUDA_EXTERNAL_MEMORY_HANDLE_DESC::handle::win32::name is not NULL, then it must point to a NULL-terminated
+                                 array of UTF-16 characters that refers to a ID3D12Heap object.
+                              </p>
+                              <p class="p">If <a class="xref" href="structCUDA__EXTERNAL__MEMORY__HANDLE__DESC.html#structCUDA__EXTERNAL__MEMORY__HANDLE__DESC_12bea55b4e977192856d5ef3b710e350b" shape="rect">CUDA_EXTERNAL_MEMORY_HANDLE_DESC::type</a> is <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggbca0bdde9a33c47058b5c97f21e2edd8532abdef8908d5d35a773e491ea68f5b" shape="rect">CU_EXTERNAL_MEMORY_HANDLE_TYPE_D3D12_RESOURCE</a>, then exactly one of CUDA_EXTERNAL_MEMORY_HANDLE_DESC::handle::win32::handle and CUDA_EXTERNAL_MEMORY_HANDLE_DESC::handle::win32::name
+                                 must not be NULL. If CUDA_EXTERNAL_MEMORY_HANDLE_DESC::handle::win32::handle is not NULL, then it must represent a valid shared
+                                 NT handle that is returned by ID3DDevice::CreateSharedHandle when referring to a ID3D12Resource object. This handle holds
+                                 a reference to the underlying object. If CUDA_EXTERNAL_MEMORY_HANDLE_DESC::handle::win32::name is not NULL, then it must point
+                                 to a NULL-terminated array of UTF-16 characters that refers to a ID3D12Resource object.
+                              </p>
+                              <p class="p">The size of the memory object must be specified in <a class="xref" href="structCUDA__EXTERNAL__MEMORY__HANDLE__DESC.html#structCUDA__EXTERNAL__MEMORY__HANDLE__DESC_10264c84b7f70cf057a5b5077c2047adc" shape="rect">CUDA_EXTERNAL_MEMORY_HANDLE_DESC::size</a>.
+                              </p>
+                              <p class="p">Specifying the flag <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1g7a3c833643e392f32a52c131aa87ccac" shape="rect">CUDA_EXTERNAL_MEMORY_DEDICATED</a> in <a class="xref" href="structCUDA__EXTERNAL__MEMORY__HANDLE__DESC.html#structCUDA__EXTERNAL__MEMORY__HANDLE__DESC_16203c3eb46a03362656b2167149d046c" shape="rect">CUDA_EXTERNAL_MEMORY_HANDLE_DESC::flags</a> indicates that the resource is a dedicated resource. The definition of what a dedicated resource is outside the scope of
+                                 this extension.
+                              </p>
+                              <p class="p"></p>
+                              <p class="p"></p>
+                              <p class="p">
+                                 <div class="note note"><span class="notetitle">Note:</span><ul class="ul">
+                                       <li class="li">
+                                          <p class="p">Note that this function may also return error codes from previous, asynchronous launches.</p>
+                                       </li>
+                                       <li class="li">
+                                          <p class="p">If the Vulkan memory imported into CUDA is mapped on the CPU then the application must use vkInvalidateMappedMemoryRanges/vkFlushMappedMemoryRanges
+                                             as well as appropriate Vulkan pipeline barriers to maintain coherence between CPU and GPU. For more information on these APIs,
+                                             please refer to "Synchronization and Cache Control" chapter from Vulkan specification.
+                                          </p>
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </p>
+                              <p class="p"></p>
+                              <p class="p apiDesc_subtitle"><strong class="ph b">See also:</strong></p>
+                              <p class="p see_subsection"><a class="xref" href="group__CUDA__EXTRES__INTEROP.html#group__CUDA__EXTRES__INTEROP_1g1b586dda86565617e7e0883b956c7052" title="Destroys an external memory object." shape="rect">cuDestroyExternalMemory</a>, <a class="xref" href="group__CUDA__EXTRES__INTEROP.html#group__CUDA__EXTRES__INTEROP_1gb9fec33920400c70961b4e33d838da91" title="Maps a buffer onto an imported memory object." shape="rect">cuExternalMemoryGetMappedBuffer</a>, <a class="xref" href="group__CUDA__EXTRES__INTEROP.html#group__CUDA__EXTRES__INTEROP_1g02debbfa1b997e4f0e05300a312c17cc" title="Maps a CUDA mipmapped array onto an external memory object." shape="rect">cuExternalMemoryGetMappedMipmappedArray</a></p>
+                              <p class="p"></p>
+                           </div>
+                        </dd>
+                        <dt class="description"><a name="group__CUDA__EXTRES__INTEROP_1ge593134f5f9650474af74db644c4a326" id="group__CUDA__EXTRES__INTEROP_1ge593134f5f9650474af74db644c4a326" shape="rect">
+                              <!-- --></a><span><a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc6c391505e117393cc2558fff6bfc2e9" title="" shape="rect">CUresult</a> cuImportExternalSemaphore (  <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1g0bc360152166a414e50a5167250552b8" title="" shape="rect">CUexternalSemaphore</a>*<span>&nbsp;</span><span class="keyword keyword apiItemName">extSem_out</span>, const <a href="structCUDA__EXTERNAL__SEMAPHORE__HANDLE__DESC.html#structCUDA__EXTERNAL__SEMAPHORE__HANDLE__DESC" title="" shape="rect">CUDA_EXTERNAL_SEMAPHORE_HANDLE_DESC</a>*<span>&nbsp;</span><span class="keyword keyword apiItemName">semHandleDesc</span> ) </span></dt>
+                        <dd class="description">
+                           <div class="section">Imports an external semaphore. </div>
+                           <div class="section">
+                              <h6 class="parameter_header">
+                                 Parameters
+                                 
+                              </h6>
+                              <dl class="table-display-params">
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">extSem_out</span></tt></dt>
+                                 <dd>- Returned handle to an external semaphore </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">semHandleDesc</span></tt></dt>
+                                 <dd>- Semaphore import handle descriptor</dd>
+                              </dl>
+                           </div>
+                           <div class="section">
+                              <h6 class="return_header">Returns</h6>
+                              <p class="return"><a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9a0eed720f8a87cd1c5fd1c453bc7a03d" shape="rect">CUDA_SUCCESS</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e98feb999f0af99b4a25ab26b3866f4df8" shape="rect">CUDA_ERROR_NOT_INITIALIZED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e90fd2e63260c6317ba943af0f7e4b8d21" shape="rect">CUDA_ERROR_INVALID_HANDLE</a></p>
+                           </div>
+                           <div class="section">
+                              <h6 class="description_header">Description</h6>
+                              <p>Imports an externally allocated synchronization object and returns a handle to that in <tt class="ph tt code">extSem_out</tt>.
+                              </p>
+                              <p class="p">The properties of the handle being imported must be described in <tt class="ph tt code">semHandleDesc</tt>. The <a class="xref" href="structCUDA__EXTERNAL__SEMAPHORE__HANDLE__DESC.html#structCUDA__EXTERNAL__SEMAPHORE__HANDLE__DESC" shape="rect">CUDA_EXTERNAL_SEMAPHORE_HANDLE_DESC</a> is defined as follows:
+                              </p>
+                              <p class="p"><pre xml:space="preserve">‎        typedef struct CUDA_EXTERNAL_SEMAPHORE_HANDLE_DESC_st {
+                  <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gfecb27c44dbd154273d24d35896a2920" shape="rect">CUexternalSemaphoreHandleType</a> type;
+                  union {
+                      int fd;
+                      struct {
+                          void *handle;
+                          const void *name;
+                      } win32;
+                  } handle;
+                  unsigned int flags;
+              } <a class="xref" href="structCUDA__EXTERNAL__SEMAPHORE__HANDLE__DESC.html#structCUDA__EXTERNAL__SEMAPHORE__HANDLE__DESC" shape="rect">CUDA_EXTERNAL_SEMAPHORE_HANDLE_DESC</a>;</pre></p>
+                              <p class="p">where <a class="xref" href="structCUDA__EXTERNAL__SEMAPHORE__HANDLE__DESC.html#structCUDA__EXTERNAL__SEMAPHORE__HANDLE__DESC_1c5d5d3601dff428e5a34f81e691ffe71" shape="rect">CUDA_EXTERNAL_SEMAPHORE_HANDLE_DESC::type</a> specifies the type of handle being imported. <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gfecb27c44dbd154273d24d35896a2920" shape="rect">CUexternalSemaphoreHandleType</a> is defined as:
+                              </p>
+                              <p class="p"><pre xml:space="preserve">‎        typedef enum CUexternalSemaphoreHandleType_enum {
+                  <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggfecb27c44dbd154273d24d35896a2920771961c5b13e123cbc9b44ef0886067d" shape="rect">CU_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD</a>        = 1,
+                  <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggfecb27c44dbd154273d24d35896a2920e56d4d1a5f92a866d6d8da5249a7f068" shape="rect">CU_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32</a>     = 2,
+                  <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggfecb27c44dbd154273d24d35896a292014138c9067a288abae77ee3b7efacf4b" shape="rect">CU_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT</a> = 3,
+                  <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggfecb27c44dbd154273d24d35896a29200f65d633a7b72b5cd5d2bb741c0edfd7" shape="rect">CU_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE</a>      = 4
+              } <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gfecb27c44dbd154273d24d35896a2920" shape="rect">CUexternalSemaphoreHandleType</a>;</pre></p>
+                              <p class="p">If <a class="xref" href="structCUDA__EXTERNAL__SEMAPHORE__HANDLE__DESC.html#structCUDA__EXTERNAL__SEMAPHORE__HANDLE__DESC_1c5d5d3601dff428e5a34f81e691ffe71" shape="rect">CUDA_EXTERNAL_SEMAPHORE_HANDLE_DESC::type</a> is <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggfecb27c44dbd154273d24d35896a2920771961c5b13e123cbc9b44ef0886067d" shape="rect">CU_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD</a>, then CUDA_EXTERNAL_SEMAPHORE_HANDLE_DESC::handle::fd must be a valid file descriptor referencing a synchronization object.
+                                 Ownership of the file descriptor is transferred to the CUDA driver when the handle is imported successfully. Performing any
+                                 operations on the file descriptor after it is imported results in undefined behavior.
+                              </p>
+                              <p class="p">If <a class="xref" href="structCUDA__EXTERNAL__SEMAPHORE__HANDLE__DESC.html#structCUDA__EXTERNAL__SEMAPHORE__HANDLE__DESC_1c5d5d3601dff428e5a34f81e691ffe71" shape="rect">CUDA_EXTERNAL_SEMAPHORE_HANDLE_DESC::type</a> is <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggfecb27c44dbd154273d24d35896a2920e56d4d1a5f92a866d6d8da5249a7f068" shape="rect">CU_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32</a>, then exactly one of CUDA_EXTERNAL_SEMAPHORE_HANDLE_DESC::handle::win32::handle and CUDA_EXTERNAL_SEMAPHORE_HANDLE_DESC::handle::win32::name
+                                 must not be NULL. If CUDA_EXTERNAL_SEMAPHORE_HANDLE_DESC::handle::win32::handle is not NULL, then it must represent a valid
+                                 shared NT handle that references a synchronization object. Ownership of this handle is not transferred to CUDA after the import
+                                 operation, so the application must release the handle using the appropriate system call. If CUDA_EXTERNAL_SEMAPHORE_HANDLE_DESC::handle::win32::name
+                                 is not NULL, then it must name a valid synchronization object.
+                              </p>
+                              <p class="p">If <a class="xref" href="structCUDA__EXTERNAL__SEMAPHORE__HANDLE__DESC.html#structCUDA__EXTERNAL__SEMAPHORE__HANDLE__DESC_1c5d5d3601dff428e5a34f81e691ffe71" shape="rect">CUDA_EXTERNAL_SEMAPHORE_HANDLE_DESC::type</a> is <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggfecb27c44dbd154273d24d35896a292014138c9067a288abae77ee3b7efacf4b" shape="rect">CU_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT</a>, then CUDA_EXTERNAL_SEMAPHORE_HANDLE_DESC::handle::win32::handle must be non-NULL and CUDA_EXTERNAL_SEMAPHORE_HANDLE_DESC::handle::win32::name
+                                 must be NULL. The handle specified must be a globally shared KMT handle. This handle does not hold a reference to the underlying
+                                 object, and thus will be invalid when all references to the synchronization object are destroyed.
+                              </p>
+                              <p class="p">If <a class="xref" href="structCUDA__EXTERNAL__SEMAPHORE__HANDLE__DESC.html#structCUDA__EXTERNAL__SEMAPHORE__HANDLE__DESC_1c5d5d3601dff428e5a34f81e691ffe71" shape="rect">CUDA_EXTERNAL_SEMAPHORE_HANDLE_DESC::type</a> is <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggfecb27c44dbd154273d24d35896a29200f65d633a7b72b5cd5d2bb741c0edfd7" shape="rect">CU_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE</a>, then exactly one of CUDA_EXTERNAL_SEMAPHORE_HANDLE_DESC::handle::win32::handle and CUDA_EXTERNAL_SEMAPHORE_HANDLE_DESC::handle::win32::name
+                                 must not be NULL. If CUDA_EXTERNAL_SEMAPHORE_HANDLE_DESC::handle::win32::handle is not NULL, then it must represent a valid
+                                 shared NT handle that is returned by ID3DDevice::CreateSharedHandle when referring to a ID3D12Fence object. This handle holds
+                                 a reference to the underlying object. If CUDA_EXTERNAL_SEMAPHORE_HANDLE_DESC::handle::win32::name is not NULL, then it must
+                                 name a valid synchronization object that refers to a valid ID3D12Fence object.
+                              </p>
+                              <p class="p"></p>
+                              <p class="p"></p>
+                              <p class="p">
+                                 <div class="note note"><span class="notetitle">Note:</span><p class="p">Note that this function may also return error codes from previous, asynchronous launches.</p>
+                                 </div>
+                              </p>
+                              <p class="p"></p>
+                              <p class="p apiDesc_subtitle"><strong class="ph b">See also:</strong></p>
+                              <p class="p see_subsection"><a class="xref" href="group__CUDA__EXTRES__INTEROP.html#group__CUDA__EXTRES__INTEROP_1g7f13444973542fa50b7e75bcfb2f923d" title="Destroys an external semaphore." shape="rect">cuDestroyExternalSemaphore</a>, <a class="xref" href="group__CUDA__EXTRES__INTEROP.html#group__CUDA__EXTRES__INTEROP_1g86cd6c4b3f439ba786f4e65d1b8107c3" title="Signals a set of external semaphore objects." shape="rect">cuSignalExternalSemaphoresAsync</a>, <a class="xref" href="group__CUDA__EXTRES__INTEROP.html#group__CUDA__EXTRES__INTEROP_1g063f01a524818ac89bacf521c55a39f0" title="Waits on a set of external semaphore objects." shape="rect">cuWaitExternalSemaphoresAsync</a></p>
+                              <p class="p"></p>
+                           </div>
+                        </dd>
+                        <dt class="description"><a name="group__CUDA__EXTRES__INTEROP_1g86cd6c4b3f439ba786f4e65d1b8107c3" id="group__CUDA__EXTRES__INTEROP_1g86cd6c4b3f439ba786f4e65d1b8107c3" shape="rect">
+                              <!-- --></a><span><a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc6c391505e117393cc2558fff6bfc2e9" title="" shape="rect">CUresult</a> cuSignalExternalSemaphoresAsync (  const <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1g0bc360152166a414e50a5167250552b8" title="" shape="rect">CUexternalSemaphore</a>*<span>&nbsp;</span><span class="keyword keyword apiItemName">extSemArray</span>, const <a href="structCUDA__EXTERNAL__SEMAPHORE__SIGNAL__PARAMS.html#structCUDA__EXTERNAL__SEMAPHORE__SIGNAL__PARAMS" title="" shape="rect">CUDA_EXTERNAL_SEMAPHORE_SIGNAL_PARAMS</a>*<span>&nbsp;</span><span class="keyword keyword apiItemName">paramsArray</span>, unsigned int <span>&nbsp;</span><span class="keyword keyword apiItemName">numExtSems</span>, <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gb946c7f02e09efd788a204718015d88a" title="" shape="rect">CUstream</a><span>&nbsp;</span><span class="keyword keyword apiItemName">stream</span> ) </span></dt>
+                        <dd class="description">
+                           <div class="section">Signals a set of external semaphore objects. </div>
+                           <div class="section">
+                              <h6 class="parameter_header">
+                                 Parameters
+                                 
+                              </h6>
+                              <dl class="table-display-params">
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">extSemArray</span></tt></dt>
+                                 <dd>- Set of external semaphores to be signaled </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">paramsArray</span></tt></dt>
+                                 <dd>- Array of semaphore parameters </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">numExtSems</span></tt></dt>
+                                 <dd>- Number of semaphores to signal </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">stream</span></tt></dt>
+                                 <dd>- Stream to enqueue the signal operations in</dd>
+                              </dl>
+                           </div>
+                           <div class="section">
+                              <h6 class="return_header">Returns</h6>
+                              <p class="return"><a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9a0eed720f8a87cd1c5fd1c453bc7a03d" shape="rect">CUDA_SUCCESS</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e98feb999f0af99b4a25ab26b3866f4df8" shape="rect">CUDA_ERROR_NOT_INITIALIZED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e90fd2e63260c6317ba943af0f7e4b8d21" shape="rect">CUDA_ERROR_INVALID_HANDLE</a></p>
+                           </div>
+                           <div class="section">
+                              <h6 class="description_header">Description</h6>
+                              <p>Enqueues a signal operation on a set of externally allocated semaphore object in the specified stream. The operations will
+                                 be executed when all prior operations in the stream complete.
+                              </p>
+                              <p class="p">The exact semantics of signaling a semaphore depends on the type of the object.</p>
+                              <p class="p">If the semaphore object is any one of the following types: <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggfecb27c44dbd154273d24d35896a2920771961c5b13e123cbc9b44ef0886067d" shape="rect">CU_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggfecb27c44dbd154273d24d35896a2920e56d4d1a5f92a866d6d8da5249a7f068" shape="rect">CU_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggfecb27c44dbd154273d24d35896a292014138c9067a288abae77ee3b7efacf4b" shape="rect">CU_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT</a> then signaling the semaphore will set it to the signaled state.
+                              </p>
+                              <p class="p">If the semaphore object is of the type <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggfecb27c44dbd154273d24d35896a29200f65d633a7b72b5cd5d2bb741c0edfd7" shape="rect">CU_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE</a>, then the semaphore will be set to the value specified in CUDA_EXTERNAL_SEMAPHORE_SIGNAL_PARAMS::params::fence::value.
+                              </p>
+                              <p class="p"></p>
+                              <p class="p"></p>
+                              <p class="p">
+                                 <div class="note note"><span class="notetitle">Note:</span><p class="p">Note that this function may also return error codes from previous, asynchronous launches.</p>
+                                 </div>
+                              </p>
+                              <p class="p"></p>
+                              <p class="p apiDesc_subtitle"><strong class="ph b">See also:</strong></p>
+                              <p class="p see_subsection"><a class="xref" href="group__CUDA__EXTRES__INTEROP.html#group__CUDA__EXTRES__INTEROP_1ge593134f5f9650474af74db644c4a326" title="Imports an external semaphore." shape="rect">cuImportExternalSemaphore</a>, <a class="xref" href="group__CUDA__EXTRES__INTEROP.html#group__CUDA__EXTRES__INTEROP_1g7f13444973542fa50b7e75bcfb2f923d" title="Destroys an external semaphore." shape="rect">cuDestroyExternalSemaphore</a>, <a class="xref" href="group__CUDA__EXTRES__INTEROP.html#group__CUDA__EXTRES__INTEROP_1g063f01a524818ac89bacf521c55a39f0" title="Waits on a set of external semaphore objects." shape="rect">cuWaitExternalSemaphoresAsync</a></p>
+                              <p class="p"></p>
+                           </div>
+                        </dd>
+                        <dt class="description"><a name="group__CUDA__EXTRES__INTEROP_1g063f01a524818ac89bacf521c55a39f0" id="group__CUDA__EXTRES__INTEROP_1g063f01a524818ac89bacf521c55a39f0" shape="rect">
+                              <!-- --></a><span><a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gc6c391505e117393cc2558fff6bfc2e9" title="" shape="rect">CUresult</a> cuWaitExternalSemaphoresAsync (  const <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1g0bc360152166a414e50a5167250552b8" title="" shape="rect">CUexternalSemaphore</a>*<span>&nbsp;</span><span class="keyword keyword apiItemName">extSemArray</span>, const <a href="structCUDA__EXTERNAL__SEMAPHORE__WAIT__PARAMS.html#structCUDA__EXTERNAL__SEMAPHORE__WAIT__PARAMS" title="" shape="rect">CUDA_EXTERNAL_SEMAPHORE_WAIT_PARAMS</a>*<span>&nbsp;</span><span class="keyword keyword apiItemName">paramsArray</span>, unsigned int <span>&nbsp;</span><span class="keyword keyword apiItemName">numExtSems</span>, <a href="group__CUDA__TYPES.html#group__CUDA__TYPES_1gb946c7f02e09efd788a204718015d88a" title="" shape="rect">CUstream</a><span>&nbsp;</span><span class="keyword keyword apiItemName">stream</span> ) </span></dt>
+                        <dd class="description">
+                           <div class="section">Waits on a set of external semaphore objects. </div>
+                           <div class="section">
+                              <h6 class="parameter_header">
+                                 Parameters
+                                 
+                              </h6>
+                              <dl class="table-display-params">
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">extSemArray</span></tt></dt>
+                                 <dd>- External semaphores to be waited on </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">paramsArray</span></tt></dt>
+                                 <dd>- Array of semaphore parameters </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">numExtSems</span></tt></dt>
+                                 <dd>- Number of semaphores to wait on </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">stream</span></tt></dt>
+                                 <dd>- Stream to enqueue the wait operations in</dd>
+                              </dl>
+                           </div>
+                           <div class="section">
+                              <h6 class="return_header">Returns</h6>
+                              <p class="return"><a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e9a0eed720f8a87cd1c5fd1c453bc7a03d" shape="rect">CUDA_SUCCESS</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e98feb999f0af99b4a25ab26b3866f4df8" shape="rect">CUDA_ERROR_NOT_INITIALIZED</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggc6c391505e117393cc2558fff6bfc2e90fd2e63260c6317ba943af0f7e4b8d21" shape="rect">CUDA_ERROR_INVALID_HANDLE</a></p>
+                           </div>
+                           <div class="section">
+                              <h6 class="description_header">Description</h6>
+                              <p>Enqueues a wait operation on a set of externally allocated semaphore object in the specified stream. The operations will be
+                                 executed when all prior operations in the stream complete.
+                              </p>
+                              <p class="p">The exact semantics of waiting on a semaphore depends on the type of the object.</p>
+                              <p class="p">If the semaphore object is any one of the following types: <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggfecb27c44dbd154273d24d35896a2920771961c5b13e123cbc9b44ef0886067d" shape="rect">CU_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_FD</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggfecb27c44dbd154273d24d35896a2920e56d4d1a5f92a866d6d8da5249a7f068" shape="rect">CU_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32</a>, <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggfecb27c44dbd154273d24d35896a292014138c9067a288abae77ee3b7efacf4b" shape="rect">CU_EXTERNAL_SEMAPHORE_HANDLE_TYPE_OPAQUE_WIN32_KMT</a> then waiting on the semaphore will wait until the semaphore reaches the signaled state. The semaphore will then be reset
+                                 to the unsignaled state. Therefore for every signal operation, there can only be one wait operation.
+                              </p>
+                              <p class="p">If the semaphore object is of the type <a class="xref" href="group__CUDA__TYPES.html#group__CUDA__TYPES_1ggfecb27c44dbd154273d24d35896a29200f65d633a7b72b5cd5d2bb741c0edfd7" shape="rect">CU_EXTERNAL_SEMAPHORE_HANDLE_TYPE_D3D12_FENCE</a>, then waiting on the semaphore will wait until the value of the semaphore is greater than or equal to CUDA_EXTERNAL_SEMAPHORE_WAIT_PARAMS::params::fence::value.
+                              </p>
+                              <p class="p"></p>
+                              <p class="p"></p>
+                              <p class="p">
+                                 <div class="note note"><span class="notetitle">Note:</span><p class="p">Note that this function may also return error codes from previous, asynchronous launches.</p>
+                                 </div>
+                              </p>
+                              <p class="p"></p>
+                              <p class="p apiDesc_subtitle"><strong class="ph b">See also:</strong></p>
+                              <p class="p see_subsection"><a class="xref" href="group__CUDA__EXTRES__INTEROP.html#group__CUDA__EXTRES__INTEROP_1ge593134f5f9650474af74db644c4a326" title="Imports an external semaphore." shape="rect">cuImportExternalSemaphore</a>, <a class="xref" href="group__CUDA__EXTRES__INTEROP.html#group__CUDA__EXTRES__INTEROP_1g7f13444973542fa50b7e75bcfb2f923d" title="Destroys an external semaphore." shape="rect">cuDestroyExternalSemaphore</a>, <a class="xref" href="group__CUDA__EXTRES__INTEROP.html#group__CUDA__EXTRES__INTEROP_1g86cd6c4b3f439ba786f4e65d1b8107c3" title="Signals a set of external semaphore objects." shape="rect">cuSignalExternalSemaphoresAsync</a></p>
+                              <p class="p"></p>
+                           </div>
+                        </dd>
+                     </dl>
+                  </div>
+               </div>
+               
+               <hr id="contents-end"></hr>
+               
+            </article>
+         </div>
+      </div>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/formatting/common.min.js"></script>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/scripts/google-analytics/google-analytics-write.js"></script>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/scripts/google-analytics/google-analytics-tracker.js"></script>
+      <script type="text/javascript">var switchTo5x=true;</script><script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script><script type="text/javascript">stLight.options({publisher: "998dc202-a267-4d8e-bce9-14debadb8d92", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script><script type="text/javascript">_satellite.pageBottom();</script></body>
+</html>

@@ -1,0 +1,1084 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="en-us">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+      <meta name="copyright" content="(C) Copyright 2005"></meta>
+      <meta name="DC.rights.owner" content="(C) Copyright 2005"></meta>
+      <meta name="DC.Type" content="cuda_reference"></meta>
+      <meta name="DC.Title" content="Deprecated List"></meta>
+      <meta name="DC.Format" content="XHTML"></meta>
+      <meta name="DC.Identifier" content="deprecated"></meta>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/commonltr.css"></link>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/site.css"></link>
+      <title>CUDA Runtime API :: CUDA Toolkit Documentation</title>
+      <!--[if lt IE 9]>
+      <script src="../common/formatting/html5shiv-printshiv.min.js"></script>
+      <![endif]-->
+      <script type="text/javascript" charset="utf-8" src="//assets.adobedtm.com/b92787824f2e0e9b68dc2e993f9bd995339fe417/satelliteLib-7ba51e58dc61bcb0e9311aadd02a0108ab24cc6c.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.min.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.ba-hashchange.min.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.scrollintoview.min.js"></script>
+      <script type="text/javascript" src="../search/htmlFileList.js"></script>
+      <script type="text/javascript" src="../search/htmlFileInfoList.js"></script>
+      <script type="text/javascript" src="../search/nwSearchFnt.min.js"></script>
+      <script type="text/javascript" src="../search/stemmers/en_stemmer.min.js"></script>
+      <script type="text/javascript" src="../search/index-1.js"></script>
+      <script type="text/javascript" src="../search/index-2.js"></script>
+      <script type="text/javascript" src="../search/index-3.js"></script>
+      <link rel="canonical" href="http://docs.nvidia.com/cuda/cuda-runtime-api/index.html"></link>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/qwcode.highlight.css"></link>
+   </head>
+   <body>
+      
+      <header id="header"><span id="company">NVIDIA</span><span id="site-title">CUDA Toolkit Documentation</span><form id="search" method="get" action="search">
+            <input type="text" name="search-text"></input><fieldset id="search-location">
+               <legend>Search In:</legend>
+               <label><input type="radio" name="search-type" value="site"></input>Entire Site</label>
+               <label><input type="radio" name="search-type" value="document"></input>Just This Document</label></fieldset>
+            <button type="reset">clear search</button>
+            <button id="submit" type="submit">search</button></form>
+      </header>
+      <div id="site-content">
+         <nav id="site-nav">
+            <div class="category closed"><a href="../index.html" title="The root of the site.">CUDA Toolkit 
+                  
+                  
+                  v10.1.168</a></div>
+            <div class="category"><a href="index.html" title="CUDA Runtime API">CUDA Runtime API</a></div>
+            <ul>
+               <li>
+                  <div class="section-link"><a href="driver-vs-runtime-api.html#driver-vs-runtime-api">1.&nbsp;Difference between the driver and runtime APIs </a></div>
+               </li>
+               <li>
+                  <div class="section-link"><a href="api-sync-behavior.html#api-sync-behavior">2.&nbsp;API synchronization behavior </a></div>
+               </li>
+               <li>
+                  <div class="section-link"><a href="stream-sync-behavior.html#stream-sync-behavior">3.&nbsp;Stream synchronization behavior</a></div>
+               </li>
+               <li>
+                  <div class="section-link"><a href="graphs-thread-safety.html#graphs-thread-safety">4.&nbsp;Graph object thread safety</a></div>
+               </li>
+               <li>
+                  <div class="section-link"><a href="modules.html#modules">5.&nbsp;Modules</a></div>
+                  <ul>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__DEVICE.html#group__CUDART__DEVICE">5.1.&nbsp;Device Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__THREAD__DEPRECATED.html#group__CUDART__THREAD__DEPRECATED">5.2.&nbsp;Thread Management [DEPRECATED]</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__ERROR.html#group__CUDART__ERROR">5.3.&nbsp;Error Handling</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__STREAM.html#group__CUDART__STREAM">5.4.&nbsp;Stream Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__EVENT.html#group__CUDART__EVENT">5.5.&nbsp;Event Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__EXTRES__INTEROP.html#group__CUDART__EXTRES__INTEROP">5.6.&nbsp;External Resource Interoperability</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__EXECUTION.html#group__CUDART__EXECUTION">5.7.&nbsp;Execution Control</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__OCCUPANCY.html#group__CUDART__OCCUPANCY">5.8.&nbsp;Occupancy</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__MEMORY.html#group__CUDART__MEMORY">5.9.&nbsp;Memory Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__MEMORY__DEPRECATED.html#group__CUDART__MEMORY__DEPRECATED">5.10.&nbsp;Memory Management [DEPRECATED]</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__UNIFIED.html#group__CUDART__UNIFIED">5.11.&nbsp;Unified Addressing</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__PEER.html#group__CUDART__PEER">5.12.&nbsp;Peer Device Memory Access</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__OPENGL.html#group__CUDART__OPENGL">5.13.&nbsp;OpenGL Interoperability</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__OPENGL__DEPRECATED.html#group__CUDART__OPENGL__DEPRECATED">5.14.&nbsp;OpenGL Interoperability [DEPRECATED]</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__D3D9.html#group__CUDART__D3D9">5.15.&nbsp;Direct3D 9 Interoperability</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__D3D9__DEPRECATED.html#group__CUDART__D3D9__DEPRECATED">5.16.&nbsp;Direct3D 9 Interoperability [DEPRECATED]</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__D3D10.html#group__CUDART__D3D10">5.17.&nbsp;Direct3D 10 Interoperability</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__D3D10__DEPRECATED.html#group__CUDART__D3D10__DEPRECATED">5.18.&nbsp;Direct3D 10 Interoperability [DEPRECATED]</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__D3D11.html#group__CUDART__D3D11">5.19.&nbsp;Direct3D 11 Interoperability</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__D3D11__DEPRECATED.html#group__CUDART__D3D11__DEPRECATED">5.20.&nbsp;Direct3D 11 Interoperability [DEPRECATED]</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__VDPAU.html#group__CUDART__VDPAU">5.21.&nbsp;VDPAU Interoperability</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__EGL.html#group__CUDART__EGL">5.22.&nbsp;EGL Interoperability</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__INTEROP.html#group__CUDART__INTEROP">5.23.&nbsp;Graphics Interoperability</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__TEXTURE.html#group__CUDART__TEXTURE">5.24.&nbsp;Texture Reference Management [DEPRECATED]</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__SURFACE.html#group__CUDART__SURFACE">5.25.&nbsp;Surface Reference Management [DEPRECATED]</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__TEXTURE__OBJECT.html#group__CUDART__TEXTURE__OBJECT">5.26.&nbsp;Texture Object Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__SURFACE__OBJECT.html#group__CUDART__SURFACE__OBJECT">5.27.&nbsp;Surface Object Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART____VERSION.html#group__CUDART____VERSION">5.28.&nbsp;Version Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__GRAPH.html#group__CUDART__GRAPH">5.29.&nbsp;Graph Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__HIGHLEVEL.html#group__CUDART__HIGHLEVEL">5.30.&nbsp;C++ API Routines</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__DRIVER.html#group__CUDART__DRIVER">5.31.&nbsp;Interactions with the CUDA Driver API</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__PROFILER.html#group__CUDART__PROFILER">5.32.&nbsp;Profiler Control</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__TYPES.html#group__CUDART__TYPES">5.33.&nbsp;Data types used by CUDA Runtime</a></div>
+                     </li>
+                  </ul>
+               </li>
+               <li>
+                  <div class="section-link"><a href="annotated.html#annotated">6.&nbsp;Data Structures</a></div>
+                  <ul>
+                     <li>
+                        <div class="section-link"><a href="class____cudaOccupancyB2DHelper.html#class____cudaOccupancyB2DHelper">6.1.&nbsp;__cudaOccupancyB2DHelper</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaChannelFormatDesc.html#structcudaChannelFormatDesc">6.2.&nbsp;cudaChannelFormatDesc</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaDeviceProp.html#structcudaDeviceProp">6.3.&nbsp;cudaDeviceProp</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaEglFrame.html#structcudaEglFrame">6.4.&nbsp;cudaEglFrame</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaEglPlaneDesc.html#structcudaEglPlaneDesc">6.5.&nbsp;cudaEglPlaneDesc</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaExtent.html#structcudaExtent">6.6.&nbsp;cudaExtent</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaExternalMemoryBufferDesc.html#structcudaExternalMemoryBufferDesc">6.7.&nbsp;cudaExternalMemoryBufferDesc</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaExternalMemoryHandleDesc.html#structcudaExternalMemoryHandleDesc">6.8.&nbsp;cudaExternalMemoryHandleDesc</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaExternalMemoryMipmappedArrayDesc.html#structcudaExternalMemoryMipmappedArrayDesc">6.9.&nbsp;cudaExternalMemoryMipmappedArrayDesc</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaExternalSemaphoreHandleDesc.html#structcudaExternalSemaphoreHandleDesc">6.10.&nbsp;cudaExternalSemaphoreHandleDesc</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaExternalSemaphoreSignalParams.html#structcudaExternalSemaphoreSignalParams">6.11.&nbsp;cudaExternalSemaphoreSignalParams</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaExternalSemaphoreWaitParams.html#structcudaExternalSemaphoreWaitParams">6.12.&nbsp;cudaExternalSemaphoreWaitParams</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaFuncAttributes.html#structcudaFuncAttributes">6.13.&nbsp;cudaFuncAttributes</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaHostNodeParams.html#structcudaHostNodeParams">6.14.&nbsp;cudaHostNodeParams</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaIpcEventHandle__t.html#structcudaIpcEventHandle__t">6.15.&nbsp;cudaIpcEventHandle_t</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaIpcMemHandle__t.html#structcudaIpcMemHandle__t">6.16.&nbsp;cudaIpcMemHandle_t</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaKernelNodeParams.html#structcudaKernelNodeParams">6.17.&nbsp;cudaKernelNodeParams</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaLaunchParams.html#structcudaLaunchParams">6.18.&nbsp;cudaLaunchParams</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaMemcpy3DParms.html#structcudaMemcpy3DParms">6.19.&nbsp;cudaMemcpy3DParms</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaMemcpy3DPeerParms.html#structcudaMemcpy3DPeerParms">6.20.&nbsp;cudaMemcpy3DPeerParms</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaMemsetParams.html#structcudaMemsetParams">6.21.&nbsp;cudaMemsetParams</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaPitchedPtr.html#structcudaPitchedPtr">6.22.&nbsp;cudaPitchedPtr</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaPointerAttributes.html#structcudaPointerAttributes">6.23.&nbsp;cudaPointerAttributes</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaPos.html#structcudaPos">6.24.&nbsp;cudaPos</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaResourceDesc.html#structcudaResourceDesc">6.25.&nbsp;cudaResourceDesc</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaResourceViewDesc.html#structcudaResourceViewDesc">6.26.&nbsp;cudaResourceViewDesc</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaTextureDesc.html#structcudaTextureDesc">6.27.&nbsp;cudaTextureDesc</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUuuid__st.html#structCUuuid__st">6.28.&nbsp;CUuuid_st</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structsurfaceReference.html#structsurfaceReference">6.29.&nbsp;surfaceReference</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structtextureReference.html#structtextureReference">6.30.&nbsp;textureReference</a></div>
+                     </li>
+                  </ul>
+               </li>
+               <li>
+                  <div class="section-link"><a href="functions.html#functions">7.&nbsp;Data Fields</a></div>
+               </li>
+               <li>
+                  <div class="section-link"><a href="deprecated.html#deprecated">8.&nbsp;Deprecated List</a></div>
+               </li>
+               <li>
+                  <div class="section-link"><a href="notices-header.html#notices-header">Notices</a></div>
+                  <ul></ul>
+               </li>
+            </ul>
+         </nav>
+         <div id="resize-nav"></div>
+         <nav id="search-results">
+            <h2>Search Results</h2>
+            <ol></ol>
+         </nav>
+         
+         <div id="contents-container">
+            <div id="breadcrumbs-container">
+               <div id="breadcrumbs"><a href="functions.html" shape="rect">&lt; Previous</a> | <a href="notices-header.html" shape="rect">Next &gt;</a></div>
+               <div id="release-info">CUDA Runtime API
+                  (<a href="../../pdf/CUDA_Runtime_API.pdf">PDF</a>)
+                  -
+                   
+                  
+                  
+                  v10.1.168
+                  (<a href="https://developer.nvidia.com/cuda-toolkit-archive">older</a>)
+                  -
+                  Last updated April 24, 2019
+                  -
+                  <a href="mailto:CUDAIssues@nvidia.com?subject=CUDA Toolkit Documentation Feedback: CUDA Runtime API">Send Feedback</a></div>
+            </div>
+            <article id="contents">
+               <div class="topic nested1" id="deprecated"><a name="deprecated" shape="rect">
+                     <!-- --></a><h2 class="topictitle2">8.&nbsp;Deprecated List</h2>
+                  <div class="body refbody">
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000071"><a name="deprecated__deprecated_1_deprecated000071" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="structcudaPointerAttributes.html#structcudaPointerAttributes_134e164ec7e06b3187e1e89df5809cb20" shape="rect">cudaPointerAttributes::isManaged</a></dt>
+                              <dd class="dd">
+                                 <p class="p"></p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000070"><a name="deprecated__deprecated_1_deprecated000070" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="structcudaPointerAttributes.html#structcudaPointerAttributes_1106b535cbbf11e6b29d3163a17d9e7e5" shape="rect">cudaPointerAttributes::memoryType</a></dt>
+                              <dd class="dd">
+                                 <p class="p"></p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000001"><a name="deprecated__deprecated_1_deprecated000001" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__THREAD__DEPRECATED.html#group__CUDART__THREAD__DEPRECATED_1g4c6ed00b3df5828ac4c8fa707d7378b5" shape="rect">cudaThreadExit</a></dt>
+                              <dd class="dd">
+                                 <p class="p"></p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000005"><a name="deprecated__deprecated_1_deprecated000005" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__THREAD__DEPRECATED.html#group__CUDART__THREAD__DEPRECATED_1g6c0354cf06af1854f3d267e142bc6629" shape="rect">cudaThreadGetCacheConfig</a></dt>
+                              <dd class="dd">
+                                 <p class="p"></p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000004"><a name="deprecated__deprecated_1_deprecated000004" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__THREAD__DEPRECATED.html#group__CUDART__THREAD__DEPRECATED_1ga9e5d4114a4934ceae22f095b2a516dc" shape="rect">cudaThreadGetLimit</a></dt>
+                              <dd class="dd">
+                                 <p class="p"></p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000006"><a name="deprecated__deprecated_1_deprecated000006" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__THREAD__DEPRECATED.html#group__CUDART__THREAD__DEPRECATED_1g4350b189303ae990ba42009f15fbf6e9" shape="rect">cudaThreadSetCacheConfig</a></dt>
+                              <dd class="dd">
+                                 <p class="p"></p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000003"><a name="deprecated__deprecated_1_deprecated000003" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__THREAD__DEPRECATED.html#group__CUDART__THREAD__DEPRECATED_1g4cfef9e7d4045d8d682ed464f0e1c2da" shape="rect">cudaThreadSetLimit</a></dt>
+                              <dd class="dd">
+                                 <p class="p"></p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000002"><a name="deprecated__deprecated_1_deprecated000002" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__THREAD__DEPRECATED.html#group__CUDART__THREAD__DEPRECATED_1g86ba4d3d51221f18a9a13663e6105fc1" shape="rect">cudaThreadSynchronize</a></dt>
+                              <dd class="dd">
+                                 <p class="p"></p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000007"><a name="deprecated__deprecated_1_deprecated000007" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__EXECUTION.html#group__CUDART__EXECUTION_1ga7893ac813a0a901d533852f568f9c8e" shape="rect">cudaSetDoubleForDevice</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This function is deprecated as of CUDA 7.5</p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000008"><a name="deprecated__deprecated_1_deprecated000008" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__EXECUTION.html#group__CUDART__EXECUTION_1g63b08bc08466ff7e53962da9098c216a" shape="rect">cudaSetDoubleForHost</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This function is deprecated as of CUDA 7.5</p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000011"><a name="deprecated__deprecated_1_deprecated000011" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__MEMORY__DEPRECATED.html#group__CUDART__MEMORY__DEPRECATED_1g5daffa65811c6be7eba1ec3c6c19ddb0" shape="rect">cudaMemcpyArrayToArray</a></dt>
+                              <dd class="dd">
+                                 <p class="p"></p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000010"><a name="deprecated__deprecated_1_deprecated000010" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__MEMORY__DEPRECATED.html#group__CUDART__MEMORY__DEPRECATED_1g6fbe8ed786061afaeaf79dc17eef15e9" shape="rect">cudaMemcpyFromArray</a></dt>
+                              <dd class="dd">
+                                 <p class="p"></p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000013"><a name="deprecated__deprecated_1_deprecated000013" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__MEMORY__DEPRECATED.html#group__CUDART__MEMORY__DEPRECATED_1gfa22cfe6148b4c82593ecf3582f1dc33" shape="rect">cudaMemcpyFromArrayAsync</a></dt>
+                              <dd class="dd">
+                                 <p class="p"></p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000009"><a name="deprecated__deprecated_1_deprecated000009" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__MEMORY__DEPRECATED.html#group__CUDART__MEMORY__DEPRECATED_1g15b5d20cedf31dd13801c6015da0e828" shape="rect">cudaMemcpyToArray</a></dt>
+                              <dd class="dd">
+                                 <p class="p"></p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000012"><a name="deprecated__deprecated_1_deprecated000012" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__MEMORY__DEPRECATED.html#group__CUDART__MEMORY__DEPRECATED_1g92f0eaaaa772fd428dfc7c7ba699d272" shape="rect">cudaMemcpyToArrayAsync</a></dt>
+                              <dd class="dd">
+                                 <p class="p"></p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000049"><a name="deprecated__deprecated_1_deprecated000049" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__OPENGL__DEPRECATED.html#group__CUDART__OPENGL__DEPRECATED_1gab71eaf2bf614b851e583ea27abb0ac1" shape="rect">cudaGLMapBufferObject</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This function is deprecated as of CUDA 3.0.</p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000053"><a name="deprecated__deprecated_1_deprecated000053" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__OPENGL__DEPRECATED.html#group__CUDART__OPENGL__DEPRECATED_1g999ba03d95b2d0c512a26dee90e4e0ef" shape="rect">cudaGLMapBufferObjectAsync</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This function is deprecated as of CUDA 3.0.</p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000048"><a name="deprecated__deprecated_1_deprecated000048" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__OPENGL__DEPRECATED.html#group__CUDART__OPENGL__DEPRECATED_1g98c64a567146f6c6b253999e1b3e24f3" shape="rect">cudaGLRegisterBufferObject</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This function is deprecated as of CUDA 3.0.</p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000052"><a name="deprecated__deprecated_1_deprecated000052" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__OPENGL__DEPRECATED.html#group__CUDART__OPENGL__DEPRECATED_1ge98cc0503f44e3aff52fd6bbde579365" shape="rect">cudaGLSetBufferObjectMapFlags</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This function is deprecated as of CUDA 3.0.</p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000047"><a name="deprecated__deprecated_1_deprecated000047" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__OPENGL__DEPRECATED.html#group__CUDART__OPENGL__DEPRECATED_1g88fddf479c2b597af49fd839bb42345e" shape="rect">cudaGLSetGLDevice</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This function is deprecated as of CUDA 5.0.</p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000050"><a name="deprecated__deprecated_1_deprecated000050" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__OPENGL__DEPRECATED.html#group__CUDART__OPENGL__DEPRECATED_1gb14f8de8d7404066cbd08a0409dcf02b" shape="rect">cudaGLUnmapBufferObject</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This function is deprecated as of CUDA 3.0.</p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000054"><a name="deprecated__deprecated_1_deprecated000054" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__OPENGL__DEPRECATED.html#group__CUDART__OPENGL__DEPRECATED_1g93b760a4a3cf00f09600d73c03bc8b47" shape="rect">cudaGLUnmapBufferObjectAsync</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This function is deprecated as of CUDA 3.0.</p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000051"><a name="deprecated__deprecated_1_deprecated000051" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__OPENGL__DEPRECATED.html#group__CUDART__OPENGL__DEPRECATED_1g348f274f267a35152dc09820bf276bac" shape="rect">cudaGLUnregisterBufferObject</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This function is deprecated as of CUDA 3.0.</p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000025"><a name="deprecated__deprecated_1_deprecated000025" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__D3D9__DEPRECATED.html#group__CUDART__D3D9__DEPRECATED_1g37e568318e2f937fe06020a675497b1e" shape="rect">cudaD3D9MapResources</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This function is deprecated as of CUDA 3.0.</p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000023"><a name="deprecated__deprecated_1_deprecated000023" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__D3D9__DEPRECATED.html#group__CUDART__D3D9__DEPRECATED_1g81b436ab21219ad7192f2d1d1331a365" shape="rect">cudaD3D9RegisterResource</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This function is deprecated as of CUDA 3.0.</p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000029"><a name="deprecated__deprecated_1_deprecated000029" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__D3D9__DEPRECATED.html#group__CUDART__D3D9__DEPRECATED_1gbf66161e2462ff7ef17cbccef3d6b098" shape="rect">cudaD3D9ResourceGetMappedArray</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This function is deprecated as of CUDA 3.0.</p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000032"><a name="deprecated__deprecated_1_deprecated000032" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__D3D9__DEPRECATED.html#group__CUDART__D3D9__DEPRECATED_1g38876ed7e596f58ee0ec550dd168b4e8" shape="rect">cudaD3D9ResourceGetMappedPitch</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This function is deprecated as of CUDA 3.0.</p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000030"><a name="deprecated__deprecated_1_deprecated000030" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__D3D9__DEPRECATED.html#group__CUDART__D3D9__DEPRECATED_1g7d367e7ea6e0e3c8884ea2a473f75749" shape="rect">cudaD3D9ResourceGetMappedPointer</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This function is deprecated as of CUDA 3.0.</p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000031"><a name="deprecated__deprecated_1_deprecated000031" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__D3D9__DEPRECATED.html#group__CUDART__D3D9__DEPRECATED_1g80531533ff24e1c3a5201edf2d05f89f" shape="rect">cudaD3D9ResourceGetMappedSize</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This function is deprecated as of CUDA 3.0.</p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000028"><a name="deprecated__deprecated_1_deprecated000028" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__D3D9__DEPRECATED.html#group__CUDART__D3D9__DEPRECATED_1g2963f7235b75594ca2947ff84d7000c1" shape="rect">cudaD3D9ResourceGetSurfaceDimensions</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This function is deprecated as of CUDA 3.0.</p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000027"><a name="deprecated__deprecated_1_deprecated000027" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__D3D9__DEPRECATED.html#group__CUDART__D3D9__DEPRECATED_1ge9a5aef299347c403cd8f96855d61fb4" shape="rect">cudaD3D9ResourceSetMapFlags</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This function is deprecated as of CUDA 3.0.</p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000026"><a name="deprecated__deprecated_1_deprecated000026" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__D3D9__DEPRECATED.html#group__CUDART__D3D9__DEPRECATED_1g4597fa217d5e7e3f735f233882292fe7" shape="rect">cudaD3D9UnmapResources</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This function is deprecated as of CUDA 3.0.</p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000024"><a name="deprecated__deprecated_1_deprecated000024" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__D3D9__DEPRECATED.html#group__CUDART__D3D9__DEPRECATED_1g81dd5ad8f5ec63e31a3d32f67dc1ca4c" shape="rect">cudaD3D9UnregisterResource</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This function is deprecated as of CUDA 3.0.</p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000033"><a name="deprecated__deprecated_1_deprecated000033" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__D3D10__DEPRECATED.html#group__CUDART__D3D10__DEPRECATED_1gecb7926cde472827aada7f265d1b85ef" shape="rect">cudaD3D10GetDirect3DDevice</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This function is deprecated as of CUDA 5.0.</p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000037"><a name="deprecated__deprecated_1_deprecated000037" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__D3D10__DEPRECATED.html#group__CUDART__D3D10__DEPRECATED_1g5422b9db18f98bf87a1d7745333f04fd" shape="rect">cudaD3D10MapResources</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This function is deprecated as of CUDA 3.0.</p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000035"><a name="deprecated__deprecated_1_deprecated000035" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__D3D10__DEPRECATED.html#group__CUDART__D3D10__DEPRECATED_1gacfa1f3dc77bb72eb3a3315f7b55a90f" shape="rect">cudaD3D10RegisterResource</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This function is deprecated as of CUDA 3.0.</p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000039"><a name="deprecated__deprecated_1_deprecated000039" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__D3D10__DEPRECATED.html#group__CUDART__D3D10__DEPRECATED_1g547fb113e591b34db3c2027616a448d9" shape="rect">cudaD3D10ResourceGetMappedArray</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This function is deprecated as of CUDA 3.0.</p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000044"><a name="deprecated__deprecated_1_deprecated000044" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__D3D10__DEPRECATED.html#group__CUDART__D3D10__DEPRECATED_1ge39bcbb0c621b45db1324d4b44d0b94d" shape="rect">cudaD3D10ResourceGetMappedPitch</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This function is deprecated as of CUDA 3.0.</p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000042"><a name="deprecated__deprecated_1_deprecated000042" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__D3D10__DEPRECATED.html#group__CUDART__D3D10__DEPRECATED_1g5163db519e691beb742e1173f8103ab1" shape="rect">cudaD3D10ResourceGetMappedPointer</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This function is deprecated as of CUDA 3.0.</p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000043"><a name="deprecated__deprecated_1_deprecated000043" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__D3D10__DEPRECATED.html#group__CUDART__D3D10__DEPRECATED_1g1fa1dedd9b28853c59d9a6a6c6bdb6a6" shape="rect">cudaD3D10ResourceGetMappedSize</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This function is deprecated as of CUDA 3.0.</p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000041"><a name="deprecated__deprecated_1_deprecated000041" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__D3D10__DEPRECATED.html#group__CUDART__D3D10__DEPRECATED_1ga7bfdd73e7ebe1fe3686ecc6aace04c5" shape="rect">cudaD3D10ResourceGetSurfaceDimensions</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This function is deprecated as of CUDA 3.0.</p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000040"><a name="deprecated__deprecated_1_deprecated000040" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__D3D10__DEPRECATED.html#group__CUDART__D3D10__DEPRECATED_1gc7dd32992c6ebda1fae2ded02e77e7d9" shape="rect">cudaD3D10ResourceSetMapFlags</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This function is deprecated as of CUDA 3.0.</p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000034"><a name="deprecated__deprecated_1_deprecated000034" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__D3D10__DEPRECATED.html#group__CUDART__D3D10__DEPRECATED_1g7c942225222284fbfc3794a4ed6edf98" shape="rect">cudaD3D10SetDirect3DDevice</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This function is deprecated as of CUDA 5.0.</p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000038"><a name="deprecated__deprecated_1_deprecated000038" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__D3D10__DEPRECATED.html#group__CUDART__D3D10__DEPRECATED_1gbdb0554eaa4cfa89d907eae1ac6f076b" shape="rect">cudaD3D10UnmapResources</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This function is deprecated as of CUDA 3.0.</p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000036"><a name="deprecated__deprecated_1_deprecated000036" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__D3D10__DEPRECATED.html#group__CUDART__D3D10__DEPRECATED_1g6ba821f0593cb2163e5980654ccebeed" shape="rect">cudaD3D10UnregisterResource</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This function is deprecated as of CUDA 3.0.</p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000045"><a name="deprecated__deprecated_1_deprecated000045" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__D3D11__DEPRECATED.html#group__CUDART__D3D11__DEPRECATED_1g17c6855f78c5edcb63934a66d4fd3be6" shape="rect">cudaD3D11GetDirect3DDevice</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This function is deprecated as of CUDA 5.0.</p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000046"><a name="deprecated__deprecated_1_deprecated000046" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__D3D11__DEPRECATED.html#group__CUDART__D3D11__DEPRECATED_1g533524c773e7ca4ef57c0698b157d670" shape="rect">cudaD3D11SetDirect3DDevice</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This function is deprecated as of CUDA 5.0.</p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000014"><a name="deprecated__deprecated_1_deprecated000014" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__HIGHLEVEL.html#group__CUDART__HIGHLEVEL_1gfaa25560127f9feb99cb5dd6bc4ce2dc" shape="rect">cudaBindTexture</a></dt>
+                              <dd class="dd">
+                                 <p class="p"></p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000015"><a name="deprecated__deprecated_1_deprecated000015" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__HIGHLEVEL.html#group__CUDART__HIGHLEVEL_1gb3c44b907f90231e87c237edd0353d2f" shape="rect">cudaBindTexture2D</a></dt>
+                              <dd class="dd">
+                                 <p class="p"></p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000016"><a name="deprecated__deprecated_1_deprecated000016" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__HIGHLEVEL.html#group__CUDART__HIGHLEVEL_1g0a2084d126afe76208355248af66ccd0" shape="rect">cudaBindTextureToArray</a></dt>
+                              <dd class="dd">
+                                 <p class="p"></p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000017"><a name="deprecated__deprecated_1_deprecated000017" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__HIGHLEVEL.html#group__CUDART__HIGHLEVEL_1gec33696c6faeb5d4ba12920979ff2bfa" shape="rect">cudaBindTextureToMipmappedArray</a></dt>
+                              <dd class="dd">
+                                 <p class="p"></p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000019"><a name="deprecated__deprecated_1_deprecated000019" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__HIGHLEVEL.html#group__CUDART__HIGHLEVEL_1g1a4b34ca3d4ac6af42fcd2a9f04dd80f" shape="rect">cudaGetTextureAlignmentOffset</a></dt>
+                              <dd class="dd">
+                                 <p class="p"></p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000020"><a name="deprecated__deprecated_1_deprecated000020" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__TEXTURE.html#group__CUDART__TEXTURE_1gfadd92a7a41e9fb3c429a0f4a1dcf7d0" shape="rect">cudaGetTextureReference</a></dt>
+                              <dd class="dd">
+                                 <p class="p"></p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000018"><a name="deprecated__deprecated_1_deprecated000018" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__HIGHLEVEL.html#group__CUDART__HIGHLEVEL_1gac082e32b0defecc90235daa129fd32c" shape="rect">cudaUnbindTexture</a></dt>
+                              <dd class="dd">
+                                 <p class="p"></p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000021"><a name="deprecated__deprecated_1_deprecated000021" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__HIGHLEVEL.html#group__CUDART__HIGHLEVEL_1g80364c2c13250a3354953df4aa0b43d3" shape="rect">cudaBindSurfaceToArray</a></dt>
+                              <dd class="dd">
+                                 <p class="p"></p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000022"><a name="deprecated__deprecated_1_deprecated000022" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__SURFACE.html#group__CUDART__SURFACE_1gda383a25ec6c2a6414ae202ff6377054" shape="rect">cudaGetSurfaceReference</a></dt>
+                              <dd class="dd">
+                                 <p class="p"></p>
+                                 <p class="p"></p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000056"><a name="deprecated__deprecated_1_deprecated000056" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__TYPES.html#group__CUDART__TYPES_1gg3f51e3575c2178246db0a94a430e0038d8234a288b0a7a8f77a2b6dbd0e8ecb0" shape="rect">cudaErrorProfilerNotInitialized</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This error return is deprecated as of CUDA 5.0. It is no longer an error to attempt to enable/disable the profiling via <a href="group__CUDART__PROFILER.html#group__CUDART__PROFILER_1gf536d75bb382356e10e3b4e89f4a5374" shape="rect">cudaProfilerStart</a> or <a href="group__CUDART__PROFILER.html#group__CUDART__PROFILER_1g826922d9d1d0090d4a9a6b8b249cebb5" shape="rect">cudaProfilerStop</a> without initialization. 
+                                 </p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000057"><a name="deprecated__deprecated_1_deprecated000057" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__TYPES.html#group__CUDART__TYPES_1gg3f51e3575c2178246db0a94a430e0038bfd977ba87fbe3bd18bf6cb73d4185c2" shape="rect">cudaErrorProfilerAlreadyStarted</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This error return is deprecated as of CUDA 5.0. It is no longer an error to call <a href="group__CUDART__PROFILER.html#group__CUDART__PROFILER_1gf536d75bb382356e10e3b4e89f4a5374" shape="rect">cudaProfilerStart()</a> when profiling is already enabled. 
+                                 </p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000058"><a name="deprecated__deprecated_1_deprecated000058" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__TYPES.html#group__CUDART__TYPES_1gg3f51e3575c2178246db0a94a430e0038878c9676e574916a80c621d2637d3311" shape="rect">cudaErrorProfilerAlreadyStopped</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This error return is deprecated as of CUDA 5.0. It is no longer an error to call <a href="group__CUDART__PROFILER.html#group__CUDART__PROFILER_1g826922d9d1d0090d4a9a6b8b249cebb5" shape="rect">cudaProfilerStop()</a> when profiling is already disabled. 
+                                 </p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000059"><a name="deprecated__deprecated_1_deprecated000059" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__TYPES.html#group__CUDART__TYPES_1gg3f51e3575c2178246db0a94a430e00386b9b87743cdcc5c5de484d96be0bb620" shape="rect">cudaErrorInvalidHostPointer</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This error return is deprecated as of CUDA 10.1. </p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000060"><a name="deprecated__deprecated_1_deprecated000060" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__TYPES.html#group__CUDART__TYPES_1gg3f51e3575c2178246db0a94a430e00385fa2f00ab72ab5cf649a0a32351a20bf" shape="rect">cudaErrorInvalidDevicePointer</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This error return is deprecated as of CUDA 10.1. </p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000061"><a name="deprecated__deprecated_1_deprecated000061" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__TYPES.html#group__CUDART__TYPES_1gg3f51e3575c2178246db0a94a430e0038e440746034e7e19674247be7880e42e2" shape="rect">cudaErrorAddressOfConstant</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This error return is deprecated as of CUDA 3.1. Variables in constant memory may now have their address taken by the runtime
+                                    via <a href="group__CUDART__HIGHLEVEL.html#group__CUDART__HIGHLEVEL_1g3a0f010e70a3343db18227cec9615177" shape="rect">cudaGetSymbolAddress()</a>. 
+                                 </p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000062"><a name="deprecated__deprecated_1_deprecated000062" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__TYPES.html#group__CUDART__TYPES_1gg3f51e3575c2178246db0a94a430e00384eb0c109c8229cecd97abe27959e6376" shape="rect">cudaErrorTextureFetchFailed</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This error return is deprecated as of CUDA 3.1. Device emulation mode was removed with the CUDA 3.1 release. </p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000063"><a name="deprecated__deprecated_1_deprecated000063" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__TYPES.html#group__CUDART__TYPES_1gg3f51e3575c2178246db0a94a430e0038f0cc6c30c64f4a9c5f663e99a77d99ba" shape="rect">cudaErrorTextureNotBound</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This error return is deprecated as of CUDA 3.1. Device emulation mode was removed with the CUDA 3.1 release. </p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000064"><a name="deprecated__deprecated_1_deprecated000064" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__TYPES.html#group__CUDART__TYPES_1gg3f51e3575c2178246db0a94a430e00382ad9b297541678f164fdecc3f719a4d0" shape="rect">cudaErrorSynchronizationError</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This error return is deprecated as of CUDA 3.1. Device emulation mode was removed with the CUDA 3.1 release. </p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000065"><a name="deprecated__deprecated_1_deprecated000065" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__TYPES.html#group__CUDART__TYPES_1gg3f51e3575c2178246db0a94a430e0038e225ea8a6a6b0737b4b270dee133449f" shape="rect">cudaErrorMixedDeviceExecution</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This error return is deprecated as of CUDA 3.1. Device emulation mode was removed with the CUDA 3.1 release. </p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000066"><a name="deprecated__deprecated_1_deprecated000066" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__TYPES.html#group__CUDART__TYPES_1gg3f51e3575c2178246db0a94a430e00388da8b90f795d15525477cc5e7438bf62" shape="rect">cudaErrorNotYetImplemented</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This error return is deprecated as of CUDA 4.1. </p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000067"><a name="deprecated__deprecated_1_deprecated000067" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__TYPES.html#group__CUDART__TYPES_1gg3f51e3575c2178246db0a94a430e003841fc5a27bf4a65ef07a19d362a9ad0aa" shape="rect">cudaErrorMemoryValueTooLarge</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This error return is deprecated as of CUDA 3.1. Device emulation mode was removed with the CUDA 3.1 release. </p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000068"><a name="deprecated__deprecated_1_deprecated000068" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__TYPES.html#group__CUDART__TYPES_1gg3f51e3575c2178246db0a94a430e0038c14f1bebf1cd5d2e44cdfd27e15025e5" shape="rect">cudaErrorPriorLaunchFailure</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This error return is deprecated as of CUDA 3.1. Device emulation mode was removed with the CUDA 3.1 release. </p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000069"><a name="deprecated__deprecated_1_deprecated000069" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__TYPES.html#group__CUDART__TYPES_1gg3f51e3575c2178246db0a94a430e0038d14d5f79c290a3ef4b02ca6b64f62a59" shape="rect">cudaErrorApiFailureBase</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This error return is deprecated as of CUDA 4.1. </p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                     <div class="section">
+                        <div class="p"><span class="ph" id="deprecated__deprecated_1_deprecated000055"><a name="deprecated__deprecated_1_deprecated000055" shape="rect">
+                                 <!-- --></a></span><dl class="dl">
+                              <dt class="dt dlterm">Global <a href="group__CUDART__TYPES.html#group__CUDART__TYPES_1g130ddae663f1873258fee5a6e0808b71" shape="rect">cudaDeviceBlockingSync</a></dt>
+                              <dd class="dd">
+                                 <p class="p">This flag was deprecated as of CUDA 4.0 and replaced with <a href="group__CUDART__TYPES.html#group__CUDART__TYPES_1g057e6912c52708b6aa86e79dd83d007c" shape="rect">cudaDeviceScheduleBlockingSync</a>. 
+                                 </p>
+                              </dd>
+                           </dl>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               
+               <hr id="contents-end"></hr>
+               
+            </article>
+         </div>
+      </div>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/formatting/common.min.js"></script>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/scripts/google-analytics/google-analytics-write.js"></script>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/scripts/google-analytics/google-analytics-tracker.js"></script>
+      <script type="text/javascript">var switchTo5x=true;</script><script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script><script type="text/javascript">stLight.options({publisher: "998dc202-a267-4d8e-bce9-14debadb8d92", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script><script type="text/javascript">_satellite.pageBottom();</script></body>
+</html>

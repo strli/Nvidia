@@ -38,3 +38,43 @@
 
 
 
+### 发展历史
+
+**1993年  Nvidia成立，显示芯片为 NV-1和NV-2**
+
+**1997年   Nvidia发布NV-3**
+
+**1999年   Nvidia发布GeForce256，支持Direct7**
+
+**2001年   Nvidia推出可编程着色器GPUGeForce3和GeForce4 支持Direct8**
+
+**2002年   Nvidia推出第一款用32位浮点流水线作为可编程的顶点处理器GeForceFx，支持Direct9**
+
+**有GeForce6和GeForce7**
+
+**2006年  Nvidia系列采用统一渲染架构，同通用渲染单元替代原来分离的顶点着色单元和图像着色**
+
+**单元，支持Direct10，支持CUDA，即Tesla**
+
+**2007年 CUDA正式发布**
+
+**2008年  Nvidia发布支持CUDA1.1计算能力的GeForce9系列，创造神话的9800GT，以及算力1.3的**
+
+**GT200系列GPU，GTX275卡皇～**
+
+**2010年   Nvidia推出了Fermi架构产品M2050、GTX480，计算能力2.x**
+
+**2012年   Nvidia发布了Kepler架构，算力为3.5,**
+
+**2013年   Maxwell架构发布，算力为5.0**
+
+**2015年    Pascal架构发布，算力为6.0**
+
+**2016年    GTC大会发布了NvLin、CoWos HBM2堆叠内存技术的显卡**
+
+**2019年  Truing架构发布，算力为7.x**
+
+
+
+**设计架构**
+

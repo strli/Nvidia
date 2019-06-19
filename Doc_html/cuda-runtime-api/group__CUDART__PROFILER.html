@@ -1,0 +1,447 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="en-us">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+      <meta name="copyright" content="(C) Copyright 2005"></meta>
+      <meta name="DC.rights.owner" content="(C) Copyright 2005"></meta>
+      <meta name="DC.Type" content="cppModule"></meta>
+      <meta name="DC.Title" content="Profiler Control"></meta>
+      <meta name="abstract" content=""></meta>
+      <meta name="description" content=""></meta>
+      <meta name="DC.Format" content="XHTML"></meta>
+      <meta name="DC.Identifier" content="group__CUDART__PROFILER"></meta>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/commonltr.css"></link>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/site.css"></link>
+      <title>CUDA Runtime API :: CUDA Toolkit Documentation</title>
+      <!--[if lt IE 9]>
+      <script src="../common/formatting/html5shiv-printshiv.min.js"></script>
+      <![endif]-->
+      <script type="text/javascript" charset="utf-8" src="//assets.adobedtm.com/b92787824f2e0e9b68dc2e993f9bd995339fe417/satelliteLib-7ba51e58dc61bcb0e9311aadd02a0108ab24cc6c.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.min.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.ba-hashchange.min.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.scrollintoview.min.js"></script>
+      <script type="text/javascript" src="../search/htmlFileList.js"></script>
+      <script type="text/javascript" src="../search/htmlFileInfoList.js"></script>
+      <script type="text/javascript" src="../search/nwSearchFnt.min.js"></script>
+      <script type="text/javascript" src="../search/stemmers/en_stemmer.min.js"></script>
+      <script type="text/javascript" src="../search/index-1.js"></script>
+      <script type="text/javascript" src="../search/index-2.js"></script>
+      <script type="text/javascript" src="../search/index-3.js"></script>
+      <link rel="canonical" href="http://docs.nvidia.com/cuda/cuda-runtime-api/index.html"></link>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/qwcode.highlight.css"></link>
+   </head>
+   <body>
+      
+      <header id="header"><span id="company">NVIDIA</span><span id="site-title">CUDA Toolkit Documentation</span><form id="search" method="get" action="search">
+            <input type="text" name="search-text"></input><fieldset id="search-location">
+               <legend>Search In:</legend>
+               <label><input type="radio" name="search-type" value="site"></input>Entire Site</label>
+               <label><input type="radio" name="search-type" value="document"></input>Just This Document</label></fieldset>
+            <button type="reset">clear search</button>
+            <button id="submit" type="submit">search</button></form>
+      </header>
+      <div id="site-content">
+         <nav id="site-nav">
+            <div class="category closed"><a href="../index.html" title="The root of the site.">CUDA Toolkit 
+                  
+                  
+                  v10.1.168</a></div>
+            <div class="category"><a href="index.html" title="CUDA Runtime API">CUDA Runtime API</a></div>
+            <ul>
+               <li>
+                  <div class="section-link"><a href="driver-vs-runtime-api.html#driver-vs-runtime-api">1.&nbsp;Difference between the driver and runtime APIs </a></div>
+               </li>
+               <li>
+                  <div class="section-link"><a href="api-sync-behavior.html#api-sync-behavior">2.&nbsp;API synchronization behavior </a></div>
+               </li>
+               <li>
+                  <div class="section-link"><a href="stream-sync-behavior.html#stream-sync-behavior">3.&nbsp;Stream synchronization behavior</a></div>
+               </li>
+               <li>
+                  <div class="section-link"><a href="graphs-thread-safety.html#graphs-thread-safety">4.&nbsp;Graph object thread safety</a></div>
+               </li>
+               <li>
+                  <div class="section-link"><a href="modules.html#modules">5.&nbsp;Modules</a></div>
+                  <ul>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__DEVICE.html#group__CUDART__DEVICE">5.1.&nbsp;Device Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__THREAD__DEPRECATED.html#group__CUDART__THREAD__DEPRECATED">5.2.&nbsp;Thread Management [DEPRECATED]</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__ERROR.html#group__CUDART__ERROR">5.3.&nbsp;Error Handling</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__STREAM.html#group__CUDART__STREAM">5.4.&nbsp;Stream Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__EVENT.html#group__CUDART__EVENT">5.5.&nbsp;Event Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__EXTRES__INTEROP.html#group__CUDART__EXTRES__INTEROP">5.6.&nbsp;External Resource Interoperability</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__EXECUTION.html#group__CUDART__EXECUTION">5.7.&nbsp;Execution Control</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__OCCUPANCY.html#group__CUDART__OCCUPANCY">5.8.&nbsp;Occupancy</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__MEMORY.html#group__CUDART__MEMORY">5.9.&nbsp;Memory Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__MEMORY__DEPRECATED.html#group__CUDART__MEMORY__DEPRECATED">5.10.&nbsp;Memory Management [DEPRECATED]</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__UNIFIED.html#group__CUDART__UNIFIED">5.11.&nbsp;Unified Addressing</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__PEER.html#group__CUDART__PEER">5.12.&nbsp;Peer Device Memory Access</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__OPENGL.html#group__CUDART__OPENGL">5.13.&nbsp;OpenGL Interoperability</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__OPENGL__DEPRECATED.html#group__CUDART__OPENGL__DEPRECATED">5.14.&nbsp;OpenGL Interoperability [DEPRECATED]</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__D3D9.html#group__CUDART__D3D9">5.15.&nbsp;Direct3D 9 Interoperability</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__D3D9__DEPRECATED.html#group__CUDART__D3D9__DEPRECATED">5.16.&nbsp;Direct3D 9 Interoperability [DEPRECATED]</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__D3D10.html#group__CUDART__D3D10">5.17.&nbsp;Direct3D 10 Interoperability</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__D3D10__DEPRECATED.html#group__CUDART__D3D10__DEPRECATED">5.18.&nbsp;Direct3D 10 Interoperability [DEPRECATED]</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__D3D11.html#group__CUDART__D3D11">5.19.&nbsp;Direct3D 11 Interoperability</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__D3D11__DEPRECATED.html#group__CUDART__D3D11__DEPRECATED">5.20.&nbsp;Direct3D 11 Interoperability [DEPRECATED]</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__VDPAU.html#group__CUDART__VDPAU">5.21.&nbsp;VDPAU Interoperability</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__EGL.html#group__CUDART__EGL">5.22.&nbsp;EGL Interoperability</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__INTEROP.html#group__CUDART__INTEROP">5.23.&nbsp;Graphics Interoperability</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__TEXTURE.html#group__CUDART__TEXTURE">5.24.&nbsp;Texture Reference Management [DEPRECATED]</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__SURFACE.html#group__CUDART__SURFACE">5.25.&nbsp;Surface Reference Management [DEPRECATED]</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__TEXTURE__OBJECT.html#group__CUDART__TEXTURE__OBJECT">5.26.&nbsp;Texture Object Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__SURFACE__OBJECT.html#group__CUDART__SURFACE__OBJECT">5.27.&nbsp;Surface Object Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART____VERSION.html#group__CUDART____VERSION">5.28.&nbsp;Version Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__GRAPH.html#group__CUDART__GRAPH">5.29.&nbsp;Graph Management</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__HIGHLEVEL.html#group__CUDART__HIGHLEVEL">5.30.&nbsp;C++ API Routines</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__DRIVER.html#group__CUDART__DRIVER">5.31.&nbsp;Interactions with the CUDA Driver API</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__PROFILER.html#group__CUDART__PROFILER">5.32.&nbsp;Profiler Control</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="group__CUDART__TYPES.html#group__CUDART__TYPES">5.33.&nbsp;Data types used by CUDA Runtime</a></div>
+                     </li>
+                  </ul>
+               </li>
+               <li>
+                  <div class="section-link"><a href="annotated.html#annotated">6.&nbsp;Data Structures</a></div>
+                  <ul>
+                     <li>
+                        <div class="section-link"><a href="class____cudaOccupancyB2DHelper.html#class____cudaOccupancyB2DHelper">6.1.&nbsp;__cudaOccupancyB2DHelper</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaChannelFormatDesc.html#structcudaChannelFormatDesc">6.2.&nbsp;cudaChannelFormatDesc</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaDeviceProp.html#structcudaDeviceProp">6.3.&nbsp;cudaDeviceProp</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaEglFrame.html#structcudaEglFrame">6.4.&nbsp;cudaEglFrame</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaEglPlaneDesc.html#structcudaEglPlaneDesc">6.5.&nbsp;cudaEglPlaneDesc</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaExtent.html#structcudaExtent">6.6.&nbsp;cudaExtent</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaExternalMemoryBufferDesc.html#structcudaExternalMemoryBufferDesc">6.7.&nbsp;cudaExternalMemoryBufferDesc</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaExternalMemoryHandleDesc.html#structcudaExternalMemoryHandleDesc">6.8.&nbsp;cudaExternalMemoryHandleDesc</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaExternalMemoryMipmappedArrayDesc.html#structcudaExternalMemoryMipmappedArrayDesc">6.9.&nbsp;cudaExternalMemoryMipmappedArrayDesc</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaExternalSemaphoreHandleDesc.html#structcudaExternalSemaphoreHandleDesc">6.10.&nbsp;cudaExternalSemaphoreHandleDesc</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaExternalSemaphoreSignalParams.html#structcudaExternalSemaphoreSignalParams">6.11.&nbsp;cudaExternalSemaphoreSignalParams</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaExternalSemaphoreWaitParams.html#structcudaExternalSemaphoreWaitParams">6.12.&nbsp;cudaExternalSemaphoreWaitParams</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaFuncAttributes.html#structcudaFuncAttributes">6.13.&nbsp;cudaFuncAttributes</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaHostNodeParams.html#structcudaHostNodeParams">6.14.&nbsp;cudaHostNodeParams</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaIpcEventHandle__t.html#structcudaIpcEventHandle__t">6.15.&nbsp;cudaIpcEventHandle_t</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaIpcMemHandle__t.html#structcudaIpcMemHandle__t">6.16.&nbsp;cudaIpcMemHandle_t</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaKernelNodeParams.html#structcudaKernelNodeParams">6.17.&nbsp;cudaKernelNodeParams</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaLaunchParams.html#structcudaLaunchParams">6.18.&nbsp;cudaLaunchParams</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaMemcpy3DParms.html#structcudaMemcpy3DParms">6.19.&nbsp;cudaMemcpy3DParms</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaMemcpy3DPeerParms.html#structcudaMemcpy3DPeerParms">6.20.&nbsp;cudaMemcpy3DPeerParms</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaMemsetParams.html#structcudaMemsetParams">6.21.&nbsp;cudaMemsetParams</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaPitchedPtr.html#structcudaPitchedPtr">6.22.&nbsp;cudaPitchedPtr</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaPointerAttributes.html#structcudaPointerAttributes">6.23.&nbsp;cudaPointerAttributes</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaPos.html#structcudaPos">6.24.&nbsp;cudaPos</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaResourceDesc.html#structcudaResourceDesc">6.25.&nbsp;cudaResourceDesc</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaResourceViewDesc.html#structcudaResourceViewDesc">6.26.&nbsp;cudaResourceViewDesc</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structcudaTextureDesc.html#structcudaTextureDesc">6.27.&nbsp;cudaTextureDesc</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structCUuuid__st.html#structCUuuid__st">6.28.&nbsp;CUuuid_st</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structsurfaceReference.html#structsurfaceReference">6.29.&nbsp;surfaceReference</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="structtextureReference.html#structtextureReference">6.30.&nbsp;textureReference</a></div>
+                     </li>
+                  </ul>
+               </li>
+               <li>
+                  <div class="section-link"><a href="functions.html#functions">7.&nbsp;Data Fields</a></div>
+               </li>
+               <li>
+                  <div class="section-link"><a href="deprecated.html#deprecated">8.&nbsp;Deprecated List</a></div>
+               </li>
+               <li>
+                  <div class="section-link"><a href="notices-header.html#notices-header">Notices</a></div>
+                  <ul></ul>
+               </li>
+            </ul>
+         </nav>
+         <div id="resize-nav"></div>
+         <nav id="search-results">
+            <h2>Search Results</h2>
+            <ol></ol>
+         </nav>
+         
+         <div id="contents-container">
+            <div id="breadcrumbs-container">
+               <div id="breadcrumbs"><a href="group__CUDART__DRIVER.html" shape="rect">&lt; Previous</a> | <a href="group__CUDART__TYPES.html" shape="rect">Next &gt;</a></div>
+               <div id="release-info">CUDA Runtime API
+                  (<a href="../../pdf/CUDA_Runtime_API.pdf">PDF</a>)
+                  -
+                   
+                  
+                  
+                  v10.1.168
+                  (<a href="https://developer.nvidia.com/cuda-toolkit-archive">older</a>)
+                  -
+                  Last updated April 24, 2019
+                  -
+                  <a href="mailto:CUDAIssues@nvidia.com?subject=CUDA Toolkit Documentation Feedback: CUDA Runtime API">Send Feedback</a></div>
+            </div>
+            <article id="contents">
+               <div class="topic reference apiRef apiPackage cppModule" id="group__CUDART__PROFILER"><a name="group__CUDART__PROFILER" shape="rect">
+                     <!-- --></a><h2 class="topictitle2 cppModule">5.32.&nbsp;Profiler Control</h2>
+                  <div class="section">
+                     <p>This section describes the profiler control functions of the CUDA runtime application programming interface. </p>
+                  </div>
+                  <h3 class="fake_sectiontitle member_header">Functions</h3>
+                  <dl class="members">
+                     <dt><span class="member_type"><span class="keyword keyword apiItemName">__host__</span>
+                           ​<a href="group__CUDART__TYPES.html#group__CUDART__TYPES_1gf599e5b8b829ce7db0f5216928f6ecb6" title="" shape="rect">cudaError_t</a>&nbsp;</span><span class="member_name"><a href="#group__CUDART__PROFILER_1gcd07e875aa4030363bca13159c3c8494" shape="rect">cudaProfilerInitialize</a> (  const char*<span>&nbsp;</span><span class="keyword keyword apiItemName">configFile</span>, const char*<span>&nbsp;</span><span class="keyword keyword apiItemName">outputFile</span>, <a href="group__CUDART__TYPES.html#group__CUDART__TYPES_1ge1e4fa3423d204e9f927703561c36c8f" title="" shape="rect">cudaOutputMode_t</a><span>&nbsp;</span><span class="keyword keyword apiItemName">outputMode</span> ) </span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc">Initialize the CUDA profiler. </span></dd>
+                     <dt><span class="member_type"><span class="keyword keyword apiItemName">__host__</span>
+                           ​<a href="group__CUDART__TYPES.html#group__CUDART__TYPES_1gf599e5b8b829ce7db0f5216928f6ecb6" title="" shape="rect">cudaError_t</a>&nbsp;</span><span class="member_name"><a href="#group__CUDART__PROFILER_1gf536d75bb382356e10e3b4e89f4a5374" shape="rect">cudaProfilerStart</a> (  void ) </span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc">Enable profiling. </span></dd>
+                     <dt><span class="member_type"><span class="keyword keyword apiItemName">__host__</span>
+                           ​<a href="group__CUDART__TYPES.html#group__CUDART__TYPES_1gf599e5b8b829ce7db0f5216928f6ecb6" title="" shape="rect">cudaError_t</a>&nbsp;</span><span class="member_name"><a href="#group__CUDART__PROFILER_1g826922d9d1d0090d4a9a6b8b249cebb5" shape="rect">cudaProfilerStop</a> (  void ) </span></dt>
+                     <dd class="shortdesc"><span></span><span class="desc">Disable profiling. </span></dd>
+                  </dl>
+                  <div class="description">
+                     <h3 class="sectiontitle">Functions</h3>
+                     <dl class="description">
+                        <dt class="description"><a name="group__CUDART__PROFILER_1gcd07e875aa4030363bca13159c3c8494" id="group__CUDART__PROFILER_1gcd07e875aa4030363bca13159c3c8494" shape="rect">
+                              <!-- --></a><span><span class="keyword keyword apiItemName">__host__</span>
+                              ​<a href="group__CUDART__TYPES.html#group__CUDART__TYPES_1gf599e5b8b829ce7db0f5216928f6ecb6" title="" shape="rect">cudaError_t</a> cudaProfilerInitialize (  const char*<span>&nbsp;</span><span class="keyword keyword apiItemName">configFile</span>, const char*<span>&nbsp;</span><span class="keyword keyword apiItemName">outputFile</span>, <a href="group__CUDART__TYPES.html#group__CUDART__TYPES_1ge1e4fa3423d204e9f927703561c36c8f" title="" shape="rect">cudaOutputMode_t</a><span>&nbsp;</span><span class="keyword keyword apiItemName">outputMode</span> ) </span></dt>
+                        <dd class="description">
+                           <div class="section">Initialize the CUDA profiler. </div>
+                           <div class="section">
+                              <h6 class="parameter_header">
+                                 Parameters
+                                 
+                              </h6>
+                              <dl class="table-display-params">
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">configFile</span></tt></dt>
+                                 <dd>- Name of the config file that lists the counters/options for profiling. </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">outputFile</span></tt></dt>
+                                 <dd>- Name of the outputFile where the profiling results will be stored. </dd>
+                                 <dt><tt class="code"><span class="keyword keyword apiItemName">outputMode</span></tt></dt>
+                                 <dd>- outputMode, can be <a class="xref" href="group__CUDART__TYPES.html#group__CUDART__TYPES_1gg4d08d35d3a07b79e125df157c65dd9e91a520d60433a443955ecd477e50846ff" shape="rect">cudaKeyValuePair</a> OR <a class="xref" href="group__CUDART__TYPES.html#group__CUDART__TYPES_1gg4d08d35d3a07b79e125df157c65dd9e9e321e743e1cbd16cf7c264be7054c690" shape="rect">cudaCSV</a>.
+                                 </dd>
+                              </dl>
+                           </div>
+                           <div class="section">
+                              <h6 class="return_header">Returns</h6>
+                              <p class="return"><a class="xref" href="group__CUDART__TYPES.html#group__CUDART__TYPES_1gg3f51e3575c2178246db0a94a430e0038e355f04607d824883b4a50662830d591" shape="rect">cudaSuccess</a>, <a class="xref" href="group__CUDART__TYPES.html#group__CUDART__TYPES_1gg3f51e3575c2178246db0a94a430e00383e8aef5398ee38e28ed41e357b48917c" shape="rect">cudaErrorInvalidValue</a>, <a class="xref" href="group__CUDART__TYPES.html#group__CUDART__TYPES_1gg3f51e3575c2178246db0a94a430e003861081544e36c64ca0316c4da918fe18e" shape="rect">cudaErrorProfilerDisabled</a></p>
+                           </div>
+                           <div class="section">
+                              <h6 class="description_header">Description</h6>
+                              <p>Using this API user can initialize the CUDA profiler by specifying the configuration file, output file and output file format.
+                                 This API is generally used to profile different set of counters by looping the kernel launch. The <tt class="ph tt code">configFile</tt> parameter can be used to select profiling options including profiler counters. Refer to the "Compute Command Line Profiler
+                                 User Guide" for supported profiler options and counters.
+                              </p>
+                              <p class="p">Limitation: The CUDA profiler cannot be initialized with this API if another profiling tool is already active, as indicated
+                                 by the <a class="xref" href="group__CUDART__TYPES.html#group__CUDART__TYPES_1gg3f51e3575c2178246db0a94a430e003861081544e36c64ca0316c4da918fe18e" shape="rect">cudaErrorProfilerDisabled</a> return code.
+                              </p>
+                              <p class="p">Typical usage of the profiling APIs is as follows:</p>
+                              <p class="p">for each set of counters/options
+                                 {
+                                 <a class="xref" href="group__CUDART__PROFILER.html#group__CUDART__PROFILER_1gcd07e875aa4030363bca13159c3c8494" title="Initialize the CUDA profiler." shape="rect">cudaProfilerInitialize()</a>; //Initialize profiling,set the counters/options in the config file 
+                                 ...
+                                 <a class="xref" href="group__CUDART__PROFILER.html#group__CUDART__PROFILER_1gf536d75bb382356e10e3b4e89f4a5374" title="Enable profiling." shape="rect">cudaProfilerStart()</a>; 
+                                 // code to be profiled 
+                                 <a class="xref" href="group__CUDART__PROFILER.html#group__CUDART__PROFILER_1g826922d9d1d0090d4a9a6b8b249cebb5" title="Disable profiling." shape="rect">cudaProfilerStop()</a>;
+                                 ...
+                                 <a class="xref" href="group__CUDART__PROFILER.html#group__CUDART__PROFILER_1gf536d75bb382356e10e3b4e89f4a5374" title="Enable profiling." shape="rect">cudaProfilerStart()</a>; 
+                                 // code to be profiled 
+                                 <a class="xref" href="group__CUDART__PROFILER.html#group__CUDART__PROFILER_1g826922d9d1d0090d4a9a6b8b249cebb5" title="Disable profiling." shape="rect">cudaProfilerStop()</a>;
+                                 ...
+                                 }
+                                 
+                              </p>
+                              <p class="p"></p>
+                              <p class="p"></p>
+                              <p class="p">
+                                 <div class="note note"><span class="notetitle">Note:</span><p class="p">Note that this function may also return error codes from previous, asynchronous launches.</p>
+                                 </div>
+                              </p>
+                              <p class="p"></p>
+                              <p class="p apiDesc_subtitle"><strong class="ph b">See also:</strong></p>
+                              <p class="p see_subsection"><a class="xref" href="group__CUDART__PROFILER.html#group__CUDART__PROFILER_1gf536d75bb382356e10e3b4e89f4a5374" title="Enable profiling." shape="rect">cudaProfilerStart</a>, <a class="xref" href="group__CUDART__PROFILER.html#group__CUDART__PROFILER_1g826922d9d1d0090d4a9a6b8b249cebb5" title="Disable profiling." shape="rect">cudaProfilerStop</a>, <a class="xref" href="../cuda-driver-api/group__CUDA__PROFILER.html#group__CUDA__PROFILER_1gd5d346ef62db53032948f387650d1a18" target="_blank" shape="rect">cuProfilerInitialize</a></p>
+                              <p class="p"></p>
+                           </div>
+                        </dd>
+                        <dt class="description"><a name="group__CUDART__PROFILER_1gf536d75bb382356e10e3b4e89f4a5374" id="group__CUDART__PROFILER_1gf536d75bb382356e10e3b4e89f4a5374" shape="rect">
+                              <!-- --></a><span><span class="keyword keyword apiItemName">__host__</span>
+                              ​<a href="group__CUDART__TYPES.html#group__CUDART__TYPES_1gf599e5b8b829ce7db0f5216928f6ecb6" title="" shape="rect">cudaError_t</a> cudaProfilerStart (  void ) </span></dt>
+                        <dd class="description">
+                           <div class="section">Enable profiling. </div>
+                           <div class="section">
+                              <h6 class="return_header">Returns</h6>
+                              <p class="return"><a class="xref" href="group__CUDART__TYPES.html#group__CUDART__TYPES_1gg3f51e3575c2178246db0a94a430e0038e355f04607d824883b4a50662830d591" shape="rect">cudaSuccess</a></p>
+                           </div>
+                           <div class="section">
+                              <h6 class="description_header">Description</h6>
+                              <p>Enables profile collection by the active profiling tool for the current context. If profiling is already enabled, then <a class="xref" href="group__CUDART__PROFILER.html#group__CUDART__PROFILER_1gf536d75bb382356e10e3b4e89f4a5374" title="Enable profiling." shape="rect">cudaProfilerStart()</a> has no effect.
+                              </p>
+                              <p class="p">cudaProfilerStart and cudaProfilerStop APIs are used to programmatically control the profiling granularity by allowing profiling
+                                 to be done only on selective pieces of code.
+                              </p>
+                              <p class="p"></p>
+                              <p class="p">
+                                 <div class="note note"><span class="notetitle">Note:</span><p class="p">Note that this function may also return error codes from previous, asynchronous launches.</p>
+                                 </div>
+                              </p>
+                              <p class="p"></p>
+                              <p class="p apiDesc_subtitle"><strong class="ph b">See also:</strong></p>
+                              <p class="p see_subsection"><a class="xref" href="group__CUDART__PROFILER.html#group__CUDART__PROFILER_1gcd07e875aa4030363bca13159c3c8494" title="Initialize the CUDA profiler." shape="rect">cudaProfilerInitialize</a>, <a class="xref" href="group__CUDART__PROFILER.html#group__CUDART__PROFILER_1g826922d9d1d0090d4a9a6b8b249cebb5" title="Disable profiling." shape="rect">cudaProfilerStop</a>, <a class="xref" href="../cuda-driver-api/group__CUDA__PROFILER.html#group__CUDA__PROFILER_1g8a5314de2292c2efac83ac7fcfa9190e" target="_blank" shape="rect">cuProfilerStart</a></p>
+                              <p class="p"></p>
+                           </div>
+                        </dd>
+                        <dt class="description"><a name="group__CUDART__PROFILER_1g826922d9d1d0090d4a9a6b8b249cebb5" id="group__CUDART__PROFILER_1g826922d9d1d0090d4a9a6b8b249cebb5" shape="rect">
+                              <!-- --></a><span><span class="keyword keyword apiItemName">__host__</span>
+                              ​<a href="group__CUDART__TYPES.html#group__CUDART__TYPES_1gf599e5b8b829ce7db0f5216928f6ecb6" title="" shape="rect">cudaError_t</a> cudaProfilerStop (  void ) </span></dt>
+                        <dd class="description">
+                           <div class="section">Disable profiling. </div>
+                           <div class="section">
+                              <h6 class="return_header">Returns</h6>
+                              <p class="return"><a class="xref" href="group__CUDART__TYPES.html#group__CUDART__TYPES_1gg3f51e3575c2178246db0a94a430e0038e355f04607d824883b4a50662830d591" shape="rect">cudaSuccess</a></p>
+                           </div>
+                           <div class="section">
+                              <h6 class="description_header">Description</h6>
+                              <p>Disables profile collection by the active profiling tool for the current context. If profiling is already disabled, then <a class="xref" href="group__CUDART__PROFILER.html#group__CUDART__PROFILER_1g826922d9d1d0090d4a9a6b8b249cebb5" title="Disable profiling." shape="rect">cudaProfilerStop()</a> has no effect.
+                              </p>
+                              <p class="p">cudaProfilerStart and cudaProfilerStop APIs are used to programmatically control the profiling granularity by allowing profiling
+                                 to be done only on selective pieces of code.
+                              </p>
+                              <p class="p"></p>
+                              <p class="p">
+                                 <div class="note note"><span class="notetitle">Note:</span><p class="p">Note that this function may also return error codes from previous, asynchronous launches.</p>
+                                 </div>
+                              </p>
+                              <p class="p"></p>
+                              <p class="p apiDesc_subtitle"><strong class="ph b">See also:</strong></p>
+                              <p class="p see_subsection"><a class="xref" href="group__CUDART__PROFILER.html#group__CUDART__PROFILER_1gcd07e875aa4030363bca13159c3c8494" title="Initialize the CUDA profiler." shape="rect">cudaProfilerInitialize</a>, <a class="xref" href="group__CUDART__PROFILER.html#group__CUDART__PROFILER_1gf536d75bb382356e10e3b4e89f4a5374" title="Enable profiling." shape="rect">cudaProfilerStart</a>, <a class="xref" href="../cuda-driver-api/group__CUDA__PROFILER.html#group__CUDA__PROFILER_1g4d8edef6174fd90165e6ac838f320a5f" target="_blank" shape="rect">cuProfilerStop</a></p>
+                              <p class="p"></p>
+                           </div>
+                        </dd>
+                     </dl>
+                  </div>
+               </div>
+               
+               <hr id="contents-end"></hr>
+               
+            </article>
+         </div>
+      </div>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/formatting/common.min.js"></script>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/scripts/google-analytics/google-analytics-write.js"></script>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/scripts/google-analytics/google-analytics-tracker.js"></script>
+      <script type="text/javascript">var switchTo5x=true;</script><script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script><script type="text/javascript">stLight.options({publisher: "998dc202-a267-4d8e-bce9-14debadb8d92", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script><script type="text/javascript">_satellite.pageBottom();</script></body>
+</html>

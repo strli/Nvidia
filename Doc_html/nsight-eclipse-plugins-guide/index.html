@@ -1,0 +1,949 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="en-us">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+      <meta name="copyright" content="(C) Copyright 2005"></meta>
+      <meta name="DC.rights.owner" content="(C) Copyright 2005"></meta>
+      <meta name="DC.Type" content="concept"></meta>
+      <meta name="DC.Title" content="Nsight Eclipse Plugins Edition Getting Started Guide"></meta>
+      <meta name="abstract" content="The user guide for using Nsight Eclipse Plugins Edition."></meta>
+      <meta name="description" content="The user guide for using Nsight Eclipse Plugins Edition."></meta>
+      <meta name="DC.Coverage" content="Tools"></meta>
+      <meta name="DC.subject" content="CUDA Nsight, CUDA Nsight install, CUDA Nsight running, CUDA Nsight project, CUDA Nsight sample, CUDA Nsight debugging, CUDA Nsight profiling, CUDA Nsight requirements, CUDA Nsight issues, CUDA Nsight extensions"></meta>
+      <meta name="keywords" content="CUDA Nsight, CUDA Nsight install, CUDA Nsight running, CUDA Nsight project, CUDA Nsight sample, CUDA Nsight debugging, CUDA Nsight profiling, CUDA Nsight requirements, CUDA Nsight issues, CUDA Nsight extensions"></meta>
+      <meta name="DC.Format" content="XHTML"></meta>
+      <meta name="DC.Identifier" content="abstract"></meta>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/commonltr.css"></link>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/site.css"></link>
+      <title>Nsight Eclipse Plugins Edition :: CUDA Toolkit Documentation</title>
+      <!--[if lt IE 9]>
+      <script src="../common/formatting/html5shiv-printshiv.min.js"></script>
+      <![endif]-->
+      <script type="text/javascript" charset="utf-8" src="//assets.adobedtm.com/b92787824f2e0e9b68dc2e993f9bd995339fe417/satelliteLib-7ba51e58dc61bcb0e9311aadd02a0108ab24cc6c.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.min.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.ba-hashchange.min.js"></script>
+      <script type="text/javascript" charset="utf-8" src="../common/formatting/jquery.scrollintoview.min.js"></script>
+      <script type="text/javascript" src="../search/htmlFileList.js"></script>
+      <script type="text/javascript" src="../search/htmlFileInfoList.js"></script>
+      <script type="text/javascript" src="../search/nwSearchFnt.min.js"></script>
+      <script type="text/javascript" src="../search/stemmers/en_stemmer.min.js"></script>
+      <script type="text/javascript" src="../search/index-1.js"></script>
+      <script type="text/javascript" src="../search/index-2.js"></script>
+      <script type="text/javascript" src="../search/index-3.js"></script>
+      <link rel="canonical" href="http://docs.nvidia.com/cuda/nsight-eclipse-plugins-guide/index.html"></link>
+      <link rel="stylesheet" type="text/css" href="../common/formatting/qwcode.highlight.css"></link>
+   </head>
+   <body>
+      
+      <header id="header"><span id="company">NVIDIA</span><span id="site-title">CUDA Toolkit Documentation</span><form id="search" method="get" action="search">
+            <input type="text" name="search-text"></input><fieldset id="search-location">
+               <legend>Search In:</legend>
+               <label><input type="radio" name="search-type" value="site"></input>Entire Site</label>
+               <label><input type="radio" name="search-type" value="document"></input>Just This Document</label></fieldset>
+            <button type="reset">clear search</button>
+            <button id="submit" type="submit">search</button></form>
+      </header>
+      <div id="site-content">
+         <nav id="site-nav">
+            <div class="category closed"><a href="../index.html" title="The root of the site.">CUDA Toolkit 
+                  
+                  
+                  v10.1.168</a></div>
+            <div class="category"><a href="index.html" title="Nsight Eclipse Plugins Edition">Nsight Eclipse Plugins Edition</a></div>
+            <ul>
+               <li>
+                  <div class="section-link"><a href="#introduction">1.&nbsp;Introduction</a></div>
+                  <ul>
+                     <li>
+                        <div class="section-link"><a href="#about-nsight">1.1.&nbsp;About Nsight Eclipse Plugins Edition</a></div>
+                     </li>
+                  </ul>
+               </li>
+               <li>
+                  <div class="section-link"><a href="#using-nsight">2.&nbsp;Using Nsight Eclipse Edition</a></div>
+                  <ul>
+                     <li>
+                        <div class="section-link"><a href="#installation-instructions">2.1.&nbsp;Installing Nsight Eclipse Edition</a></div>
+                        <ul>
+                           <li>
+                              <div class="section-link"><a href="#toolkit-installation">2.1.1.&nbsp;Installing CUDA Toolkit</a></div>
+                           </li>
+                           <li>
+                              <div class="section-link"><a href="#configure-cuda-toolkit">2.1.2.&nbsp;Configure CUDA Toolkit Path</a></div>
+                           </li>
+                        </ul>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="#running">2.2.&nbsp;Nsight Eclipse Main Window</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="#new-runtime-project">2.3.&nbsp;Creating a New Project</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="#import-sample">2.4.&nbsp;Importing CUDA Samples</a></div>
+                        <ul>
+                           <li>
+                              <div class="section-link"><a href="#unique_1399404737">2.4.1.&nbsp;cuHook Sample</a></div>
+                           </li>
+                        </ul>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="#build-settings">2.5.&nbsp;Configure Build Settings</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="#debugging">2.6.&nbsp;Debugging CUDA Applications</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="#remote-development">2.7.&nbsp;Remote development of CUDA Applications</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="#remote-debugging">2.8.&nbsp;Debugging Remote CUDA Applications</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="#profiling">2.9.&nbsp;Profiling CUDA applications</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="#build-projects-docker">2.10.&nbsp;Build Projects in a Docker Container</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="#import-nsight-project">2.11.&nbsp;Importing Nsight Eclipse Projects</a></div>
+                     </li>
+                     <li>
+                        <div class="section-link"><a href="#more-information">2.12.&nbsp;More Information</a></div>
+                     </li>
+                  </ul>
+               </li>
+            </ul>
+         </nav>
+         <div id="resize-nav"></div>
+         <nav id="search-results">
+            <h2>Search Results</h2>
+            <ol></ol>
+         </nav>
+         
+         <div id="contents-container">
+            <div id="breadcrumbs-container">
+               <div id="release-info">Nsight Eclipse Plugins Edition
+                  (<a href="../../pdf/Nsight_Eclipse_Plugins_Getting_Started.pdf">PDF</a>)
+                  -
+                   
+                  
+                  
+                  v10.1.168
+                  (<a href="https://developer.nvidia.com/cuda-toolkit-archive">older</a>)
+                  -
+                  Last updated April 24, 2019
+                  -
+                  <a href="mailto:CUDAIssues@nvidia.com?subject=CUDA Toolkit Documentation Feedback: Nsight Eclipse Plugins Edition">Send Feedback</a></div>
+            </div>
+            <article id="contents">
+               <div class="topic nested0" id="abstract"><a name="abstract" shape="rect">
+                     <!-- --></a><h2 class="title topictitle1"><a href="#abstract" name="abstract" shape="rect">Nsight Eclipse Plugins Edition Getting Started Guide</a></h2>
+                  <div class="body conbody">
+                     <p class="shortdesc">The user guide for using Nsight Eclipse Plugins Edition.</p>
+                  </div>
+               </div>
+               <div class="topic concept nested0" id="introduction"><a name="introduction" shape="rect">
+                     <!-- --></a><h2 class="title topictitle1"><a href="#introduction" name="introduction" shape="rect">1.&nbsp;Introduction</a></h2>
+                  <div class="body conbody">
+                     <p class="p">
+                        			This guide introduces Nsight Eclipse Plugins Edition and provides
+                        			instructions necessary to start using this tool. 
+                        			Nsight Eclipse is based on Eclipse CDT project.
+                        			For a detailed description of Eclipse CDT features consult the integrated help 
+                        			"C/C++ Development User Guide" available from inside Nsight (through Help-&gt;Help Contents menu).
+                        		
+                     </p>
+                  </div>
+                  <div class="topic concept nested1" id="about-nsight"><a name="about-nsight" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#about-nsight" name="about-nsight" shape="rect">1.1.&nbsp;About Nsight Eclipse Plugins Edition</a></h3>
+                     <div class="body conbody">
+                        <div class="p">
+                           NVIDIA<sup>®</sup> Nsight™ Eclipse
+                           Edition is a unified CPU plus GPU integrated development
+                           environment (IDE) for developing CUDA<sup>®</sup>
+                           applications on Linux and Mac OS X for the x86, POWER and ARM
+                           platforms. It is designed to help developers on all stages of the
+                           software development process. Nsight Eclipse Plugins can be installed
+                           on vanilla Eclipse using the standard Help-&gt;Install New Software..
+                           Menu. The principal features are as follows:
+                           			
+                           <ul class="ul">
+                              <li class="li">Edit, build, debug and profile CUDA-C applications
+                                 				
+                              </li>
+                              <li class="li">CUDA aware source code editor – syntax highlighting, code completion and inline help</li>
+                              <li class="li">Graphical user interface for debugging heterogeneous
+                                 					applications
+                                 				
+                              </li>
+                              <li class="li">Profiler integration – Launch visual profiler as an external application with the CUDA application built in this IDE to easily
+                                 identify performance bottlenecks
+                                 				
+                              </li>
+                           </ul>
+                        </div>
+                        <p class="p">
+                           			For more information about Eclipse Platform, visit
+                           			<a class="xref" href="http://eclipse.org" target="_blank" shape="rect">http://eclipse.org</a></p>
+                     </div>
+                  </div>
+               </div>
+               <div class="topic concept nested0" id="using-nsight"><a name="using-nsight" shape="rect">
+                     <!-- --></a><h2 class="title topictitle1"><a href="#using-nsight" name="using-nsight" shape="rect">Using Nsight Eclipse Edition</a></h2>
+                  <div class="topic concept nested1" id="installation-instructions"><a name="installation-instructions" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#installation-instructions" name="installation-instructions" shape="rect">2.1.&nbsp;Installing Nsight Eclipse Edition</a></h3>
+                     <div class="body conbody">
+                        <p class="p">Nsight Eclipse Plugins archive is part of the CUDA Toolkit. Nsight Eclipse Plugins archive can 
+                           		be installed using the Help -&gt; Install New Software... Menu on Eclipse 
+                        </p>
+                     </div>
+                     <div class="topic task nested2" id="toolkit-installation"><a name="toolkit-installation" shape="rect">
+                           <!-- --></a><h3 class="title topictitle2"><a href="#toolkit-installation" name="toolkit-installation" shape="rect">2.1.1.&nbsp;Installing CUDA Toolkit</a></h3>
+                        <div class="body taskbody">
+                           <div class="section context">
+                              <p class="p">To install CUDA Toolkit:</p>
+                           </div>
+                           <ol class="ol steps">
+                              <li class="li step"><span class="ph cmd">Visit the NVIDIA CUDA Zone download page:</span><a class="xref" href="http://www.nvidia.com/object/cuda_get.html" target="_blank" shape="rect">http://www.nvidia.com/object/cuda_get.html</a></li>
+                              <li class="li step"><span class="ph cmd">Select appropriate operating system. Nsight Eclipse Edition is
+                                    					available in Mac OS X and Linux toolkit packages.
+                                    				</span></li>
+                              <li class="li step"><span class="ph cmd">Download and install the CUDA Driver.</span></li>
+                              <li class="li step"><span class="ph cmd">Download and install the CUDA Toolkit.</span></li>
+                              <li class="li step"><span class="ph cmd">Follow instructions to configure CUDA Driver and Toolkit on
+                                    					your system.
+                                    				</span></li>
+                           </ol>
+                        </div>
+                     </div>
+                     <div class="topic task nested2" id="configure-cuda-toolkit"><a name="configure-cuda-toolkit" shape="rect">
+                           <!-- --></a><h3 class="title topictitle2"><a href="#configure-cuda-toolkit" name="configure-cuda-toolkit" shape="rect">2.1.2.&nbsp;Configure CUDA Toolkit Path</a></h3>
+                        <div class="body taskbody">
+                           <div class="section context">
+                              <p class="p">
+                                 			When Eclipse is first launched with Nsight Eclipse plugins in the new workspace, NVIDIA usage data collection dialog will
+                                 be displayed as below.
+                                 			Click Yes to enable usage collection. This can be disabled later from the CUDA preference page. 
+                                 				<br clear="none"></br><div class="imagecenter"><img class="image imagecenter" src="graphics/usage_data_collection.png" alt="Usage data collection page"></img></div><br clear="none"></br></p>
+                              <p class="p">To get started, CUDA Toolkit path must be configured in Eclipse with Nsight Plugins:</p>
+                           </div>
+                           <ol class="ol steps">
+                              <li class="li step"><span class="ph cmd">Open the Preferences page, Window &gt; Preferences.</span></li>
+                              <li class="li step"><span class="ph cmd">Go to CUDA toolkit section.
+                                    				</span></li>
+                              <li class="li step"><span class="ph cmd">Select the CUDA toolkit path to be used by Nsight. CUDA tookits that
+                                    				are installed in the default location will automatically appear.
+                                    				<br clear="none"></br><div class="imagecenter"><img class="image imagecenter" src="graphics/cudatoolkit_preference.png" width="576" alt="Cuda toolkit preference page"></img></div><br clear="none"></br></span></li>
+                              <li class="li step"><span class="ph cmd">CUDA toolkit path can be also specified 
+                                    				in the project properties page in order to use different toolkit for a project.</span></li>
+                              <li class="li step"><span class="ph cmd">Enable usage data collection if you wish to send usage data to NVIDIA.</span></li>
+                              <li class="li step"><span class="ph cmd">Click on the button to set cuda-gdb and Visual Profiler as the default launchers.</span></li>
+                              <li class="li step"><span class="ph cmd"><strong class="ph b"> For QNX: </strong>
+                                    				When QNX is selected as Target OS, a dialog will be displayed to set the 
+                                    				QNX_HOST and QNX_TARGET environment variables if they were not already set. 
+                                    				<br clear="none"></br><div class="imagecenter"><img class="image imagecenter" src="graphics/qnx-host-target.png" alt="QNX Environment Variables"></img></div><br clear="none"></br>
+                                    				QNX_HOST environment variable identifies the directory that holds the host-related components: 
+                                    				<br clear="none"></br><div class="imagecenter"><img class="image imagecenter" src="graphics/qnx-host-dir.png" alt="QNX_HOST directory structure"></img></div><br clear="none"></br>
+                                    				QNX_TARGET environment variable identifies the directory that holds the target-related components:  
+                                    				<br clear="none"></br><div class="imagecenter"><img class="image imagecenter" src="graphics/qnx-target-dir.png" alt="QNX_TARGET directory structure"></img></div><br clear="none"></br></span></li>
+                           </ol>
+                           <div class="section result"></div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="topic concept nested1" id="running"><a name="running" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#running" name="running" shape="rect">2.2.&nbsp;Nsight Eclipse Main Window</a></h3>
+                     <div class="body conbody">
+                        <p class="p">On the first run Eclipse will ask to pick a workspace location. The
+                           			workspace is a folder where Nsight will store its settings, local
+                           			files history and caches. An empty folder should be selected to avoid
+                           			overwriting existing files.
+                           		
+                        </p>
+                        <div class="p">
+                           			The main Nsight window will open after the workspace location is
+                           			selected. The main
+                           			window is divided into the following areas:
+                           			
+                           <ul class="ul">
+                              <li class="li"><dfn class="term">Editor</dfn>
+                                 					- displays source files that are opened for editing.
+                                 				
+                              </li>
+                              <li class="li"><dfn class="term">Project Explorer</dfn>
+                                 					- displays project files
+                                 				
+                              </li>
+                              <li class="li"><dfn class="term">Outline</dfn>
+                                 					- displays structure of the source file in the current editor.
+                                 				
+                              </li>
+                              <li class="li"><dfn class="term">Problems</dfn>
+                                 					- displays errors and warnings detected by static code analysis in
+                                 					IDE or by a compiler during the build.
+                                 				
+                              </li>
+                              <li class="li"><dfn class="term">Console</dfn>
+                                 					- displays make output during the build or output from the running
+                                 					application.
+                                 				
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="topic task nested1" id="new-runtime-project"><a name="new-runtime-project" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#new-runtime-project" name="new-runtime-project" shape="rect">2.3.&nbsp;Creating a New Project</a></h3>
+                     <div class="body taskbody">
+                        <ol class="ol steps">
+                           <li class="li step"><span class="ph cmd">
+                                 					From the main menu, open the new project wizard -
+                                 					<span class="ph uicontrol">File</span>
+                                 					&gt;
+                                 					<span class="ph uicontrol">New...</span>
+                                 					&gt;
+                                 					<span class="ph uicontrol">C/C++ Project</span></span></li>
+                           <li class="li step"><span class="ph cmd">
+                                 					Specify the project name and project files location.
+                                 				</span></li>
+                           <li class="li step"><span class="ph cmd">
+                                 					Specify the project type like executable project.
+                                 				</span></li>
+                           <li class="li step"><span class="ph cmd">
+                                 					Specify the CUDA toolchain from the list of toolchains.
+                                 				</span></li>
+                           <li class="li step"><span class="ph cmd">
+                                 					Specify the project configurations on the next wizard page.
+                                 				</span></li>
+                           <li class="li step"><span class="ph cmd">Complete the wizard.</span>
+                              				 
+                              					The project will be shown in the
+                              					<span class="ph uicontrol">Project Explorer</span>
+                              					view and source editor will be opened.
+                              				
+                              			
+                           </li>
+                           <li class="li step"><span class="ph cmd">Build the project by clicking on the hammer button on the main
+                                 					toolbar.
+                                 				</span></li>
+                        </ol>
+                        <div class="section result">
+                           <div class="fig fignone"><span class="figcap">Figure 1. Nsight main window after creating a new project</span><br clear="none"></br><div class="imagecenter"><img class="image imagecenter" src="graphics/newproject.png" width="576" alt="Nsight main window after creating a new project."></img></div><br clear="none"></br></div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="topic task nested1" id="import-sample"><a name="import-sample" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#import-sample" name="import-sample" shape="rect">2.4.&nbsp;Importing CUDA Samples</a></h3>
+                     <div class="body taskbody">
+                        <div class="section prereq p">
+                           			The CUDA samples are an optional component of the CUDA Toolkit installation. Nsight provides
+                           a mechanism to import these samples and work with them easily:
+                           			
+                           <div class="note note"><span class="notetitle">Note:</span> Samples that use the CUDA driver API (suffixed with "Drv") are not supported by Nsight.
+                           </div>
+                        </div>
+                        <ol class="ol steps">
+                           <li class="li step"><span class="ph cmd">
+                                 					From the main menu, open the new project wizard -
+                                 					<span class="ph uicontrol">File</span>
+                                 					&gt;
+                                 					<span class="ph uicontrol">New...</span>
+                                 					&gt;
+                                 					<span class="ph uicontrol">C/C++ Project</span></span></li>
+                           <li class="li step"><span class="ph cmd">
+                                 					Specify the project name and project files location.
+                                 				</span></li>
+                           <li class="li step"><span class="ph cmd">
+                                 					Select
+                                 					<span class="ph uicontrol">Import CUDA Sample</span>
+                                 					under
+                                 					<span class="ph uicontrol">Executable</span>
+                                 					in the
+                                 					<span class="ph uicontrol">Project type</span>
+                                 					tree.
+                                 				</span></li>
+                           <li class="li step"><span class="ph cmd">
+                                 					Select CUDA toolchain from the Toolchains option. location.
+                                 				</span></li>
+                           <li class="li step"><span class="ph cmd">
+                                 					On the next wizard page select project sample you want to import.
+                                 					Also select the target CPU architecture.
+                                 					Press
+                                 					<span class="ph uicontrol">Next...</span></span></li>
+                           <li class="li step"><span class="ph cmd">
+                                 					Specify the project parameters on the next wizard page.
+                                 				</span></li>
+                           <li class="li step"><span class="ph cmd">Complete the wizard.</span>
+                              				 
+                              					The project will be shown in the
+                              					<span class="ph uicontrol">Project Explorer</span>
+                              					view and source editor will be opened.
+                              				
+                              			
+                           </li>
+                           <li class="li step"><span class="ph cmd">Build the project by clicking on the hammer button on the main
+                                 					toolbar.
+                                 				</span></li>
+                        </ol>
+                     </div>
+                     <div class="topic task nested2" id="unique_1399404737"><a name="unique_1399404737" shape="rect">
+                           <!-- --></a><h3 class="title topictitle2"><a href="#unique_1399404737" name="unique_1399404737" shape="rect">cuHook Sample</a></h3>
+                        <div class="body taskbody">
+                           <div class="section prereq p">
+                              			cuHook sample builds both the library and the executable. cuHook sample should be imported as the "makefile" project using
+                              the following steps.
+                              		
+                           </div>
+                           <ol class="ol steps">
+                              <li class="li step"><span class="ph cmd">
+                                    					From the main menu, open the new project wizard -
+                                    					<span class="ph uicontrol">File</span>
+                                    					&gt;
+                                    					<span class="ph uicontrol">New...</span>
+                                    					&gt;
+                                    					<span class="ph uicontrol">C/C++ Project</span></span></li>
+                              <li class="li step"><span class="ph cmd">
+                                    					Select project type "Makefile project" and choose "Empty Project"
+                                    				</span></li>
+                              <li class="li step"><span class="ph cmd">
+                                    					Specify the project name and project files location.
+                                    				</span></li>
+                              <li class="li step"><span class="ph cmd">Complete the wizard.</span>
+                                 				 
+                                 					The project will be shown in the
+                                 					<span class="ph uicontrol">Project Explorer</span>
+                                 					view.
+                                 				
+                                 			
+                              </li>
+                              <li class="li step"><span class="ph cmd">
+                                    					Right click on the project -
+                                    					<span class="ph uicontrol">Import...</span>
+                                    					&gt;
+                                    					<span class="ph uicontrol">General</span>
+                                    					&gt;
+                                    					<span class="ph uicontrol">File System</span></span></li>
+                              <li class="li step"><span class="ph cmd">
+                                    					On the next wizard page, select the location of cuHook sample(Samples/7_CUDALibraries/cuHook)
+                                    				</span></li>
+                              <li class="li step"><span class="ph cmd">
+                                    					Select all the source files and makefile and Finish the wizard
+                                    				</span></li>
+                              <li class="li step"><span class="ph cmd">Build the project by clicking on the hammer button on the main
+                                    					toolbar.
+                                    				</span></li>
+                              <li class="li step"><span class="ph cmd">
+                                    					To run the sample, from the main menu -
+                                    					<span class="ph uicontrol">Run</span>
+                                    					&gt;
+                                    					<span class="ph uicontrol">Run Configurations...</span>
+                                    					&gt;
+                                    					Select the executable
+                                    					&gt;
+                                    					Go to Environment tab
+                                    					&gt;
+                                    					<span class="ph uicontrol">New...</span>
+                                    					&gt;
+                                    					enter Name=LD_PRELOAD, Value=./libcuhook.so.1
+                                    					&gt;
+                                    					<span class="ph uicontrol">Run</span>
+                                    					will execute the sample
+                                    				</span></li>
+                           </ol>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="topic concept nested1" id="build-settings"><a name="build-settings" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#build-settings" name="build-settings" shape="rect">2.5.&nbsp;Configure Build Settings</a></h3>
+                     <div class="body conbody">
+                        <p class="p">
+                           		To define build settings:
+                           		In the C/C++ Projects view, right-click your project, and select Properties. Select C/C++ Build, Settings from the list.
+                           		<br clear="none"></br><div class="imagecenter"><img class="image imagecenter" width="576" src="graphics/project_build_settings.png" alt="Configure Build Settings"></img></div><br clear="none"></br></p>
+                        <div class="p">
+                           			The following are the categories of Nvcc linker settings that can be configured for the selected project.
+                           			
+                           <div class="note note"><span class="notetitle">Note:</span>  All options field in the main page is not editable and it's the collection of
+                              			options set in the child categories. 
+                           </div>
+                           <ul class="ul">
+                              <li class="li"><dfn class="term">Libraries</dfn>
+                                 					- Configure library search path(-L) and to include linker libraries(-l).
+                                 					  When you are cross compiling for different target os, 
+                                 					  the library search path should point to the appropriate location
+                                 					  where the target os libraries are present.	  
+                                 					<br clear="none"></br><div class="imagecenter"><img class="image imagecenter" width="576" src="graphics/library_settings.png" alt="Configure Build Settings"></img></div><br clear="none"></br></li>
+                              <li class="li"><dfn class="term">Miscellaneous</dfn>
+                                 					- Set additional linker options and option to link with OpenGL libraries. 
+                                 				
+                              </li>
+                              <li class="li"><dfn class="term">Shared Library Settings</dfn>
+                                 					- Set option to build a shared library. 
+                                 				
+                              </li>
+                           </ul>
+                        </div>
+                        <div class="p">
+                           			The following are the categories of Nvcc Compiler settings that can be configured for the selected project.
+                           			
+                           <div class="note note"><span class="notetitle">Note:</span>  All options field in the main page is not editable and it's the collection of
+                              			options set in the child categories. 
+                           </div>
+                           <ul class="ul">
+                              <li class="li"><dfn class="term">Dialect</dfn>
+                                 					- Select the language standard and dialect options.
+                                 				
+                              </li>
+                              <li class="li"><dfn class="term">Preprocessor</dfn>
+                                 					- Add the defined and undefined symbols for the preprocessor. 
+                                 				
+                              </li>
+                              <li class="li"><dfn class="term">Includes</dfn>
+                                 					- Set include paths and include files for the compiler.
+                                 				
+                              </li>
+                              <li class="li"><dfn class="term">Optimization</dfn>
+                                 					- Set the compiler optimization level.
+                                 				
+                              </li>
+                              <li class="li"><dfn class="term">Debugging</dfn>
+                                 					- Set the options to generate debug information.
+                                 				
+                              </li>
+                              <li class="li"><dfn class="term">Warnings</dfn>
+                                 					- Set inhibit all warning messages.
+                                 				
+                              </li>
+                              <li class="li"><dfn class="term">CUDA</dfn>
+                                 					- Generate code for different real architectures with the PTX for the same vitrual architectures.
+                                 				
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="topic task nested1" id="debugging"><a name="debugging" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#debugging" name="debugging" shape="rect">2.6.&nbsp;Debugging CUDA Applications</a></h3>
+                     <div class="body taskbody">
+                        <div class="section prereq p">
+                           			Nsight must be running and at least one project must exist.
+                           		
+                        </div>
+                        <ol class="ol steps">
+                           <li class="li step"><span class="ph cmd">	
+                                 					In the
+                                 					<span class="ph uicontrol">Project Explorer</span>
+                                 					view, select project you want to debug. Make sure the project
+                                 					executable is compiled and no error markers are shown on the
+                                 					project.
+                                 				</span></li>
+                           <li class="li step"><span class="ph cmd">
+                                 					Right click on the project and go to
+                                 					<span class="ph uicontrol">Debug As &gt; NVIDIA CUDA GDB Debugger</span>
+                                 					menu.
+                                 				</span></li>
+                           <li class="li step"><span class="ph cmd">You will be offered to switch perspective when you run debugger
+                                 					for the first time. Click "Yes".
+                                 				</span>
+                              				 
+                              					Perspective is a window layout preset specifically designed
+                              					for a particular task.
+                              				
+                              			
+                           </li>
+                           <li class="li step"><span class="ph cmd">
+                                 					Application will suspend in the
+                                 					<dfn class="term">main</dfn>
+                                 					function. At this point there is no GPU code running.
+                                 				</span></li>
+                           <li class="li step"><span class="ph cmd">Add a breakpoint in the device code. Resume the application.
+                                 				</span></li>
+                        </ol>
+                        <div class="section result">
+                           <p class="p">Debugger will break when application reaches the breakpoint. You
+                              				can now explore your CUDA device state, step through your GPU code
+                              				or resume the application.
+                              			
+                           </p>
+                           <div class="fig fignone"><span class="figcap">Figure 2. Debugging CUDA application</span><br clear="none"></br><div class="imagecenter"><img class="image imagecenter" width="576" src="graphics/debugger.png" alt="Debugging CUDA application."></img></div><br clear="none"></br></div>
+                           <p class="p">Additional debugger options can be set
+                              			 in the debug configuration dialog through 
+                              			 Run &gt; Debug Configurations .. menu..
+                              			
+                           </p>
+                           <div class="fig fignone"><span class="figcap">Figure 3. Debugging CUDA application</span><br clear="none"></br><div class="imagecenter"><img class="image imagecenter" width="576" src="graphics/debugger_options.png" alt="Debugging CUDA application."></img></div><br clear="none"></br></div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="topic concept nested1" id="remote-development"><a name="remote-development" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#remote-development" name="remote-development" shape="rect">2.7.&nbsp;Remote development of CUDA Applications</a></h3>
+                     <div class="body conbody">
+                        <div class="p">
+                           Nsight Eclipse Edition also supports remote development of CUDA application starting with CUDA Toolkit 6.0. The picture below
+                           shows how Nsight Eclipse Edition can be used for local as well as remote development:
+                           
+                           <div class="fig fignone"><br clear="none"></br><div class="imagecenter"><img class="image imagecenter" src="graphics/nsight-eclipse-use-cases.png" alt="One tool Nsight Eclipse for all your development needs"></img></div><br clear="none"></br></div>
+                           
+                           For remote development you do not need any NVIDIA GPU on your host system. The remote target system can be a Linux x86 or
+                           POWER system with an NVIDIA GPU or an Tegra-based ARM system. Nsight IDE and UI tools can only be hosted on x86 and POWER
+                           systems.
+                           
+                        </div>
+                        <p class="p">
+                           Nsight Eclipse Plugins supports the cross compilation mode for remote devices. 
+                           
+                        </p>
+                        <p class="p">
+                           In the <strong class="ph b">cross compilation mode</strong> the project resides on the host system and the cross compilation is also done on the host system. The cross compilation mode
+                           is only supported on an Ubuntu x86 host system. 
+                           
+                        </p>
+                        <p class="p"> 
+                           To cross compile select the target cross compile architecture in CPU architecture drop down in the project properties page:
+                           <br clear="none"></br><div class="imagecenter"><img class="image imagecenter" src="graphics/arm-compile.png" alt="Enabling cross-compilation in Nsight Eclipse Edition"></img></div><br clear="none"></br></p>
+                     </div>
+                  </div>
+                  <div class="topic task nested1" id="remote-debugging"><a name="remote-debugging" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#remote-debugging" name="remote-debugging" shape="rect">2.8.&nbsp;Debugging Remote CUDA Applications</a></h3>
+                     <div class="body taskbody">
+                        <div class="section prereq p">
+                           			Remote debugging is available starting with CUDA Toolkit 5.5.
+                           			A dedicated GPU is not required to use Nsight remote debugging UI.
+                           			A dedicated GPU is still required on the debug target.
+                           			Only Linux targets are supported.
+                           			Debug host and target may run different operating systems or have different CPU architectures.
+                           			The remote machine must be accessible via SSH and CUDA Toolkit must be installed on both machines.
+                           			
+                           <div class="note note"><span class="notetitle">Note:</span> 
+                              				If there is a firewall between the host and the target,
+                              				it must be set up to let RSP messages through,
+                              				or SSH port-forwarding must be used.
+                              			
+                           </div>
+                        </div>
+                        <ol class="ol steps">
+                           <li class="li step"><span class="ph cmd">
+                                 					Select the project and right click then go to 
+                                 					<span class="ph uicontrol">Debug As...&gt;NVIDIA CUDA GDB Debugger(Remote) </span>
+                                 					menu item.
+                                 					<br clear="none"></br><div class="imagecenter"><img class="image imagecenter" src="graphics/debug-an-application-menuitem.png" alt="Nsight run menu with Debug an application item highlighted"></img></div><br clear="none"></br></span></li>
+                           <li class="li step"><span class="ph cmd">
+                                 					Type the full path to a local executable or select one using the <span class="ph uicontrol">Local file...</span> button.
+                                 					<br clear="none"></br><div class="imagecenter"><img class="image imagecenter" src="graphics/debug-cuda-application-specify-executable.png" alt="Nsight's Debug CUDA Application Wizard - Selecting executable"></img></div><br clear="none"></br></span></li>
+                           <li class="li step"><span class="ph cmd">
+                                 					Select a remote connection from a drop-down list
+                                 					or press the <span class="ph uicontrol">Add connection...</span> button to create a new one.
+                                 				</span></li>
+                           <li class="li step"><span class="ph cmd">
+                                 					If you are creating a new remote connection,
+                                 					enter the host name(or IP address) as well as the user name. Select the SSH as system type.
+                                 					Also select the QNX check box for QNX targets and then press <span class="ph uicontrol">Finish</span>.
+                                 					<br clear="none"></br><div class="imagecenter"><img class="image imagecenter" src="graphics/remote-connection-wizard.png" alt="Remote connection wizard"></img></div><br clear="none"></br></span></li>
+                           <li class="li step"><span class="ph cmd"><strong class="ph b"> For Android devices: </strong>
+                                 					To configure the remote connection using Android debug bridge,
+                                 					select the <span class="ph uicontrol">Android debug bridge</span> from the Remote Connection drop-down list,
+                                 					Android device must be connected to the host system using USB port.
+                                 					<br clear="none"></br><div class="imagecenter"><img class="image imagecenter" src="graphics/adb-remote-connection.png" alt="Remote connection wizard"></img></div><br clear="none"></br>
+                                 					Press <span class="ph uicontrol">Manage</span> button, and enter or 
+                                 					select the path to adb utility. You  need to install Android SDK platform tools to use Android debug bridge.
+                                 					press <span class="ph uicontrol">Detect</span> button to find the android device available through ADB.
+                                 					<br clear="none"></br><div class="imagecenter"><img class="image imagecenter" src="graphics/adb-connection.png" alt="Remote connection wizard"></img></div><br clear="none"></br></span><br clear="none"></br></li>
+                           <li class="li step"><strong>Optional: </strong><span class="ph cmd">
+                                 					Press <span class="ph uicontrol">Connect</span> to verify the selected remote connection.
+                                 				</span></li>
+                           <li class="li step"><span class="ph cmd">
+                                 					Press the <span class="ph uicontrol">Next</span> button.
+                                 				</span></li>
+                           <li class="li step"><span class="ph cmd">
+                                 					Type the full path to cuda-gdbserver on the remote system or
+                                 					select one using the <span class="ph uicontrol">Browse...</span> button.
+                                 					<br clear="none"></br><div class="imagecenter"><img class="image imagecenter" src="graphics/debug-cuda-application-specify-path.png" alt="Nsight's Debug CUDA Application Wizard - Specifying gdbserver/library path"></img></div><br clear="none"></br></span></li>
+                           <li class="li step"><span class="ph cmd">
+                                 					Click on "Add new path" or on the <span class="ph uicontrol">Browse...</span> button
+                                 					to specify the path to the shared libraries the remote application depends on.
+                                 				</span></li>
+                           <li class="li step"><span class="ph cmd">
+                                 					Click on the <span class="ph uicontrol">Finish</span> button to finish
+                                 					the new debug configuration wizard and start debugging the application.
+                                 				</span></li>
+                           <li class="li step"><span class="ph cmd">You will be offered to switch perspective when you run the debugger
+                                 					for the first time. Click <span class="ph uicontrol">Yes</span>.
+                                 				</span>
+                              				 
+                              					Perspective is a window layout preset specifically designed
+                              					for a particular task.
+                              				
+                              			
+                           </li>
+                        </ol>
+                        <div class="section result">
+                           <p class="p">The debugger will stop at the application main routine. You can now set breakpoints,
+                              				or resume the application.
+                              			
+                           </p>
+                           <div class="fig fignone"><span class="figcap">Figure 4. Debugging remote CUDA application</span><br clear="none"></br><div class="imagecenter"><img class="image imagecenter" src="graphics/remote-debugger.png" alt="Debugging remote CUDA application."></img></div><br clear="none"></br></div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="topic task nested1" id="profiling"><a name="profiling" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#profiling" name="profiling" shape="rect">2.9.&nbsp;Profiling CUDA applications</a></h3>
+                     <div class="body taskbody">
+                        <div class="section prereq p"> Nsight must be running and at least one project must exist.
+                           			Profiler cannot be used when debugging session is in progress.
+                           		
+                        </div>
+                        <div class="section context">
+                           			Nsight Eclipse Edition profiling features are based on the NVIDIA
+                           			Visual Profiler (
+                           			<dfn class="term">nvvp</dfn>
+                           			) code. Nsight Eclipse Plugins Edition 
+                           			will launch the Visual Profiler as an external tool with the executable 
+                           			and other information from the selected project.
+                           		
+                        </div>
+                        <ol class="ol steps">
+                           <li class="li step"><span class="ph cmd">
+                                 					In the
+                                 					<span class="ph uicontrol">Project Explorer</span>
+                                 					view, select project you want to profile. Make sure the project
+                                 					executable is compiled and no error markers are shown on the
+                                 					project.
+                                 				</span></li>
+                           <li class="li step"><span class="ph cmd">
+                                 					Select the project and right click and go to
+                                 					<span class="ph uicontrol">Profile As&gt;NVIDIA Visual Profiler</span>
+                                 					menu.
+                                 					<br clear="none"></br><div class="imagecenter"><img class="image imagecenter" width="576" src="graphics/profiler-menuitem.png" alt="Profiling CUDA Application menu."></img></div><br clear="none"></br></span></li>
+                        </ol>
+                        <div class="section result">
+                           <p class="p">
+                              				Nsight Eclipse will launch the Visual Profiler
+                              				to specify extra profiler options with the executable
+                              				 information already passed from the selected project.
+                              			
+                           </p>
+                           <div class="fig fignone"><span class="figcap">Figure 5. Profiling CUDA Application</span><br clear="none"></br><div class="imagecenter"><img class="image imagecenter" width="576" src="graphics/profiling.png" alt="Profiling CUDA Application."></img></div><br clear="none"></br></div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="topic task nested1" id="build-projects-docker"><a name="build-projects-docker" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#build-projects-docker" name="build-projects-docker" shape="rect">2.10.&nbsp;Build Projects in a Docker Container</a></h3>
+                     <div class="body taskbody">
+                        <div class="section prereq p">
+                           			You can build and debug C/C++ and CUDA projects in a Docker container using Nsight Eclipse Edition.
+                           			To get started, you need to first pull and install the Docker image that encapsulates the CUDA toolkit and cross platform
+                           tool chains.
+                           			You can get the Docker images from NVIDIA GPU Cloud.Then you can use Nsight Eclipse Edition to build CUDA projects in a
+                           Docker container.    
+                           		
+                        </div>
+                        <ol class="ol steps">
+                           <li class="li step"><span class="ph cmd">
+                                 					Open Nsight Eclipse Edition and configure the container settings.
+                                 				</span></li>
+                           <li class="li step"><span class="ph cmd">
+                                 					Open the Preferences page, Window &gt; Preferences and go to:  
+                                 					<span class="ph uicontrol">CUDA</span>
+                                 					&gt;
+                                 					<span class="ph uicontrol">Container Settings</span><br clear="none"></br><div class="imagecenter"><img class="image imagecenter" width="576" src="graphics/container-preferences.png" alt="CUDA Docker Container Settings."></img></div><br clear="none"></br></span></li>
+                           <li class="li step"><span class="ph cmd">
+                                 					Select the option if you want to build the projects inside the Docker container. 
+                                 					Make sure the CUDA toolkit path that is specified in the CUDA preferences is the path of the CUDA toolkit inside a Docker
+                                 container. 
+                                 				</span></li>
+                           <li class="li step"><span class="ph cmd">
+                                 					Select the Connection and the Image dropdown will display all the Docker images that are currently installed. 
+                                 					Choose the docker image that you want to use to build/debug the projects.
+                                 					The preferences that are set here will be automatically displayed in the project setup wizard.
+                                 					You can choose to modify the container settings for the individual projects from the project setup wizard. 
+                                 				</span></li>
+                           <li class="li step"><span class="ph cmd">
+                                 					To create a project, From the main menu, open the new project wizard: File &gt; New... &gt; CUDA C/C++ Project
+                                 				</span></li>
+                           <li class="li step"><span class="ph cmd">
+                                 					Specify the project name and project files location. And select the CUDA toolchain from the list of toolchains.
+                                 				</span></li>
+                           <li class="li step"><span class="ph cmd">
+                                 					In the last page of project setup wizard, the container options will be displayed. 
+                                 					The default container settings from the preference page will be displayed here. 
+                                 					You can choose to modify the settings for this project in this Container settings page.  
+                                 					<br clear="none"></br><div class="imagecenter"><img class="image imagecenter" width="576" src="graphics/container-proj-settings.png" alt="CUDA Docker Container Project Settings."></img></div><br clear="none"></br></span></li>
+                           <li class="li step"><span class="ph cmd">
+                                 					Complete the project setup wizard. The project will be created and shown in the Project Explorer view.
+                                 				</span></li>
+                           <li class="li step"><span class="ph cmd">
+                                 					The project source directories will be automatically mounted to the docker container.
+                                 				</span></li>
+                           <li class="li step"><span class="ph cmd">
+                                 					If you need to mount any other directories that contains the include files/libraries and etc to the docker container,
+                                 					you can mount those directories from the project property page. 
+                                 				</span></li>
+                           <li class="li step"><span class="ph cmd">
+                                 					Right click on the project and go to Properties. Select C/C++ Build &gt; Settings &gt; Container Settigns Tab.
+                                 					Additional directories can be mounted from this property page.
+                                 					<br clear="none"></br><div class="imagecenter"><img class="image imagecenter" width="576" src="graphics/container-proj-properties.png" alt="CUDA Docker Container Project Settings."></img></div><br clear="none"></br></span></li>
+                           <li class="li step"><span class="ph cmd">Build the project by hitting the hammer button on the main toolbar.</span>
+                              				 
+                              					The project is now built in the chosen Docker container the executable will be available on the host.
+                              				
+                              			
+                           </li>
+                        </ol>
+                     </div>
+                  </div>
+                  <div class="topic task nested1" id="import-nsight-project"><a name="import-nsight-project" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#import-nsight-project" name="import-nsight-project" shape="rect">2.11.&nbsp;Importing Nsight Eclipse Projects</a></h3>
+                     <div class="body taskbody">
+                        <div class="section prereq p">
+                           			The projects that are created with Nsight Eclipse Edition
+                           			 can be imported into the Eclipse workbench with Nsight Eclipse plugins.
+                           		
+                        </div>
+                        <ol class="ol steps">
+                           <li class="li step"><span class="ph cmd">
+                                 					Open Nsight Eclipse edition and select the project that needs to be exported.
+                                 				</span></li>
+                           <li class="li step"><span class="ph cmd">
+                                 					Right click on the Nsight Eclipse project and go to -
+                                 					<span class="ph uicontrol">Export</span>
+                                 					&gt;
+                                 					<span class="ph uicontrol">C/C++</span>
+                                 					&gt;
+                                 					<span class="ph uicontrol">C/C++ Project Settings</span>
+                                 					&gt;
+                                 					<span class="ph uicontrol">Next</span>
+                                 					menu.
+                                 					<br clear="none"></br><div class="imagecenter"><img class="image imagecenter" width="576" src="graphics/export-proj-settings.png" alt="Export C/C++ Project Settings."></img></div><br clear="none"></br></span></li>
+                           <li class="li step"><span class="ph cmd">
+                                 					Select the project and settings to export.
+                                 				</span></li>
+                           <li class="li step"><span class="ph cmd">
+                                 					Specify the "Export to file" location.
+                                 				</span></li>
+                           <li class="li step"><span class="ph cmd">
+                                 					Settings will be stored in the given XML file.
+                                 				</span></li>
+                           <li class="li step"><span class="ph cmd">
+                                 					Go to Eclipse workbench where the project settings needs to be imported.
+                                 				</span></li>
+                           <li class="li step"><span class="ph cmd">
+                                 					Create a C/C++ Project from the main menu
+                                 					<span class="ph uicontrol">File</span>
+                                 					&gt;
+                                 					<span class="ph uicontrol">New</span>
+                                 					&gt;
+                                 					<span class="ph uicontrol">C/C++ Project</span></span></li>
+                           <li class="li step"><span class="ph cmd">
+                                 					Specify the project name and choose Empty project type with CUDA toolchains.
+                                 				</span></li>
+                           <li class="li step"><span class="ph cmd">
+                                 					Right click on the project to import the source files.
+                                 					<span class="ph uicontrol">Import</span>
+                                 					&gt;
+                                 					<span class="ph uicontrol">General</span>
+                                 					&gt;
+                                 					<span class="ph uicontrol">File System</span>
+                                 					 &gt;(From directory) or copy the source files from the existing project.
+                                 				</span></li>
+                           <li class="li step"><span class="ph cmd">
+                                 					Import the project settings like include paths and symbols using the following right click menu	
+                                 					<span class="ph uicontrol">Import</span>
+                                 					&gt;
+                                 					<span class="ph uicontrol">C/C++ </span>
+                                 					&gt;
+                                 					<span class="ph uicontrol">C/C++ Project Settings</span>
+                                 					 &gt;Next...
+                                 				</span></li>
+                           <li class="li step"><span class="ph cmd">
+                                 					Select the location of the project settigns file and select the project and configuration
+                                 					on the next wizard page.
+                                 					<br clear="none"></br><div class="imagecenter"><img class="image imagecenter" width="576" src="graphics/import-proj-settings.png" alt="Import C/C++ Project Settings."></img></div><br clear="none"></br></span></li>
+                           <li class="li step"><span class="ph cmd">Complete the wizard.</span>
+                              				 
+                              					The project settings will be imported from the file exported from Nsight Eclipse Edition.
+                              				
+                              			
+                           </li>
+                           <li class="li step"><span class="ph cmd">Build the project by clicking on the hammer button on the main
+                                 					toolbar.
+                                 				</span></li>
+                        </ol>
+                     </div>
+                  </div>
+                  <div class="topic concept nested1" id="more-information"><a name="more-information" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#more-information" name="more-information" shape="rect">2.12.&nbsp;More Information</a></h3>
+                     <div class="body conbody">
+                        <p class="p">
+                           			More information about the Eclipse CDT features and other topics is available in the
+                           			Help contents. To access Help contents select
+                           			<dfn class="term">Help-&gt;Help Contents</dfn>
+                           			from the Nsight main menu.
+                           		
+                        </p>
+                        <p class="p">
+                           			More information about CUDA, CUDA Toolkit and other tools is
+                           			available on CUDA web page at
+                           			<a class="xref" href="http://developer.nvidia.com/cuda" target="_blank" shape="rect">http://developer.nvidia.com/cuda</a></p>
+                     </div>
+                  </div>
+               </div>
+               <div class="topic concept nested0" id="notices-header"><a name="notices-header" shape="rect">
+                     <!-- --></a><h2 class="title topictitle1"><a href="#notices-header" name="notices-header" shape="rect">Notices</a></h2>
+                  <div class="topic reference nested1" id="notice"><a name="notice" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#notice" name="notice" shape="rect"></a></h3>
+                     <div class="body refbody">
+                        <div class="section">
+                           <h3 class="title sectiontitle">Notice</h3>
+                           <p class="p">ALL NVIDIA DESIGN SPECIFICATIONS, REFERENCE BOARDS, FILES, DRAWINGS, DIAGNOSTICS, LISTS, AND OTHER DOCUMENTS (TOGETHER AND
+                              SEPARATELY, "MATERIALS") ARE BEING PROVIDED "AS IS." NVIDIA MAKES NO WARRANTIES, EXPRESSED, IMPLIED, STATUTORY, OR OTHERWISE
+                              WITH RESPECT TO THE MATERIALS, AND EXPRESSLY DISCLAIMS ALL IMPLIED WARRANTIES OF NONINFRINGEMENT, MERCHANTABILITY, AND FITNESS
+                              FOR A PARTICULAR PURPOSE. 
+                           </p>
+                           <p class="p">Information furnished is believed to be accurate and reliable. However, NVIDIA Corporation assumes no responsibility for the
+                              consequences of use of such information or for any infringement of patents or other rights of third parties that may result
+                              from its use. No license is granted by implication of otherwise under any patent rights of NVIDIA Corporation. Specifications
+                              mentioned in this publication are subject to change without notice. This publication supersedes and replaces all other information
+                              previously supplied. NVIDIA Corporation products are not authorized as critical components in life support devices or systems
+                              without express written approval of NVIDIA Corporation.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="topic reference nested1" id="trademarks"><a name="trademarks" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#trademarks" name="trademarks" shape="rect"></a></h3>
+                     <div class="body refbody">
+                        <div class="section">
+                           <h3 class="title sectiontitle">Trademarks</h3>
+                           <p class="p">NVIDIA and the NVIDIA logo are trademarks or registered trademarks of NVIDIA Corporation
+                              in the U.S. and other countries.  Other company and product names may be trademarks of
+                              the respective companies with which they are associated.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="topic reference nested1" id="copyright"><a name="copyright" shape="rect">
+                        <!-- --></a><h3 class="title topictitle2"><a href="#copyright" name="copyright" shape="rect"></a></h3>
+                     <div class="body refbody">
+                        <div class="section">
+                           <h3 class="title sectiontitle">Copyright</h3>
+                           <p class="p">© 2007-<span class="ph">2019</span> NVIDIA Corporation. All rights reserved.
+                           </p>
+                           <p class="p">This product includes software developed by the Syncro Soft SRL (http://www.sync.ro/).</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               
+               <hr id="contents-end"></hr>
+               
+            </article>
+         </div>
+      </div>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/formatting/common.min.js"></script>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/scripts/google-analytics/google-analytics-write.js"></script>
+      <script language="JavaScript" type="text/javascript" charset="utf-8" src="../common/scripts/google-analytics/google-analytics-tracker.js"></script>
+      <script type="text/javascript">var switchTo5x=true;</script><script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script><script type="text/javascript">stLight.options({publisher: "998dc202-a267-4d8e-bce9-14debadb8d92", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script><script type="text/javascript">_satellite.pageBottom();</script></body>
+</html>
